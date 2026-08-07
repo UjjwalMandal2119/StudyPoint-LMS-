@@ -8,98 +8,104 @@
 
  :: Spring Boot ::                (v3.3.5)
 
-2026-08-06 19:41:39 - Starting StudyPointApplication v1.0.0 using Java 21.0.12 with PID 39536 (D:\StudyPoint\backend\target\studypoint-backend-1.0.0.jar started by ujjwa in D:\StudyPoint\backend)
-2026-08-06 19:41:39 - Running with Spring Boot v3.3.5, Spring v6.1.14
-2026-08-06 19:41:39 - The following 1 profile is active: "dev"
-2026-08-06 19:41:40 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-08-06 19:41:41 - Finished Spring Data repository scanning in 158 ms. Found 35 JPA repository interfaces.
-2026-08-06 19:41:42 - Tomcat initialized with port 8080 (http)
-2026-08-06 19:41:42 - Starting service [Tomcat]
-2026-08-06 19:41:42 - Starting Servlet engine: [Apache Tomcat/10.1.31]
-2026-08-06 19:41:42 - Initializing Spring embedded WebApplicationContext
-2026-08-06 19:41:42 - Root WebApplicationContext: initialization completed in 3693 ms
-2026-08-06 19:41:43 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-08-06 19:41:43 - HHH000412: Hibernate ORM core version 6.5.3.Final
-2026-08-06 19:41:43 - HHH000026: Second-level cache disabled
-2026-08-06 19:41:43 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-08-06 19:41:44 - HikariPool-1 - Starting...
-2026-08-06 19:41:44 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@25d23478
-2026-08-06 19:41:44 - HikariPool-1 - Start completed.
-2026-08-06 19:41:44 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-08-06 19:41:46 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:20 - Starting StudyPointApplication v1.0.0 using Java 21.0.12 with PID 61644 (D:\StudyPoint\backend\target\studypoint-backend-1.0.0.jar started by ujjwa in D:\StudyPoint)
+2026-08-07 20:06:20 - Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-08-07 20:06:20 - The following 1 profile is active: "dev"
+2026-08-07 20:06:21 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-07 20:06:22 - Finished Spring Data repository scanning in 172 ms. Found 36 JPA repository interfaces.
+2026-08-07 20:06:24 - Tomcat initialized with port 8080 (http)
+2026-08-07 20:06:24 - Starting service [Tomcat]
+2026-08-07 20:06:24 - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-08-07 20:06:24 - Initializing Spring embedded WebApplicationContext
+2026-08-07 20:06:24 - Root WebApplicationContext: initialization completed in 4039 ms
+2026-08-07 20:06:25 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-07 20:06:25 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-08-07 20:06:25 - HHH000026: Second-level cache disabled
+2026-08-07 20:06:26 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-07 20:06:26 - HikariPool-1 - Starting...
+2026-08-07 20:06:26 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@627d5f99
+2026-08-07 20:06:26 - HikariPool-1 - Start completed.
+2026-08-07 20:06:26 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-07 20:06:29 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-07 20:06:29 - 
     alter table admission_applications 
        modify column status enum ('ACTIVE','APPROVED','COMPLETED','DROPPED','PENDING','REJECTED','SUSPENDED') not null
 Hibernate: 
     alter table admission_applications 
        modify column status enum ('ACTIVE','APPROVED','COMPLETED','DROPPED','PENDING','REJECTED','SUSPENDED') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table assignment_submissions 
        modify column status enum ('GRADED','LATE','RETURNED','SUBMITTED') not null
 Hibernate: 
     alter table assignment_submissions 
        modify column status enum ('GRADED','LATE','RETURNED','SUBMITTED') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table assignments 
        modify column status enum ('ARCHIVED','CLOSED','DRAFT','PUBLISHED') not null
 Hibernate: 
     alter table assignments 
        modify column status enum ('ARCHIVED','CLOSED','DRAFT','PUBLISHED') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table attendance 
        modify column status enum ('ABSENT','HOLIDAY','LATE','LEAVE','PRESENT') not null
 Hibernate: 
     alter table attendance 
        modify column status enum ('ABSENT','HOLIDAY','LATE','LEAVE','PRESENT') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table books 
        modify column status enum ('AVAILABLE','DAMAGED','ISSUED','LOST','RESERVED','WITHDRAWN') not null
 Hibernate: 
     alter table books 
        modify column status enum ('AVAILABLE','DAMAGED','ISSUED','LOST','RESERVED','WITHDRAWN') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table discussions 
        modify column status enum ('CLOSED','HIDDEN','OPEN','PINNED','RESOLVED') not null
 Hibernate: 
     alter table discussions 
        modify column status enum ('CLOSED','HIDDEN','OPEN','PINNED','RESOLVED') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table enrollments 
        modify column status enum ('ACTIVE','APPROVED','COMPLETED','DROPPED','PENDING','REJECTED','SUSPENDED') not null
 Hibernate: 
     alter table enrollments 
        modify column status enum ('ACTIVE','APPROVED','COMPLETED','DROPPED','PENDING','REJECTED','SUSPENDED') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table exams 
        modify column exam_type enum ('FINAL_TERM','MID_TERM','MOCK_TEST','PRACTICAL','QUIZ','UNIT_TEST') not null
 Hibernate: 
     alter table exams 
        modify column exam_type enum ('FINAL_TERM','MID_TERM','MOCK_TEST','PRACTICAL','QUIZ','UNIT_TEST') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table fees 
        modify column status enum ('CANCELLED','OVERDUE','PAID','PARTIALLY_PAID','PENDING','REFUNDED') not null
 Hibernate: 
     alter table fees 
        modify column status enum ('CANCELLED','OVERDUE','PAID','PARTIALLY_PAID','PENDING','REFUNDED') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
+    alter table grievances 
+       modify column status enum ('IN_REVIEW','REJECTED','RESOLVED','SUBMITTED') not null
+Hibernate: 
+    alter table grievances 
+       modify column status enum ('IN_REVIEW','REJECTED','RESOLVED','SUBMITTED') not null
+2026-08-07 20:06:29 - 
     alter table messages 
        modify column message_type enum ('AUDIO','FILE','IMAGE','SYSTEM','TEXT','VIDEO') not null
 Hibernate: 
     alter table messages 
        modify column message_type enum ('AUDIO','FILE','IMAGE','SYSTEM','TEXT','VIDEO') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table notifications 
        modify column type enum ('ALERT','ERROR','INFO','REMINDER','SUCCESS','WARNING') not null
 Hibernate: 
     alter table notifications 
        modify column type enum ('ALERT','ERROR','INFO','REMINDER','SUCCESS','WARNING') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table payments 
        modify column status enum ('CANCELLED','OVERDUE','PAID','PARTIALLY_PAID','PENDING','REFUNDED') not null
 Hibernate: 
     alter table payments 
        modify column status enum ('CANCELLED','OVERDUE','PAID','PARTIALLY_PAID','PENDING','REFUNDED') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     create table questions (
         id bigint not null auto_increment,
         is_active bit not null,
@@ -137,7 +143,7 @@ Hibernate:
         subject_id bigint not null,
         primary key (id)
     ) engine=InnoDB
-2026-08-06 19:41:46 - GenerationTarget encountered exception accepting command : Error executing DDL "
+2026-08-07 20:06:29 - GenerationTarget encountered exception accepting command : Error executing DDL "
     create table questions (
         id bigint not null auto_increment,
         is_active bit not null,
@@ -313,7 +319,7 @@ Caused by: java.sql.SQLSyntaxErrorException: Row size too large. The maximum row
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 128 common frames omitted
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     create table results (
         id bigint not null auto_increment,
         is_active bit not null,
@@ -353,7 +359,7 @@ Hibernate:
         student_id bigint not null,
         primary key (id)
     ) engine=InnoDB
-2026-08-06 19:41:46 - GenerationTarget encountered exception accepting command : Error executing DDL "
+2026-08-07 20:06:29 - GenerationTarget encountered exception accepting command : Error executing DDL "
     create table results (
         id bigint not null auto_increment,
         is_active bit not null,
@@ -537,25 +543,25 @@ Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL synta
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 128 common frames omitted
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table teacher_attendance 
        modify column status enum ('ABSENT','HOLIDAY','LATE','LEAVE','PRESENT') not null
 Hibernate: 
     alter table teacher_attendance 
        modify column status enum ('ABSENT','HOLIDAY','LATE','LEAVE','PRESENT') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table users 
        modify column role enum ('ACCOUNTANT','ADMIN','LIBRARIAN','PARENT','RECEPTIONIST','STUDENT','SUPER_ADMIN','TEACHER') not null
 Hibernate: 
     alter table users 
        modify column role enum ('ACCOUNTANT','ADMIN','LIBRARIAN','PARENT','RECEPTIONIST','STUDENT','SUPER_ADMIN','TEACHER') not null
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     create index idx_question_subject 
        on questions (subject_id)
 Hibernate: 
     create index idx_question_subject 
        on questions (subject_id)
-2026-08-06 19:41:46 - GenerationTarget encountered exception accepting command : Error executing DDL "
+2026-08-07 20:06:29 - GenerationTarget encountered exception accepting command : Error executing DDL "
     create index idx_question_subject 
        on questions (subject_id)" via JDBC [Table 'study_point.questions' doesn't exist]
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
@@ -699,13 +705,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'study_point.questions' doesn
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 128 common frames omitted
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     create index idx_question_type 
        on questions (question_type)
 Hibernate: 
     create index idx_question_type 
        on questions (question_type)
-2026-08-06 19:41:46 - GenerationTarget encountered exception accepting command : Error executing DDL "
+2026-08-07 20:06:29 - GenerationTarget encountered exception accepting command : Error executing DDL "
     create index idx_question_type 
        on questions (question_type)" via JDBC [Table 'study_point.questions' doesn't exist]
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
@@ -849,13 +855,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'study_point.questions' doesn
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 128 common frames omitted
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     create index idx_result_exam 
        on results (exam_id)
 Hibernate: 
     create index idx_result_exam 
        on results (exam_id)
-2026-08-06 19:41:46 - GenerationTarget encountered exception accepting command : Error executing DDL "
+2026-08-07 20:06:29 - GenerationTarget encountered exception accepting command : Error executing DDL "
     create index idx_result_exam 
        on results (exam_id)" via JDBC [Table 'study_point.results' doesn't exist]
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
@@ -999,13 +1005,13 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'study_point.results' doesn't
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 128 common frames omitted
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     create index idx_result_student 
        on results (student_id)
 Hibernate: 
     create index idx_result_student 
        on results (student_id)
-2026-08-06 19:41:46 - GenerationTarget encountered exception accepting command : Error executing DDL "
+2026-08-07 20:06:29 - GenerationTarget encountered exception accepting command : Error executing DDL "
     create index idx_result_student 
        on results (student_id)" via JDBC [Table 'study_point.results' doesn't exist]
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
@@ -1149,19 +1155,19 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'study_point.results' doesn't
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 128 common frames omitted
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table results 
        drop index uk_result_exam_student
 Hibernate: 
     alter table results 
        drop index uk_result_exam_student
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table results 
        add constraint uk_result_exam_student unique (exam_id, student_id)
 Hibernate: 
     alter table results 
        add constraint uk_result_exam_student unique (exam_id, student_id)
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table questions 
        add constraint FKo0h0rn8bxifrxmq1d8ipiyqv5 
        foreign key (subject_id) 
@@ -1171,7 +1177,7 @@ Hibernate:
        add constraint FKo0h0rn8bxifrxmq1d8ipiyqv5 
        foreign key (subject_id) 
        references subjects (id)
-2026-08-06 19:41:46 - GenerationTarget encountered exception accepting command : Error executing DDL "
+2026-08-07 20:06:29 - GenerationTarget encountered exception accepting command : Error executing DDL "
     alter table questions 
        add constraint FKo0h0rn8bxifrxmq1d8ipiyqv5 
        foreign key (subject_id) 
@@ -1318,7 +1324,7 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'study_point.questions' doesn
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 127 common frames omitted
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table results 
        add constraint FKeow9kom5hrbhv6jhq82bqe68k 
        foreign key (exam_id) 
@@ -1328,7 +1334,7 @@ Hibernate:
        add constraint FKeow9kom5hrbhv6jhq82bqe68k 
        foreign key (exam_id) 
        references exams (id)
-2026-08-06 19:41:46 - GenerationTarget encountered exception accepting command : Error executing DDL "
+2026-08-07 20:06:29 - GenerationTarget encountered exception accepting command : Error executing DDL "
     alter table results 
        add constraint FKeow9kom5hrbhv6jhq82bqe68k 
        foreign key (exam_id) 
@@ -1475,7 +1481,7 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'study_point.results' doesn't
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 127 common frames omitted
-2026-08-06 19:41:46 - 
+2026-08-07 20:06:29 - 
     alter table results 
        add constraint FKfri0f5doafs6f1ob36de88b6a 
        foreign key (student_id) 
@@ -1485,7 +1491,7 @@ Hibernate:
        add constraint FKfri0f5doafs6f1ob36de88b6a 
        foreign key (student_id) 
        references students (id)
-2026-08-06 19:41:46 - GenerationTarget encountered exception accepting command : Error executing DDL "
+2026-08-07 20:06:29 - GenerationTarget encountered exception accepting command : Error executing DDL "
     alter table results 
        add constraint FKfri0f5doafs6f1ob36de88b6a 
        foreign key (student_id) 
@@ -1632,332 +1638,18 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'study_point.results' doesn't
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80)
 	... 127 common frames omitted
-2026-08-06 19:41:46 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-08-06 19:41:47 - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-08-06 19:41:48 - Filter 'jwtAuthenticationFilter' configured for use
-2026-08-06 19:41:49 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2026-08-06 19:41:49 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
-2026-08-06 19:41:50 - Exposing 3 endpoints beneath base path '/actuator'
-2026-08-06 19:41:51 - Tomcat started on port 8080 (http) with context path '/api'
-2026-08-06 19:41:51 - Started StudyPointApplication in 12.695 seconds (process running for 13.364)
-2026-08-06 19:42:11 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-08-06 19:42:11 - Initializing Servlet 'dispatcherServlet'
-2026-08-06 19:42:11 - Completed initialization in 2 ms
-2026-08-06 19:42:37 - Unexpected error occurred
-org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('u' (code 117)): was expecting double-quote to start field name
-	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:406)
-	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:354)
-	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:184)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:161)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:135)
-	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
-	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:224)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:178)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
-	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
-	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479)
-	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340)
-	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128)
-	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at com.studypoint.backend.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:37)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
-	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
-	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
-	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: com.fasterxml.jackson.core.JsonParseException: Unexpected character ('u' (code 117)): was expecting double-quote to start field name
- at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 2]
-	at com.fasterxml.jackson.core.JsonParser._constructReadException(JsonParser.java:2648)
-	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportUnexpectedChar(ParserMinimalBase.java:685)
-	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser._handleOddName(UTF8StreamJsonParser.java:2103)
-	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser._parseName(UTF8StreamJsonParser.java:1753)
-	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser.nextToken(UTF8StreamJsonParser.java:757)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:181)
-	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342)
-	at com.fasterxml.jackson.databind.ObjectReader._bindAndClose(ObjectReader.java:2125)
-	at com.fasterxml.jackson.databind.ObjectReader.readValue(ObjectReader.java:1501)
-	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:395)
-	... 141 common frames omitted
-2026-08-06 19:42:38 - Unexpected error occurred
-org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('u' (code 117)): was expecting double-quote to start field name
-	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:406)
-	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:354)
-	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:184)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:161)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:135)
-	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
-	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:224)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:178)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
-	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
-	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479)
-	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340)
-	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128)
-	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at com.studypoint.backend.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:37)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240)
-	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323)
-	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224)
-	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137)
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
-	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
-	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
-	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-Caused by: com.fasterxml.jackson.core.JsonParseException: Unexpected character ('u' (code 117)): was expecting double-quote to start field name
- at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 2]
-	at com.fasterxml.jackson.core.JsonParser._constructReadException(JsonParser.java:2648)
-	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportUnexpectedChar(ParserMinimalBase.java:685)
-	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser._handleOddName(UTF8StreamJsonParser.java:2103)
-	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser._parseName(UTF8StreamJsonParser.java:1753)
-	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser.nextToken(UTF8StreamJsonParser.java:757)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:181)
-	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342)
-	at com.fasterxml.jackson.databind.ObjectReader._bindAndClose(ObjectReader.java:2125)
-	at com.fasterxml.jackson.databind.ObjectReader.readValue(ObjectReader.java:1501)
-	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:395)
-	... 141 common frames omitted
-2026-08-06 19:48:19 - 
+2026-08-07 20:06:30 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-07 20:06:30 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-07 20:06:31 - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-07 20:06:33 - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-08-07 20:06:33 - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2026-08-07 20:06:34 - Exposing 3 endpoints beneath base path '/actuator'
+2026-08-07 20:06:35 - Tomcat started on port 8080 (http) with context path '/api'
+2026-08-07 20:06:35 - Started StudyPointApplication in 16.1 seconds (process running for 16.681)
+2026-08-07 20:06:44 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-07 20:06:44 - Initializing Servlet 'dispatcherServlet'
+2026-08-07 20:06:44 - Completed initialization in 2 ms
+2026-08-07 20:06:54 - 
     select
         u1_0.id 
     from
@@ -1975,39 +1667,603 @@ Hibernate:
         u1_0.username=? 
     limit
         ?
-2026-08-06 19:48:19 - 
+2026-08-07 20:06:54 - 
     select
-        u1_0.id 
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
     from
         users u1_0 
     where
         u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:06:54 - 
+    update
+        users u1_0 
+    set
+        failed_attempts=? 
+    where
+        u1_0.email=?
+Hibernate: 
+    update
+        users u1_0 
+    set
+        failed_attempts=? 
+    where
+        u1_0.email=?
+2026-08-07 20:06:54 - 
+    update
+        users u1_0 
+    set
+        last_login_at=?,
+        last_login_ip=? 
+    where
+        u1_0.id=?
+Hibernate: 
+    update
+        users u1_0 
+    set
+        last_login_at=?,
+        last_login_ip=? 
+    where
+        u1_0.id=?
+2026-08-07 20:06:54 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:06:55 - 
+    select
+        g1_0.id,
+        g1_0.is_active,
+        g1_0.admin_response,
+        g1_0.category,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.description,
+        g1_0.resolved_at,
+        g1_0.resolved_by,
+        g1_0.status,
+        g1_0.title,
+        g1_0.tracking_number,
+        g1_0.updated_at,
+        g1_0.updated_by,
+        g1_0.user_id 
+    from
+        grievances g1_0 
+    limit
+        ?, ?
+Hibernate: 
+    select
+        g1_0.id,
+        g1_0.is_active,
+        g1_0.admin_response,
+        g1_0.category,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.description,
+        g1_0.resolved_at,
+        g1_0.resolved_by,
+        g1_0.status,
+        g1_0.title,
+        g1_0.tracking_number,
+        g1_0.updated_at,
+        g1_0.updated_by,
+        g1_0.user_id 
+    from
+        grievances g1_0 
+    limit
+        ?, ?
+2026-08-07 20:06:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 20:06:55 - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-08-07 20:06:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:06:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:06:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 20:06:55 - 
+    select
+        g1_0.id 
+    from
+        grievances g1_0 
+    where
+        g1_0.tracking_number=? 
     limit
         ?
 Hibernate: 
     select
-        u1_0.id 
+        g1_0.id 
     from
-        users u1_0 
+        grievances g1_0 
     where
-        u1_0.email=? 
+        g1_0.tracking_number=? 
     limit
         ?
-2026-08-06 19:48:19 - 
+2026-08-07 20:06:55 - 
     insert 
     into
-        users
-        (is_active, address, city, country, created_at, created_by, date_of_birth, email, is_email_verified, failed_attempts, first_name, gender, last_login_at, last_login_ip, last_name, is_locked, notes, password, phone, is_phone_verified, postal_code, profile_image_url, reset_token, reset_token_expiry, role, state, two_factor_enabled, two_factor_secret, updated_at, updated_by, username, verification_token, verification_token_expiry) 
+        grievances
+        (is_active, admin_response, category, created_at, created_by, description, resolved_at, resolved_by, status, title, tracking_number, updated_at, updated_by, user_id) 
     values
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 Hibernate: 
     insert 
     into
-        users
-        (is_active, address, city, country, created_at, created_by, date_of_birth, email, is_email_verified, failed_attempts, first_name, gender, last_login_at, last_login_ip, last_name, is_locked, notes, password, phone, is_phone_verified, postal_code, profile_image_url, reset_token, reset_token_expiry, role, state, two_factor_enabled, two_factor_secret, updated_at, updated_by, username, verification_token, verification_token_expiry) 
+        grievances
+        (is_active, admin_response, category, created_at, created_by, description, resolved_at, resolved_by, status, title, tracking_number, updated_at, updated_by, user_id) 
     values
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2026-08-06 19:48:19 - 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-08-07 20:06:55 - 
     select
         u1_0.id,
         u1_0.is_active,
@@ -2089,7 +2345,471 @@ Hibernate:
     where
         u1_0.email=? 
         or u1_0.username=?
-2026-08-06 19:48:19 - 
+2026-08-07 20:06:55 - 
+    select
+        n1_0.id,
+        n1_0.is_active,
+        n1_0.attachment_url,
+        n1_0.content,
+        n1_0.created_at,
+        n1_0.created_by,
+        n1_0.expiry_date,
+        n1_0.is_important,
+        n1_0.publish_date,
+        n1_0.is_published,
+        n1_0.published_at,
+        n1_0.published_by,
+        n1_0.title,
+        n1_0.updated_at,
+        n1_0.updated_by 
+    from
+        notices n1_0 
+    where
+        n1_0.is_published 
+    limit
+        ?
+Hibernate: 
+    select
+        n1_0.id,
+        n1_0.is_active,
+        n1_0.attachment_url,
+        n1_0.content,
+        n1_0.created_at,
+        n1_0.created_by,
+        n1_0.expiry_date,
+        n1_0.is_important,
+        n1_0.publish_date,
+        n1_0.is_published,
+        n1_0.published_at,
+        n1_0.published_by,
+        n1_0.title,
+        n1_0.updated_at,
+        n1_0.updated_by 
+    from
+        notices n1_0 
+    where
+        n1_0.is_published 
+    limit
+        ?
+2026-08-07 20:06:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:06:55 - 
+    select
+        sm1_0.id,
+        sm1_0.is_active,
+        sm1_0.batch_id,
+        sm1_0.created_at,
+        sm1_0.created_by,
+        sm1_0.description,
+        sm1_0.download_count,
+        sm1_0.file_size,
+        sm1_0.file_type,
+        sm1_0.file_url,
+        sm1_0.is_public,
+        sm1_0.subject_id,
+        sm1_0.title,
+        sm1_0.updated_at,
+        sm1_0.updated_by,
+        sm1_0.uploaded_by 
+    from
+        study_materials sm1_0 
+    where
+        sm1_0.is_public=1 
+    limit
+        ?
+Hibernate: 
+    select
+        sm1_0.id,
+        sm1_0.is_active,
+        sm1_0.batch_id,
+        sm1_0.created_at,
+        sm1_0.created_by,
+        sm1_0.description,
+        sm1_0.download_count,
+        sm1_0.file_size,
+        sm1_0.file_type,
+        sm1_0.file_url,
+        sm1_0.is_public,
+        sm1_0.subject_id,
+        sm1_0.title,
+        sm1_0.updated_at,
+        sm1_0.updated_by,
+        sm1_0.uploaded_by 
+    from
+        study_materials sm1_0 
+    where
+        sm1_0.is_public=1 
+    limit
+        ?
+2026-08-07 20:06:55 - 
+    select
+        aa1_0.id 
+    from
+        admission_applications aa1_0 
+    where
+        aa1_0.email=? 
+        and aa1_0.course_id=? 
+    limit
+        ?
+Hibernate: 
+    select
+        aa1_0.id 
+    from
+        admission_applications aa1_0 
+    where
+        aa1_0.email=? 
+        and aa1_0.course_id=? 
+    limit
+        ?
+2026-08-07 20:06:55 - 
+    select
+        c1_0.id,
+        c1_0.is_active,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.created_by,
+        c1_0.description,
+        c1_0.discount_fee,
+        c1_0.duration_months,
+        c1_0.fee,
+        c1_0.image_url,
+        c1_0.max_students,
+        c1_0.name,
+        c1_0.is_published,
+        c1_0.syllabus,
+        c1_0.updated_at,
+        c1_0.updated_by 
+    from
+        courses c1_0 
+    where
+        c1_0.id=?
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.is_active,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.created_by,
+        c1_0.description,
+        c1_0.discount_fee,
+        c1_0.duration_months,
+        c1_0.fee,
+        c1_0.image_url,
+        c1_0.max_students,
+        c1_0.name,
+        c1_0.is_published,
+        c1_0.syllabus,
+        c1_0.updated_at,
+        c1_0.updated_by 
+    from
+        courses c1_0 
+    where
+        c1_0.id=?
+2026-08-07 20:06:55 - 
+    insert 
+    into
+        admission_applications
+        (is_active, address, application_number, city, country, course_id, created_at, created_by, date_of_birth, documents_url, email, first_name, gender, guardian_email, guardian_name, guardian_phone, last_name, phone, postal_code, previous_grade, previous_school, remarks, reviewed_at, reviewed_by, state, status, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        admission_applications
+        (is_active, address, application_number, city, country, course_id, created_at, created_by, date_of_birth, documents_url, email, first_name, gender, guardian_email, guardian_name, guardian_phone, last_name, phone, postal_code, previous_grade, previous_school, remarks, reviewed_at, reviewed_by, state, status, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-08-07 20:06:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:06:55 - 
+    select
+        d1_0.id,
+        d1_0.is_active,
+        d1_0.content,
+        d1_0.created_at,
+        d1_0.created_by,
+        d1_0.like_count,
+        d1_0.is_pinned,
+        d1_0.reply_count,
+        d1_0.report_reason,
+        d1_0.is_reported,
+        d1_0.status,
+        d1_0.tag,
+        d1_0.title,
+        d1_0.updated_at,
+        d1_0.updated_by,
+        d1_0.user_id,
+        d1_0.view_count 
+    from
+        discussions d1_0 
+    limit
+        ?, ?
+Hibernate: 
+    select
+        d1_0.id,
+        d1_0.is_active,
+        d1_0.content,
+        d1_0.created_at,
+        d1_0.created_by,
+        d1_0.like_count,
+        d1_0.is_pinned,
+        d1_0.reply_count,
+        d1_0.report_reason,
+        d1_0.is_reported,
+        d1_0.status,
+        d1_0.tag,
+        d1_0.title,
+        d1_0.updated_at,
+        d1_0.updated_by,
+        d1_0.user_id,
+        d1_0.view_count 
+    from
+        discussions d1_0 
+    limit
+        ?, ?
+2026-08-07 20:06:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:06:55 - 
     update
         users u1_0 
     set
@@ -2103,7 +2823,7 @@ Hibernate:
         failed_attempts=? 
     where
         u1_0.email=?
-2026-08-06 19:48:19 - 
+2026-08-07 20:06:55 - 
     update
         users u1_0 
     set
@@ -2119,7 +2839,7 @@ Hibernate:
         last_login_ip=? 
     where
         u1_0.id=?
-2026-08-06 19:48:19 - 
+2026-08-07 20:06:55 - 
     select
         u1_0.id,
         u1_0.is_active,
@@ -2201,21 +2921,25 @@ Hibernate:
     where
         u1_0.email=? 
         or u1_0.username=?
-2026-08-06 19:48:19 - 
+2026-08-07 20:06:55 - 
     select
-        count(u1_0.id) 
+        c1_0.id 
     from
-        users u1_0 
+        courses c1_0 
     where
-        u1_0.role=?
+        c1_0.code=? 
+    limit
+        ?
 Hibernate: 
     select
-        count(u1_0.id) 
+        c1_0.id 
     from
-        users u1_0 
+        courses c1_0 
     where
-        u1_0.role=?
-2026-08-06 19:49:48 - 
+        c1_0.code=? 
+    limit
+        ?
+2026-08-07 20:07:55 - 
     select
         u1_0.id,
         u1_0.is_active,
@@ -2297,7 +3021,7 @@ Hibernate:
     where
         u1_0.email=? 
         or u1_0.username=?
-2026-08-06 19:49:48 - 
+2026-08-07 20:07:55 - 
     update
         users u1_0 
     set
@@ -2311,7 +3035,7 @@ Hibernate:
         failed_attempts=? 
     where
         u1_0.email=?
-2026-08-06 19:49:48 - 
+2026-08-07 20:07:55 - 
     update
         users u1_0 
     set
@@ -2327,8 +3051,7 @@ Hibernate:
         last_login_ip=? 
     where
         u1_0.id=?
-2026-08-06 21:22:33 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=42m17s895ms351µs200ns).
-2026-08-06 21:34:31 - 
+2026-08-07 20:07:55 - 
     select
         u1_0.id,
         u1_0.is_active,
@@ -2410,36 +3133,2393 @@ Hibernate:
     where
         u1_0.email=? 
         or u1_0.username=?
-2026-08-06 21:34:31 - 
-    update
-        users u1_0 
-    set
-        failed_attempts=? 
-    where
-        u1_0.email=?
+2026-08-07 20:07:55 - 
+    select
+        aa1_0.id,
+        aa1_0.is_active,
+        aa1_0.address,
+        aa1_0.application_number,
+        aa1_0.city,
+        aa1_0.country,
+        aa1_0.course_id,
+        aa1_0.created_at,
+        aa1_0.created_by,
+        aa1_0.date_of_birth,
+        aa1_0.documents_url,
+        aa1_0.email,
+        aa1_0.first_name,
+        aa1_0.gender,
+        aa1_0.guardian_email,
+        aa1_0.guardian_name,
+        aa1_0.guardian_phone,
+        aa1_0.last_name,
+        aa1_0.phone,
+        aa1_0.postal_code,
+        aa1_0.previous_grade,
+        aa1_0.previous_school,
+        aa1_0.remarks,
+        aa1_0.reviewed_at,
+        aa1_0.reviewed_by,
+        aa1_0.state,
+        aa1_0.status,
+        aa1_0.updated_at,
+        aa1_0.updated_by 
+    from
+        admission_applications aa1_0 
+    limit
+        ?, ?
 Hibernate: 
-    update
-        users u1_0 
-    set
-        failed_attempts=? 
+    select
+        aa1_0.id,
+        aa1_0.is_active,
+        aa1_0.address,
+        aa1_0.application_number,
+        aa1_0.city,
+        aa1_0.country,
+        aa1_0.course_id,
+        aa1_0.created_at,
+        aa1_0.created_by,
+        aa1_0.date_of_birth,
+        aa1_0.documents_url,
+        aa1_0.email,
+        aa1_0.first_name,
+        aa1_0.gender,
+        aa1_0.guardian_email,
+        aa1_0.guardian_name,
+        aa1_0.guardian_phone,
+        aa1_0.last_name,
+        aa1_0.phone,
+        aa1_0.postal_code,
+        aa1_0.previous_grade,
+        aa1_0.previous_school,
+        aa1_0.remarks,
+        aa1_0.reviewed_at,
+        aa1_0.reviewed_by,
+        aa1_0.state,
+        aa1_0.status,
+        aa1_0.updated_at,
+        aa1_0.updated_by 
+    from
+        admission_applications aa1_0 
+    limit
+        ?, ?
+2026-08-07 20:07:55 - 
+    select
+        c1_0.id,
+        c1_0.is_active,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.created_by,
+        c1_0.description,
+        c1_0.discount_fee,
+        c1_0.duration_months,
+        c1_0.fee,
+        c1_0.image_url,
+        c1_0.max_students,
+        c1_0.name,
+        c1_0.is_published,
+        c1_0.syllabus,
+        c1_0.updated_at,
+        c1_0.updated_by 
+    from
+        courses c1_0 
     where
-        u1_0.email=?
-2026-08-06 21:34:31 - 
-    update
+        c1_0.id=?
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.is_active,
+        c1_0.code,
+        c1_0.created_at,
+        c1_0.created_by,
+        c1_0.description,
+        c1_0.discount_fee,
+        c1_0.duration_months,
+        c1_0.fee,
+        c1_0.image_url,
+        c1_0.max_students,
+        c1_0.name,
+        c1_0.is_published,
+        c1_0.syllabus,
+        c1_0.updated_at,
+        c1_0.updated_by 
+    from
+        courses c1_0 
+    where
+        c1_0.id=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
         users u1_0 
-    set
-        last_login_at=?,
-        last_login_ip=? 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        g1_0.id,
+        g1_0.is_active,
+        g1_0.admin_response,
+        g1_0.category,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.description,
+        g1_0.resolved_at,
+        g1_0.resolved_by,
+        g1_0.status,
+        g1_0.title,
+        g1_0.tracking_number,
+        g1_0.updated_at,
+        g1_0.updated_by,
+        g1_0.user_id 
+    from
+        grievances g1_0 
+    limit
+        ?, ?
+Hibernate: 
+    select
+        g1_0.id,
+        g1_0.is_active,
+        g1_0.admin_response,
+        g1_0.category,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.description,
+        g1_0.resolved_at,
+        g1_0.resolved_by,
+        g1_0.status,
+        g1_0.title,
+        g1_0.tracking_number,
+        g1_0.updated_at,
+        g1_0.updated_by,
+        g1_0.user_id 
+    from
+        grievances g1_0 
+    limit
+        ?, ?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
     where
         u1_0.id=?
 Hibernate: 
-    update
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
         users u1_0 
-    set
-        last_login_at=?,
-        last_login_ip=? 
     where
         u1_0.id=?
-2026-08-06 22:33:33 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m29s722ms691µs500ns).
-2026-08-06 23:01:36 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=28m3s228ms439µs600ns).
-2026-08-06 23:31:11 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m35s192ms187µs600ns).
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        g1_0.id,
+        g1_0.is_active,
+        g1_0.admin_response,
+        g1_0.category,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.description,
+        g1_0.resolved_at,
+        g1_0.resolved_by,
+        g1_0.status,
+        g1_0.title,
+        g1_0.tracking_number,
+        g1_0.updated_at,
+        g1_0.updated_by,
+        g1_0.user_id 
+    from
+        grievances g1_0 
+    where
+        g1_0.id=?
+Hibernate: 
+    select
+        g1_0.id,
+        g1_0.is_active,
+        g1_0.admin_response,
+        g1_0.category,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.description,
+        g1_0.resolved_at,
+        g1_0.resolved_by,
+        g1_0.status,
+        g1_0.title,
+        g1_0.tracking_number,
+        g1_0.updated_at,
+        g1_0.updated_by,
+        g1_0.user_id 
+    from
+        grievances g1_0 
+    where
+        g1_0.id=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 20:07:55 - 
+    update
+        grievances 
+    set
+        is_active=?,
+        admin_response=?,
+        category=?,
+        description=?,
+        resolved_at=?,
+        resolved_by=?,
+        status=?,
+        title=?,
+        tracking_number=?,
+        updated_at=?,
+        updated_by=?,
+        user_id=? 
+    where
+        id=?
+Hibernate: 
+    update
+        grievances 
+    set
+        is_active=?,
+        admin_response=?,
+        category=?,
+        description=?,
+        resolved_at=?,
+        resolved_by=?,
+        status=?,
+        title=?,
+        tracking_number=?,
+        updated_at=?,
+        updated_by=?,
+        user_id=? 
+    where
+        id=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 20:07:55 - 
+    insert 
+    into
+        notifications
+        (action_url, is_active, created_at, created_by, image_url, message, is_read, read_at, title, type, updated_at, updated_by, user_id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        notifications
+        (action_url, is_active, created_at, created_by, image_url, message, is_read, read_at, title, type, updated_at, updated_by, user_id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        n1_0.id,
+        n1_0.action_url,
+        n1_0.is_active,
+        n1_0.created_at,
+        n1_0.created_by,
+        n1_0.image_url,
+        n1_0.message,
+        n1_0.is_read,
+        n1_0.read_at,
+        n1_0.title,
+        n1_0.type,
+        n1_0.updated_at,
+        n1_0.updated_by,
+        n1_0.user_id 
+    from
+        notifications n1_0 
+    where
+        n1_0.user_id=? 
+    limit
+        ?
+Hibernate: 
+    select
+        n1_0.id,
+        n1_0.action_url,
+        n1_0.is_active,
+        n1_0.created_at,
+        n1_0.created_by,
+        n1_0.image_url,
+        n1_0.message,
+        n1_0.is_read,
+        n1_0.read_at,
+        n1_0.title,
+        n1_0.type,
+        n1_0.updated_at,
+        n1_0.updated_by,
+        n1_0.user_id 
+    from
+        notifications n1_0 
+    where
+        n1_0.user_id=? 
+    limit
+        ?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        count(n1_0.id) 
+    from
+        notifications n1_0 
+    where
+        n1_0.user_id=? 
+        and not(n1_0.is_read)
+Hibernate: 
+    select
+        count(n1_0.id) 
+    from
+        notifications n1_0 
+    where
+        n1_0.user_id=? 
+        and not(n1_0.is_read)
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        s1_0.id,
+        s1_0.is_active,
+        s1_0.code,
+        s1_0.course_id,
+        s1_0.created_at,
+        s1_0.created_by,
+        s1_0.description,
+        s1_0.name,
+        s1_0.pass_marks,
+        s1_0.is_practical,
+        s1_0.teacher_id,
+        s1_0.total_marks,
+        s1_0.updated_at,
+        s1_0.updated_by 
+    from
+        subjects s1_0 
+    where
+        s1_0.id=?
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.is_active,
+        s1_0.code,
+        s1_0.course_id,
+        s1_0.created_at,
+        s1_0.created_by,
+        s1_0.description,
+        s1_0.name,
+        s1_0.pass_marks,
+        s1_0.is_practical,
+        s1_0.teacher_id,
+        s1_0.total_marks,
+        s1_0.updated_at,
+        s1_0.updated_by 
+    from
+        subjects s1_0 
+    where
+        s1_0.id=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        sm1_0.id,
+        sm1_0.is_active,
+        sm1_0.batch_id,
+        sm1_0.created_at,
+        sm1_0.created_by,
+        sm1_0.description,
+        sm1_0.download_count,
+        sm1_0.file_size,
+        sm1_0.file_type,
+        sm1_0.file_url,
+        sm1_0.is_public,
+        sm1_0.subject_id,
+        sm1_0.title,
+        sm1_0.updated_at,
+        sm1_0.updated_by,
+        sm1_0.uploaded_by 
+    from
+        study_materials sm1_0 
+    where
+        sm1_0.is_public=1 
+    limit
+        ?
+Hibernate: 
+    select
+        sm1_0.id,
+        sm1_0.is_active,
+        sm1_0.batch_id,
+        sm1_0.created_at,
+        sm1_0.created_by,
+        sm1_0.description,
+        sm1_0.download_count,
+        sm1_0.file_size,
+        sm1_0.file_type,
+        sm1_0.file_url,
+        sm1_0.is_public,
+        sm1_0.subject_id,
+        sm1_0.title,
+        sm1_0.updated_at,
+        sm1_0.updated_by,
+        sm1_0.uploaded_by 
+    from
+        study_materials sm1_0 
+    where
+        sm1_0.is_public=1 
+    limit
+        ?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 20:07:55 - 
+    insert 
+    into
+        discussions
+        (is_active, content, created_at, created_by, like_count, is_pinned, reply_count, report_reason, is_reported, status, tag, title, updated_at, updated_by, user_id, view_count) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        discussions
+        (is_active, content, created_at, created_by, like_count, is_pinned, reply_count, report_reason, is_reported, status, tag, title, updated_at, updated_by, user_id, view_count) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        d1_0.id,
+        d1_0.is_active,
+        d1_0.content,
+        d1_0.created_at,
+        d1_0.created_by,
+        d1_0.like_count,
+        d1_0.is_pinned,
+        d1_0.reply_count,
+        d1_0.report_reason,
+        d1_0.is_reported,
+        d1_0.status,
+        d1_0.tag,
+        d1_0.title,
+        d1_0.updated_at,
+        d1_0.updated_by,
+        d1_0.user_id,
+        d1_0.view_count 
+    from
+        discussions d1_0 
+    limit
+        ?, ?
+Hibernate: 
+    select
+        d1_0.id,
+        d1_0.is_active,
+        d1_0.content,
+        d1_0.created_at,
+        d1_0.created_by,
+        d1_0.like_count,
+        d1_0.is_pinned,
+        d1_0.reply_count,
+        d1_0.report_reason,
+        d1_0.is_reported,
+        d1_0.status,
+        d1_0.tag,
+        d1_0.title,
+        d1_0.updated_at,
+        d1_0.updated_by,
+        d1_0.user_id,
+        d1_0.view_count 
+    from
+        discussions d1_0 
+    limit
+        ?, ?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    insert 
+    into
+        notices
+        (is_active, attachment_url, content, created_at, created_by, expiry_date, is_important, publish_date, is_published, published_at, published_by, title, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        notices
+        (is_active, attachment_url, content, created_at, created_by, expiry_date, is_important, publish_date, is_published, published_at, published_by, title, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-07 20:07:55 - 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.is_active,
+        u1_0.address,
+        u1_0.city,
+        u1_0.country,
+        u1_0.created_at,
+        u1_0.created_by,
+        u1_0.date_of_birth,
+        u1_0.email,
+        u1_0.is_email_verified,
+        u1_0.failed_attempts,
+        u1_0.first_name,
+        u1_0.gender,
+        u1_0.last_login_at,
+        u1_0.last_login_ip,
+        u1_0.last_name,
+        u1_0.is_locked,
+        u1_0.notes,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.is_phone_verified,
+        u1_0.postal_code,
+        u1_0.profile_image_url,
+        u1_0.reset_token,
+        u1_0.reset_token_expiry,
+        u1_0.role,
+        u1_0.state,
+        u1_0.two_factor_enabled,
+        u1_0.two_factor_secret,
+        u1_0.updated_at,
+        u1_0.updated_by,
+        u1_0.username,
+        u1_0.verification_token,
+        u1_0.verification_token_expiry 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+        or u1_0.username=?
+2026-08-07 20:07:55 - 
+    select
+        n1_0.id,
+        n1_0.is_active,
+        n1_0.attachment_url,
+        n1_0.content,
+        n1_0.created_at,
+        n1_0.created_by,
+        n1_0.expiry_date,
+        n1_0.is_important,
+        n1_0.publish_date,
+        n1_0.is_published,
+        n1_0.published_at,
+        n1_0.published_by,
+        n1_0.title,
+        n1_0.updated_at,
+        n1_0.updated_by 
+    from
+        notices n1_0 
+    where
+        n1_0.is_published 
+    limit
+        ?
+Hibernate: 
+    select
+        n1_0.id,
+        n1_0.is_active,
+        n1_0.attachment_url,
+        n1_0.content,
+        n1_0.created_at,
+        n1_0.created_by,
+        n1_0.expiry_date,
+        n1_0.is_important,
+        n1_0.publish_date,
+        n1_0.is_published,
+        n1_0.published_at,
+        n1_0.published_by,
+        n1_0.title,
+        n1_0.updated_at,
+        n1_0.updated_by 
+    from
+        notices n1_0 
+    where
+        n1_0.is_published 
+    limit
+        ?

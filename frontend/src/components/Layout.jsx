@@ -4,14 +4,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../features/auth/authSlice';
 
 const nav = [
-  { to: '/dashboard', label: 'Dashboard' },
-  { to: '/courses', label: 'Courses' },
-  { to: '/subjects', label: 'Subjects' },
-  { to: '/batches', label: 'Batches' },
-  { to: '/exams', label: 'Exams' },
-  { to: '/questions', label: 'Questions' },
-  { to: '/assignments', label: 'Assignments' },
-  { to: '/users', label: 'Users' },
+  { to: '/dashboard', label: 'Dashboard', roles: ['ADMIN', 'SUPER_ADMIN', 'STUDENT', 'TEACHER', 'PARENT', 'RECEPTIONIST', 'ACCOUNTANT', 'LIBRARIAN'] },
+  { to: '/admin-dashboard', label: 'Admin Panel', roles: ['ADMIN', 'SUPER_ADMIN'] },
+  { to: '/student-dashboard', label: 'Student Panel', roles: ['STUDENT'] },
+  { to: '/teacher-dashboard', label: 'Teacher Panel', roles: ['TEACHER'] },
+  { to: '/parent-dashboard', label: 'Parent Panel', roles: ['PARENT'] },
+  { to: '/courses', label: 'Courses', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER', 'RECEPTIONIST', 'LIBRARIAN'] },
+  { to: '/subjects', label: 'Subjects', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER'] },
+  { to: '/batches', label: 'Batches', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER', 'RECEPTIONIST'] },
+  { to: '/exams', label: 'Exams', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER'] },
+  { to: '/questions', label: 'Questions', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER'] },
+  { to: '/assignments', label: 'Assignments', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER', 'STUDENT'] },
+  { to: '/users', label: 'Users', roles: ['ADMIN', 'SUPER_ADMIN'] },
+  { to: '/students', label: 'Students', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER', 'RECEPTIONIST', 'PARENT'] },
+  { to: '/teachers', label: 'Teachers', roles: ['ADMIN', 'SUPER_ADMIN', 'RECEPTIONIST'] },
+  { to: '/attendance', label: 'Attendance', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER', 'STUDENT', 'PARENT'] },
+  { to: '/enrollments', label: 'Enrollments', roles: ['ADMIN', 'SUPER_ADMIN', 'RECEPTIONIST'] },
+  { to: '/results', label: 'Results', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER', 'STUDENT', 'PARENT'] },
+  { to: '/timetable', label: 'Timetable', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER', 'STUDENT'] },
+  { to: '/parents', label: 'Parents', roles: ['ADMIN', 'SUPER_ADMIN'] },
+  { to: '/admissions', label: 'Admissions', roles: ['ADMIN', 'SUPER_ADMIN', 'RECEPTIONIST'] },
+  { to: '/notices', label: 'Notices', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER', 'STUDENT', 'PARENT', 'RECEPTIONIST'] },
+  { to: '/notifications', label: 'Notifications', roles: ['ADMIN', 'SUPER_ADMIN', 'STUDENT', 'TEACHER', 'PARENT', 'RECEPTIONIST', 'ACCOUNTANT', 'LIBRARIAN'] },
+  { to: '/study-materials', label: 'Study Materials', roles: ['ADMIN', 'SUPER_ADMIN', 'TEACHER', 'STUDENT'] },
+  { to: '/discussions', label: 'Discussions', roles: ['ADMIN', 'SUPER_ADMIN', 'STUDENT', 'TEACHER', 'PARENT'] },
+  { to: '/grievances', label: 'Grievances', roles: ['ADMIN', 'SUPER_ADMIN', 'STUDENT', 'TEACHER', 'PARENT', 'RECEPTIONIST'] },
+
 ];
 
 export default function Layout() {
@@ -24,6 +42,8 @@ export default function Layout() {
     dispatch(logout());
     navigate('/login');
   };
+
+  const filteredNav = nav.filter((item) => !item.roles || item.roles.includes(role));
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -38,11 +58,11 @@ export default function Layout() {
             onClick={() => setCollapsed((c) => !c)}
             className="ml-auto rounded p-1 hover:bg-gray-800 text-xs"
           >
-            {collapsed ? '»' : '«'}
+            {collapsed ? '�' : '�'}
           </button>
         </div>
         <nav className="mt-2 space-y-1 px-2">
-          {nav.map((item) => (
+          {filteredNav.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}

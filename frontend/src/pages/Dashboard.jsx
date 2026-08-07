@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import api from '../api/axios';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../features/auth/authSlice';
 
 export default function Dashboard() {
@@ -9,21 +8,25 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const { user, role } = useSelector((state) => state.auth);
 
-  const [count, setCount] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState('');
-
-  useEffect(() => {
-    api
-      .get('/users/count/role/ADMIN')
-      .then((res) => setCount(res.data.data))
-      .catch((e) => setErr(e.response?.data?.message || e.message))
-      .finally(() => setLoading(false));
-  }, []);
-
   const handleLogout = () => {
     dispatch(logout());
     navigate('/login');
+  };
+
+  const getDashboardLink = () => {
+    switch (role) {
+      case 'ADMIN':
+      case 'SUPER_ADMIN':
+        return '/admin-dashboard';
+      case 'STUDENT':
+        return '/student-dashboard';
+      case 'TEACHER':
+        return '/teacher-dashboard';
+      case 'PARENT':
+        return '/parent-dashboard';
+      default:
+        return '/dashboard';
+    }
   };
 
   return (
@@ -45,12 +48,14 @@ export default function Dashboard() {
         </div>
 
         <div className="rounded bg-white p-6 shadow">
-          <h2 className="mb-2 text-xl font-semibold">Admin User Count</h2>
-          {loading && <p className="text-gray-500">Loading...</p>}
-          {err && <p className="text-red-600">{err}</p>}
-          {!loading && !err && (
-            <p className="text-2xl font-bold">{count}</p>
-          )}
+          <h2 className="mb-4 text-xl font-semibold">Welcome to Study Point</h2>
+          <p className="mb-4 text-gray-600">You are logged in as <strong>{role}</strong>.</p>
+          <button
+            onClick={() => navigate(getDashboardLink())}
+            className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          >
+            Go to {role} Dashboard
+          </button>
         </div>
       </div>
     </div>
