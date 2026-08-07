@@ -1,0 +1,12 @@
+﻿backend | d-----
+database | d-----
+docker | d-----
+docs | d-----
+frontend | d-----
+kubernetes | d-----
+screenshots | d-----
+1.txt | -a----
+2.txt | -a----
+3.txt | -a----
+README.md | -a----
+root.txt | -a----

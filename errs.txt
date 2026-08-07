@@ -1,0 +1,72 @@
+﻿[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/AssignmentSubmissionMapper.java:[16,34] Unmapped target properties: "assignmentId, studentId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/AssignmentSubmissionMapper.java:[22,26] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, assignment, student, submittedAt, status, marksObtained, feedback, gradedBy, gradedAt".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/CourseMapper.java:[17,12] Unmapped target properties: "createdBy, updatedBy".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/EnrollmentMapper.java:[17,16] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, status, enrollmentDate, approvedBy, approvedAt".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/EnrollmentMapper.java:[20,10] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, student, batch, status, enrollmentDate, approvedBy, approvedAt".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/EnrollmentMapper.java:[24,24] Unmapped target properties: "studentId, batchId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/TimetableMapper.java:[19,15] Unmapped target properties: "createdBy, updatedBy".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/BatchMapper.java:[18,11] Unmapped target properties: "createdBy, updatedBy".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/AttendanceMapper.java:[14,16] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, markedBy".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/AttendanceMapper.java:[18,24] Unmapped target properties: "studentId, batchId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/ExamMapper.java:[16,18] Unmapped target properties: "batchId, subjectId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/ExamMapper.java:[22,10] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, batch, subject, published".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/SubjectMapper.java:[18,13] Unmapped target properties: "createdBy, updatedBy".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/AssignmentMapper.java:[17,24] Unmapped target properties: "batchId, subjectId, teacherId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/AssignmentMapper.java:[23,16] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, batch, subject, teacher, status".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/TeacherAttendanceMapper.java:[12,23] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, markedBy".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/TeacherAttendanceMapper.java:[15,31] Unmapped target property: "teacherId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/TeacherMapper.java:[16,13] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/TeacherMapper.java:[19,10] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, user".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/TeacherMapper.java:[22,21] Unmapped target property: "userId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/TeacherMapper.java:[25,25] Unmapped target property: "userId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/StudentMapper.java:[17,13] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/StudentMapper.java:[20,10] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, user, batch".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/StudentMapper.java:[24,21] Unmapped target properties: "userId, batchId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/StudentMapper.java:[28,25] Unmapped target property: "userId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/ParentMapper.java:[16,12] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/ParentMapper.java:[19,10] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, user, students".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/ParentMapper.java:[22,20] Unmapped target property: "userId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/UserMapper.java:[15,10] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, emailVerified, phoneVerified, locked, failedAttempts, lastLoginAt, lastLoginIp, twoFactorEnabled, twoFactorSecret, resetToken, resetTokenExpiry, verificationToken, verificationTokenExpiry, notes".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/UserMapper.java:[22,10] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, emailVerified, phoneVerified, locked, failedAttempts, lastLoginAt, lastLoginIp, twoFactorEnabled, twoFactorSecret, resetToken, resetTokenExpiry, verificationToken, verificationTokenExpiry, notes".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/QuestionMapper.java:[14,22] Unmapped target property: "subjectId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/QuestionMapper.java:[19,14] Unmapped target properties: "id, createdAt, updatedAt, updatedBy, active, subject, createdBy, approved".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/ResultMapper.java:[16,20] Unmapped target properties: "examId, studentId".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/ResultMapper.java:[22,12] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, exam, student, passed, publishedBy, publishedAt".
+[WARNING] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/mapper/AuthMapper.java:[12,10] Unmapped target properties: "id, createdAt, updatedAt, createdBy, updatedBy, active, dateOfBirth, gender, address, city, state, postalCode, country, profileImageUrl, emailVerified, phoneVerified, locked, failedAttempts, lastLoginAt, lastLoginIp, twoFactorEnabled, twoFactorSecret, resetToken, resetTokenExpiry, verificationToken, verificationTokenExpiry, notes".
+[ERROR] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/service/impl/AssignmentServiceImpl.java:[39,27] cannot find symbol
+symbol:   method setBatchId(java.lang.Long)
+location: variable existingAssignment of type com.studypoint.backend.entity.Assignment
+[ERROR] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/service/impl/AssignmentServiceImpl.java:[40,27] cannot find symbol
+symbol:   method setSubjectId(java.lang.Long)
+[ERROR] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/service/impl/AuthServiceImpl.java:[80,49] incompatible types: boolean cannot be converted to java.lang.String
+[ERROR] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/service/impl/BatchServiceImpl.java:[47,28] cannot find symbol
+symbol:   method existsByCodeAndIdNot(java.lang.String,java.lang.Long)
+location: variable batchRepository of type com.studypoint.backend.repository.BatchRepository
+[ERROR] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/service/impl/CourseServiceImpl.java:[38,29] cannot find symbol
+location: variable courseRepository of type com.studypoint.backend.repository.CourseRepository
+[ERROR] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/service/impl/ExamServiceImpl.java:[40,21] cannot find symbol
+location: variable existingExam of type com.studypoint.backend.entity.Exam
+[ERROR] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/service/impl/ExamServiceImpl.java:[41,21] cannot find symbol
+[ERROR] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/service/impl/QuestionServiceImpl.java:[54,25] cannot find symbol
+location: variable existingQuestion of type com.studypoint.backend.entity.Question
+[ERROR] /D:/StudyPoint/backend/src/main/java/com/studypoint/backend/service/impl/SubjectServiceImpl.java:[47,30] cannot find symbol
+location: variable subjectRepository of type com.studypoint.backend.repository.SubjectRepository
+[ERROR] /D:/StudyPoint/backend/target/generated-sources/annotations/com/studypoint/backend/mapper/BatchMapperImpl.java:[106,78] cannot find symbol
+symbol:   method getUser()
+location: class com.studypoint.backend.entity.User
+[ERROR] /D:/StudyPoint/backend/target/generated-sources/annotations/com/studypoint/backend/mapper/BatchMapperImpl.java:[106,117] cannot find symbol
+[ERROR] /D:/StudyPoint/backend/target/generated-sources/annotations/com/studypoint/backend/mapper/BatchMapperImpl.java:[106,169] cannot find symbol
+[ERROR] /D:/StudyPoint/backend/target/generated-sources/annotations/com/studypoint/backend/mapper/SubjectMapperImpl.java:[106,82] cannot find symbol
+[ERROR] /D:/StudyPoint/backend/target/generated-sources/annotations/com/studypoint/backend/mapper/SubjectMapperImpl.java:[106,123] cannot find symbol
+[ERROR] /D:/StudyPoint/backend/target/generated-sources/annotations/com/studypoint/backend/mapper/SubjectMapperImpl.java:[106,177] cannot find symbol
+[ERROR]   symbol:   method setBatchId(java.lang.Long)
+[ERROR]   location: variable existingAssignment of type com.studypoint.backend.entity.Assignment
+[ERROR]   symbol:   method setSubjectId(java.lang.Long)
+[ERROR]   symbol:   method existsByCodeAndIdNot(java.lang.String,java.lang.Long)
+[ERROR]   location: variable batchRepository of type com.studypoint.backend.repository.BatchRepository
+[ERROR]   location: variable courseRepository of type com.studypoint.backend.repository.CourseRepository
+[ERROR]   location: variable existingExam of type com.studypoint.backend.entity.Exam
+[ERROR]   location: variable existingQuestion of type com.studypoint.backend.entity.Question
+[ERROR]   location: variable subjectRepository of type com.studypoint.backend.repository.SubjectRepository
+[ERROR]   symbol:   method getUser()
+[ERROR]   location: class com.studypoint.backend.entity.User
