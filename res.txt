@@ -1,3 +1,0 @@
-﻿D:\StudyPoint\backend\src\main\resources\application-dev.yml
-D:\StudyPoint\backend\src\main\resources\application-prod.yml
-D:\StudyPoint\backend\src\main\resources\application.yml

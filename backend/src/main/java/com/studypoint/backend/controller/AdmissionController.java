@@ -1,4 +1,4 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.constants.EnrollmentStatus;
 import com.studypoint.backend.dto.request.AdmissionRequest;
@@ -7,7 +7,7 @@ import com.studypoint.backend.dto.response.AdmissionResponse;
 import com.studypoint.backend.entity.User;
 import com.studypoint.backend.exception.ResourceNotFoundException;
 import com.studypoint.backend.repository.UserRepository;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import com.studypoint.backend.service.AdmissionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -91,3 +91,4 @@ public class AdmissionController {
         return user.getId();
     }
 }
+

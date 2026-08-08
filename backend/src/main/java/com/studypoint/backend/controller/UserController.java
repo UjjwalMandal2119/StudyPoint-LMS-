@@ -1,10 +1,10 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.constants.Role;
 import com.studypoint.backend.dto.request.UserRequest;
 import com.studypoint.backend.dto.response.UserListResponse;
 import com.studypoint.backend.dto.response.UserResponse;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import com.studypoint.backend.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

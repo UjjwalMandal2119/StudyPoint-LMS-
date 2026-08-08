@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import EntityFormModal from '../components/EntityFormModal';
-import ViewModal from '../components/ViewModal';
+﻿import React, { useEffect, useState } from 'react';
+import EntityFormModal from '../components/forms/EntityFormModal';
+import ViewModal from '../components/ui/ViewModal';
 import { list, get, create, remove, like, resolve, pin, unpin, report, listReplies, addReply, likeReply, acceptAnswer } from '../services/discussion.service';
 
 const FIELDS = [
@@ -75,11 +75,11 @@ export default function Discussions() {
           <div className="flex items-start justify-between gap-2">
             <div>
               <p className="font-medium">{d.title} {d.pinned && <span className="ml-1 rounded bg-indigo-100 px-1.5 py-0.5 text-xs text-indigo-700">Pinned</span>}</p>
-              <p className="text-xs text-gray-500">by {d.userName} · {d.tag || 'general'} · {d.status}</p>
+              <p className="text-xs text-gray-500">by {d.userName} Â· {d.tag || 'general'} Â· {d.status}</p>
             </div>
             <div className="flex flex-wrap gap-1">
               <button onClick={() => doView(d)} className="rounded border px-2 py-1 text-xs hover:bg-gray-100">View</button>
-              <button onClick={() => doAction(like, d.id, 'Like failed')} className="rounded border px-2 py-1 text-xs hover:bg-gray-100">👍 {d.likeCount}</button>
+              <button onClick={() => doAction(like, d.id, 'Like failed')} className="rounded border px-2 py-1 text-xs hover:bg-gray-100">ðŸ‘ {d.likeCount}</button>
               <button onClick={() => doAction(resolve, d.id, 'Resolve failed')} className="rounded border px-2 py-1 text-xs hover:bg-gray-100">Resolve</button>
               {d.pinned
                 ? <button onClick={() => doAction(unpin, d.id, 'Unpin failed')} className="rounded border px-2 py-1 text-xs hover:bg-gray-100">Unpin</button>
@@ -88,7 +88,7 @@ export default function Discussions() {
               <button onClick={() => doDelete(d.id)} className="rounded border px-2 py-1 text-xs text-red-700 hover:bg-red-50">Delete</button>
             </div>
           </div>
-          <div className="mt-1 text-xs text-gray-400">{d.replyCount} replies · {d.viewCount} views</div>
+          <div className="mt-1 text-xs text-gray-400">{d.replyCount} replies Â· {d.viewCount} views</div>
         </div>
       ))}
       <EntityFormModal open={openModal} title="New Discussion" fields={FIELDS} onSubmit={onSubmit} onClose={() => setOpenModal(false)} loading={formLoading} />
@@ -106,9 +106,9 @@ export default function Discussions() {
             {replies.map((r) => (
               <div key={r.id} className="rounded border border-gray-100 bg-gray-50 p-2 text-sm">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-gray-600">{r.userName} {r.acceptedAnswer && <span className="ml-1 rounded bg-green-100 px-1.5 py-0.5 text-xs text-green-700">✓ Accepted</span>}</span>
+                  <span className="text-xs font-medium text-gray-600">{r.userName} {r.acceptedAnswer && <span className="ml-1 rounded bg-green-100 px-1.5 py-0.5 text-xs text-green-700">âœ“ Accepted</span>}</span>
                   <div className="flex gap-1">
-                    <button onClick={() => doAction(likeReply, r.id, 'Like failed')} className="rounded border px-2 py-0.5 text-xs hover:bg-gray-100">👍 {r.likeCount}</button>
+                    <button onClick={() => doAction(likeReply, r.id, 'Like failed')} className="rounded border px-2 py-0.5 text-xs hover:bg-gray-100">ðŸ‘ {r.likeCount}</button>
                     <button onClick={() => doAction(acceptAnswer, r.id, 'Accept failed')} className="rounded border px-2 py-0.5 text-xs hover:bg-gray-100">Accept</button>
                   </div>
                 </div>
@@ -128,3 +128,4 @@ export default function Discussions() {
     </div>
   );
 }
+

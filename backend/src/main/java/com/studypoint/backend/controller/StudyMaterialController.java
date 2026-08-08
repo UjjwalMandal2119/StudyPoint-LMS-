@@ -1,4 +1,4 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.request.StudyMaterialRequest;
 import com.studypoint.backend.dto.response.StudyMaterialListResponse;
@@ -6,7 +6,7 @@ import com.studypoint.backend.dto.response.StudyMaterialResponse;
 import com.studypoint.backend.entity.User;
 import com.studypoint.backend.exception.ResourceNotFoundException;
 import com.studypoint.backend.repository.UserRepository;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import com.studypoint.backend.service.StudyMaterialService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -92,3 +92,4 @@ public class StudyMaterialController {
         return user.getId();
     }
 }
+

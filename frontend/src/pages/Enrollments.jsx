@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import DataTable from '../components/DataTable';
-import EntityFormModal from '../components/EntityFormModal';
-import ViewModal from '../components/ViewModal';
+﻿import React, { useEffect, useMemo, useState } from 'react';
+import DataTable from '../components/common/DataTable';
+import EntityFormModal from '../components/forms/EntityFormModal';
+import ViewModal from '../components/ui/ViewModal';
 import { list, get, create, approve, reject } from '../services/enrollment.service';
 
 const FIELDS = [
@@ -116,3 +116,4 @@ export default function Enrollments() {
     </div>
   );
 }
+

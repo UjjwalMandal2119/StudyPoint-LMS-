@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studypoint-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: studypoint-backend
+  template:
+    metadata:
+      labels:
+        app: studypoint-backend
+    spec:
+      containers:
+        - name: backend
+          image: studypoint/backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: studypoint-config
+          envFrom:
+            - secretRef:
+                name: studypoint-secrets
+          volumeMounts:
+            - name: uploads
+              mountPath: /app/uploads
+          livenessProbe:
+            httpGet:
+              path: /api/actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /api/actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      volumes:
+        - name: uploads
+          emptyDir: {}

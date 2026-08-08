@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import DataTable from '../components/DataTable';
-import EntityFormModal from '../components/EntityFormModal';
-import ViewModal from '../components/ViewModal';
+﻿import React, { useEffect, useState } from 'react';
+import DataTable from '../components/common/DataTable';
+import EntityFormModal from '../components/forms/EntityFormModal';
+import ViewModal from '../components/ui/ViewModal';
 import { list, get, create, updateStatus, remove } from '../services/grievance.service';
 
 const STATUSES = ['SUBMITTED', 'IN_REVIEW', 'RESOLVED', 'REJECTED'];
@@ -105,3 +105,4 @@ export default function Grievances() {
     </div>
   );
 }
+

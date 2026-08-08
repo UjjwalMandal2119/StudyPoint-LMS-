@@ -1,10 +1,10 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.request.TeacherRequest;
 import com.studypoint.backend.dto.response.TeacherListResponse;
 import com.studypoint.backend.dto.response.TeacherResponse;
 import com.studypoint.backend.service.TeacherService;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -63,3 +63,4 @@ public class TeacherController {
         return ResponseEntity.ok(ApiResponse.success(teachers, HttpStatus.OK.value()));
     }
 }
+

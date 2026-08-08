@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: studypoint-config
+data:
+  SPRING_PROFILES_ACTIVE: "prod"
+  DB_HOST: "mysql"
+  DB_PORT: "3306"
+  DB_NAME: "study_point"
+  CORS_ALLOWED_ORIGINS: "https://studypoint.local"
+  FRONTEND_URL: "https://studypoint.local"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: studypoint-secrets
+type: Opaque
+data:
+  DB_USERNAME: cm9vdA==
+  DB_PASSWORD: YWRtaW4=
+  JWT_SECRET: eW91ci1zdHJvbmctand0LXNlY3JldC1rZXktbmVkLWNoYW5nZS1tZQ==

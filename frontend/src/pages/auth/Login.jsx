@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login as loginService } from '../../services/auth.service';
-import { setCredentials } from '../../features/auth/authSlice';
+import { setCredentials } from '../../store/slices/authSlice';
 
 export default function Login() {
   const [form, setForm] = useState({ usernameOrEmail: '', password: '' });
@@ -66,3 +66,4 @@ export default function Login() {
     </div>
   );
 }
+

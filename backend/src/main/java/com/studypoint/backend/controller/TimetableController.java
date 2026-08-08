@@ -1,9 +1,9 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.request.TimetableRequest;
 import com.studypoint.backend.dto.response.TimetableListResponse;
 import com.studypoint.backend.dto.response.TimetableResponse;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import com.studypoint.backend.service.TimetableService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

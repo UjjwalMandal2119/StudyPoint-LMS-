@@ -1,10 +1,10 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.auth.JwtAuthResponse;
 import com.studypoint.backend.dto.auth.LoginRequest;
 import com.studypoint.backend.dto.auth.RefreshTokenRequest;
 import com.studypoint.backend.dto.auth.RegisterRequest;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import com.studypoint.backend.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

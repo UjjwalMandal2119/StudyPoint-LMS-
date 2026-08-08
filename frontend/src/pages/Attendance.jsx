@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import DataTable from '../components/DataTable';
-import ViewModal from '../components/ViewModal';
+﻿import React, { useEffect, useState } from 'react';
+import DataTable from '../components/common/DataTable';
+import ViewModal from '../components/ui/ViewModal';
 import { getByBatch } from '../services/attendance.service';
 
 const COLS = [
@@ -54,3 +54,4 @@ export default function Attendance() {
     </div>
   );
 }
+

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import EntityFormModal from '../components/EntityFormModal';
+﻿import React, { useEffect, useState } from 'react';
+import EntityFormModal from '../components/forms/EntityFormModal';
 import { listMy, unreadCount, markRead, markAllRead, create } from '../services/notification.service';
 
 const FIELDS = [
@@ -80,3 +80,4 @@ export default function Notifications() {
     </div>
   );
 }
+

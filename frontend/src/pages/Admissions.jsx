@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import DataTable from '../components/DataTable';
-import EntityFormModal from '../components/EntityFormModal';
-import ViewModal from '../components/ViewModal';
+﻿import React, { useEffect, useMemo, useState } from 'react';
+import DataTable from '../components/common/DataTable';
+import EntityFormModal from '../components/forms/EntityFormModal';
+import ViewModal from '../components/ui/ViewModal';
 import { list, get, create, update, remove, review } from '../services/admission.service';
 
 const STATUSES = ['PENDING', 'APPROVED', 'REJECTED', 'ACTIVE', 'COMPLETED', 'DROPPED', 'SUSPENDED'];
@@ -136,3 +136,4 @@ export default function Admissions() {
     </div>
   );
 }
+

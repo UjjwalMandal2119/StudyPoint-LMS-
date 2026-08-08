@@ -1,4 +1,4 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.request.NoticeRequest;
 import com.studypoint.backend.dto.response.NoticeListResponse;
@@ -6,7 +6,7 @@ import com.studypoint.backend.dto.response.NoticeResponse;
 import com.studypoint.backend.entity.User;
 import com.studypoint.backend.exception.ResourceNotFoundException;
 import com.studypoint.backend.repository.UserRepository;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import com.studypoint.backend.service.NoticeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -98,3 +98,4 @@ public class NoticeController {
         return user.getId();
     }
 }
+

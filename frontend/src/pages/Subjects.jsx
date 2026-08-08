@@ -1,8 +1,8 @@
 ﻿import React, { useEffect, useMemo, useState } from 'react';
-import DataTable from '../components/DataTable';
-import EntityFormModal from '../components/EntityFormModal';
-import ViewModal from '../components/ViewModal';
-import RoleBadge from '../components/RoleBadge';
+import DataTable from '../components/common/DataTable';
+import EntityFormModal from '../components/forms/EntityFormModal';
+import ViewModal from '../components/ui/ViewModal';
+import RoleBadge from '../components/ui/RoleBadge';
 import { list, get, create, update, remove, toggleActive } from '../services/subject.service';
 
 const FIELDS = [
@@ -122,3 +122,4 @@ export default function Subjects() {
     </div>
   );
 }
+

@@ -1,9 +1,9 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.request.BatchRequest;
 import com.studypoint.backend.dto.response.BatchListResponse;
 import com.studypoint.backend.dto.response.BatchResponse;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import com.studypoint.backend.service.BatchService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

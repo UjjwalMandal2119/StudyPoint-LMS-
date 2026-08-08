@@ -1,9 +1,9 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.request.ParentRequest;
 import com.studypoint.backend.dto.response.ParentResponse;
 import com.studypoint.backend.service.ParentService;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -48,3 +48,4 @@ public class ParentController {
         return ResponseEntity.ok(ApiResponse.success(response, HttpStatus.OK.value()));
     }
 }
+

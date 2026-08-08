@@ -1,7 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../features/auth/authSlice';
+import { logout } from '../../store/slices/authSlice';
 
 export default function StudentDashboard() {
   const navigate = useNavigate();
@@ -59,3 +59,4 @@ export default function StudentDashboard() {
     </div>
   );
 }
+

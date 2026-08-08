@@ -1,9 +1,9 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.request.ResultRequest;
 import com.studypoint.backend.dto.response.ResultListResponse;
 import com.studypoint.backend.dto.response.ResultResponse;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import com.studypoint.backend.service.ResultService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

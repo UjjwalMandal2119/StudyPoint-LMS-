@@ -1,11 +1,11 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.request.AttendanceRequest;
 import com.studypoint.backend.dto.request.BulkAttendanceRequest;
 import com.studypoint.backend.dto.response.AttendanceResponse;
 import com.studypoint.backend.dto.response.AttendanceSummaryResponse;
 import com.studypoint.backend.service.AttendanceService;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -59,3 +59,4 @@ public class AttendanceController {
         return ResponseEntity.ok(ApiResponse.success(summary, HttpStatus.OK.value()));
     }
 }
+

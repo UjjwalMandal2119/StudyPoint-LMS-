@@ -1,10 +1,10 @@
-package com.studypoint.backend.controller;
+﻿package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.request.EnrollmentRequest;
 import com.studypoint.backend.dto.response.EnrollmentListResponse;
 import com.studypoint.backend.dto.response.EnrollmentResponse;
 import com.studypoint.backend.service.EnrollmentService;
-import com.studypoint.backend.response.ApiResponse;
+import com.studypoint.backend.dto.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -63,3 +63,4 @@ public class EnrollmentController {
         return ResponseEntity.ok(ApiResponse.success(enrollments, HttpStatus.OK.value()));
     }
 }
+

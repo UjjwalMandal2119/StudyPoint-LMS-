@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { register as registerService } from '../../services/auth.service';
-import { setCredentials } from '../../features/auth/authSlice';
+import { setCredentials } from '../../store/slices/authSlice';
 
 const ROLES = [
   'STUDENT',
@@ -142,3 +142,4 @@ export default function Register() {
     </div>
   );
 }
+

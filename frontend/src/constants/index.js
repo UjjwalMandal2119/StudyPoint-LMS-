@@ -1,0 +1,12 @@
+export const VALID_ROLES = [
+  'SUPER_ADMIN',
+  'ADMIN',
+  'TEACHER',
+  'STUDENT',
+  'PARENT',
+  'RECEPTIONIST',
+  'ACCOUNTANT',
+  'LIBRARIAN',
+];
+
+export const GENDER_OPTIONS = ['MALE', 'FEMALE', 'OTHER'];
