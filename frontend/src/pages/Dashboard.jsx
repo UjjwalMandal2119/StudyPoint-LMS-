@@ -1,15 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../store/slices/authSlice';
+import { logout as clearAuth } from '../store/slices/authSlice';
+import { logout as logoutApi } from '../services/auth.service';
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user, role } = useSelector((state) => state.auth);
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    try {
+      await logoutApi();
+    } catch (e) {
+      // ignore server-side logout errors; clear local session anyway
+    }
+    dispatch(clearAuth());
     navigate('/login');
   };
 

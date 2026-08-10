@@ -53,4 +53,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
                          @Param("ip") String ip);
 
     long countByRole(Role role);
+
+    List<User> findByCreatedAtAfter(LocalDateTime after);
 }

@@ -24,4 +24,8 @@ export const register = async (payload) => {
   return extract(response);
 };
 
-export default { login, register };
+export const logout = async () => {
+  await api.post('/auth/logout');
+};
+
+export default { login, register, logout };

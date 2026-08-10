@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import DataTable from '../components/common/DataTable';
 import EntityFormModal from '../components/forms/EntityFormModal';
 import ViewModal from '../components/ui/ViewModal';
@@ -122,7 +122,7 @@ export default function Admissions() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Admissions</h1>
-        <button onClick={openCreate} className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700">New Application</button>
+        <button onClick={openCreate} className="rounded-md bg-[#7b1113] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#5e0d0f]">New Application</button>
       </div>
       <div className="flex flex-wrap gap-2">
         {STATUSES.map((s) => (

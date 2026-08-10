@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Repository
 public interface NoticeRepository extends JpaRepository<Notice, Long> {
@@ -19,4 +20,8 @@ public interface NoticeRepository extends JpaRepository<Notice, Long> {
 
     @Query("SELECT n FROM Notice n WHERE n.published = true AND n.publishDate <= :date AND (n.expiryDate IS NULL OR n.expiryDate >= :date)")
     Page<Notice> findActiveNotices(@Param("date") LocalDate date, Pageable pageable);
+
+    long countByPublishedTrue();
+
+    List<Notice> findTop5ByPublishedTrueOrderByPublishDateDesc();
 }

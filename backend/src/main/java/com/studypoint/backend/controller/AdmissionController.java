@@ -1,4 +1,4 @@
-﻿package com.studypoint.backend.controller;
+package com.studypoint.backend.controller;
 
 import com.studypoint.backend.constants.EnrollmentStatus;
 import com.studypoint.backend.dto.request.AdmissionRequest;

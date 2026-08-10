@@ -28,6 +28,10 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
 
     long countByBatchIdAndStatus(Long batchId, AttendanceStatus status);
 
+    long countByStudentId(Long studentId);
+
+    long countByStudentIdAndStatus(Long studentId, AttendanceStatus status);
+
     @Query("SELECT a FROM Attendance a WHERE a.student.id = :studentId AND a.attendanceDate BETWEEN :startDate AND :endDate")
     List<Attendance> findByStudentIdAndDateBetween(@Param("studentId") Long studentId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 }

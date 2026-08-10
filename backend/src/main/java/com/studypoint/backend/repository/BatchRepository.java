@@ -34,4 +34,8 @@ public interface BatchRepository extends JpaRepository<Batch, Long> {
     Page<Batch> search(@Param("search") String search, Pageable pageable);
 
     long countByCourseId(Long courseId);
+
+    long countByTeacherId(Long teacherId);
+
+    List<Batch> findByTeacherIdAndActiveTrue(Long teacherId);
 }

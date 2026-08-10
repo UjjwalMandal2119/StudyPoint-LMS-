@@ -30,7 +30,7 @@ export default function EntityFormModal({ open, title, fields, initialValues = {
       id: f.name,
       name: f.name,
       required: f.required,
-      className: 'w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400',
+      className: 'w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#7b1113]',
     };
     switch (f.type) {
       case 'textarea':
@@ -134,7 +134,7 @@ export default function EntityFormModal({ open, title, fields, initialValues = {
             <button
               type="submit"
               disabled={loading}
-              className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-60"
+              className="rounded-md bg-[#7b1113] px-4 py-1.5 text-sm font-medium text-white hover:bg-[#5e0d0f] disabled:opacity-60"
             >
               {loading ? 'Saving...' : 'Save'}
             </button>

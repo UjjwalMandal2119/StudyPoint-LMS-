@@ -29,5 +29,7 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
 
     long countByBatchIdAndStatus(Long batchId, EnrollmentStatus status);
 
+    long countByStatus(EnrollmentStatus status);
+
     boolean existsByStudentIdAndBatchIdAndStatus(Long studentId, Long batchId, EnrollmentStatus status);
 }

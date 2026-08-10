@@ -22,4 +22,12 @@ public interface AssignmentRepository extends JpaRepository<Assignment, Long> {
 
     @Query("SELECT a FROM Assignment a WHERE a.batch.id = :batchId AND a.subject.id = :subjectId")
     Page<Assignment> findByBatchIdAndSubjectId(@Param("batchId") Long batchId, @Param("subjectId") Long subjectId, Pageable pageable);
+
+    long countByTeacherId(Long teacherId);
+
+    long countByStatus(AssignmentStatus status);
+
+    long countByTeacherIdAndStatus(Long teacherId, AssignmentStatus status);
+
+    long countByBatchIdAndStatus(Long batchId, AssignmentStatus status);
 }

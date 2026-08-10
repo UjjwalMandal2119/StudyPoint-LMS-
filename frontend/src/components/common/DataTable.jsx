@@ -26,7 +26,7 @@ export default function DataTable({
             <input
               type="search"
               placeholder="Search..."
-              className="w-full max-w-sm rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="w-full max-w-sm rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#7b1113]"
               onChange={(e) => onSearch(e.target.value)}
             />
           )}

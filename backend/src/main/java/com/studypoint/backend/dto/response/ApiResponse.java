@@ -1,4 +1,4 @@
-﻿package com.studypoint.backend.dto.response;
+package com.studypoint.backend.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

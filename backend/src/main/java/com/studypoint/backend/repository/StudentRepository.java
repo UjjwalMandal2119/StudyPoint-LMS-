@@ -35,4 +35,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query("SELECT s FROM Student s WHERE s.batch.id = :batchId AND s.user.active = true")
     List<Student> findActiveStudentsByBatchId(@Param("batchId") Long batchId);
+
+    @Query("SELECT COUNT(s) FROM Student s JOIN s.user u WHERE u.gender = :gender")
+    long countByUserGender(@Param("gender") String gender);
 }

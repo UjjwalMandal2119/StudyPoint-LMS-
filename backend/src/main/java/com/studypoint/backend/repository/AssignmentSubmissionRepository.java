@@ -5,6 +5,8 @@ import com.studypoint.backend.entity.AssignmentSubmission;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -17,4 +19,9 @@ public interface AssignmentSubmissionRepository extends JpaRepository<Assignment
     Page<AssignmentSubmission> findByAssignmentIdAndStudentId(Long assignmentId, Long studentId, Pageable pageable);
 
     Page<AssignmentSubmission> findByStatus(SubmissionStatus status, Pageable pageable);
+
+    long countByStudentId(Long studentId);
+
+    @Query("SELECT COUNT(s) FROM AssignmentSubmission s WHERE s.assignment.teacher.id = :teacherId AND s.status = :status")
+    long countByTeacherIdAndStatus(@Param("teacherId") Long teacherId, @Param("status") SubmissionStatus status);
 }

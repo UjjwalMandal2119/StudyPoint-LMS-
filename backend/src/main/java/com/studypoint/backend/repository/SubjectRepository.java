@@ -26,6 +26,8 @@ public interface SubjectRepository extends JpaRepository<Subject, Long> {
 
     List<Subject> findByTeacherId(Long teacherId);
 
+    long countByTeacherId(Long teacherId);
+
     @Query("SELECT s FROM Subject s WHERE " +
            "(LOWER(s.name) LIKE LOWER(CONCAT('%', :search, '%')) OR " +
            "LOWER(s.code) LIKE LOWER(CONCAT('%', :search, '%')))")

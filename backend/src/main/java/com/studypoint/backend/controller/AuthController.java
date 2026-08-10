@@ -1,4 +1,4 @@
-﻿package com.studypoint.backend.controller;
+package com.studypoint.backend.controller;
 
 import com.studypoint.backend.dto.auth.JwtAuthResponse;
 import com.studypoint.backend.dto.auth.LoginRequest;
@@ -6,10 +6,15 @@ import com.studypoint.backend.dto.auth.RefreshTokenRequest;
 import com.studypoint.backend.dto.auth.RegisterRequest;
 import com.studypoint.backend.dto.response.ApiResponse;
 import com.studypoint.backend.service.AuthService;
+import com.studypoint.backend.entity.User;
+import com.studypoint.backend.exception.ResourceNotFoundException;
+import com.studypoint.backend.repository.UserRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService authService;
+    private final UserRepository userRepository;
 
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<?>> login(@Valid @RequestBody LoginRequest request) {
@@ -41,8 +47,14 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<ApiResponse<?>> logout(Long userId) {
+    public ResponseEntity<ApiResponse<?>> logout(@AuthenticationPrincipal UserDetails principal) {
+        Long userId = resolveUserId(principal);
         authService.logout(userId);
         return ResponseEntity.ok(ApiResponse.success("Logout successful", HttpStatus.OK.value()));
+    }
+private Long resolveUserId(UserDetails principal) {
+        User user = userRepository.findByEmailOrUsername(principal.getUsername(), principal.getUsername())
+                .orElseThrow(() -> new ResourceNotFoundException("User", "username", principal.getUsername()));
+        return user.getId();
     }
 }

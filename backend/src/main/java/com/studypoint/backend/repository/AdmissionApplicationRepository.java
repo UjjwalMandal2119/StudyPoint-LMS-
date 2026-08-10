@@ -18,4 +18,6 @@ public interface AdmissionApplicationRepository extends JpaRepository<AdmissionA
     Page<AdmissionApplication> findByEmail(@Param("email") String email, Pageable pageable);
 
     boolean existsByEmailAndCourseId(String email, Long courseId);
+
+    long countByStatus(EnrollmentStatus status);
 }

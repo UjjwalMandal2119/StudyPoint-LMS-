@@ -22,4 +22,13 @@ public interface ExamRepository extends JpaRepository<Exam, Long> {
 
     @Query("SELECT e FROM Exam e WHERE e.batch.id = :batchId AND e.subject.id = :subjectId")
     Page<Exam> findByBatchIdAndSubjectId(@Param("batchId") Long batchId, @Param("subjectId") Long subjectId, Pageable pageable);
+
+    long countByBatchId(Long batchId);
+
+    long countBySubjectId(Long subjectId);
+
+    long countByPublishedTrue();
+
+    @Query("SELECT COUNT(e) FROM Exam e WHERE e.batch.id = :batchId AND e.startTime > :now")
+    long countUpcomingByBatchId(@Param("batchId") Long batchId, @Param("now") java.time.LocalDateTime now);
 }

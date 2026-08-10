@@ -44,11 +44,18 @@ const routes = [
   {
     element: (
       <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
+    path: 'dashboard',
+  },
+  {
+    element: (
+      <ProtectedRoute>
         <Layout />
       </ProtectedRoute>
     ),
     children: [
-      { path: 'dashboard', element: <Dashboard /> },
       { path: 'admin-dashboard', element: <AdminDashboard /> },
       { path: 'student-dashboard', element: <StudentDashboard /> },
       { path: 'teacher-dashboard', element: <TeacherDashboard /> },

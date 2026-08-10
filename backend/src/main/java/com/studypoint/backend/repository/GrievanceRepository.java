@@ -26,4 +26,6 @@ public interface GrievanceRepository extends JpaRepository<Grievance, Long> {
 
     @Query("SELECT g FROM Grievance g WHERE LOWER(g.title) LIKE LOWER(CONCAT('%', :search, '%')) OR LOWER(g.trackingNumber) LIKE LOWER(CONCAT('%', :search, '%'))")
     Page<Grievance> search(@Param("search") String search, Pageable pageable);
+
+    long countByStatus(GrievanceStatus status);
 }

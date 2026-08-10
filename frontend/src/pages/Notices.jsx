@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import DataTable from '../components/common/DataTable';
 import EntityFormModal from '../components/forms/EntityFormModal';
 import ViewModal from '../components/ui/ViewModal';
@@ -98,7 +98,7 @@ export default function Notices() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Notices & Announcements</h1>
-        <button onClick={openCreate} className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700">New Notice</button>
+        <button onClick={openCreate} className="rounded-md bg-[#7b1113] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#5e0d0f]">New Notice</button>
       </div>
       {error && <p className="text-sm text-red-600">{error}</p>}
       <DataTable columns={COLS} data={page.items} loading={loading} error={error} totalElements={page.totalElements} totalPages={page.totalPages} pageNumber={page.number} pageSize={page.size} onPageChange={(n) => fetchPage(n)} />

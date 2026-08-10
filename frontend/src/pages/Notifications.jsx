@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import EntityFormModal from '../components/forms/EntityFormModal';
 import { listMy, unreadCount, markRead, markAllRead, create } from '../services/notification.service';
 
@@ -54,14 +54,14 @@ export default function Notifications() {
         <h1 className="text-2xl font-bold">Notifications</h1>
         <div className="flex gap-2">
           <button onClick={doMarkAll} className="rounded-md border border-gray-300 px-3 py-1.5 text-sm hover:bg-gray-100">Mark All Read</button>
-          <button onClick={() => setOpenModal(true)} className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700">Send Notification</button>
+          <button onClick={() => setOpenModal(true)} className="rounded-md bg-[#7b1113] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#5e0d0f]">Send Notification</button>
         </div>
       </div>
       <p className="text-sm text-gray-600">{unread} unread notification{unread === 1 ? '' : 's'}</p>
       {error && <p className="text-sm text-red-600">{error}</p>}
       <div className="space-y-2">
         {loading ? <p className="text-gray-500">Loading...</p> : notifs.length === 0 ? <p className="text-gray-500">No notifications.</p> : notifs.map((n) => (
-          <div key={n.id} className={`rounded-lg border p-4 ${n.read ? 'border-gray-200 bg-white' : 'border-indigo-200 bg-indigo-50'}`}>
+          <div key={n.id} className={`rounded-lg border p-4 ${n.read ? 'border-gray-200 bg-white' : 'border-[#7b1113]/20 bg-[#7b1113]/5'}`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${n.type === 'ALERT' || n.type === 'ERROR' ? 'bg-red-100 text-red-700' : n.type === 'WARNING' ? 'bg-yellow-100 text-yellow-700' : n.type === 'SUCCESS' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}`}>{n.type}</span>
