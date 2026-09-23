@@ -1,18 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiMail, FiPhone, FiMapPin, FiUser, FiPlus, FiMinus, FiCheck, FiArrowRight, FiX, FiMenu } from 'react-icons/fi';
+import { FiMail, FiPhone, FiMapPin, FiUser, FiPlus, FiMinus, FiCheck, FiArrowRight } from 'react-icons/fi';
 import founderPhoto from '../../assets/ujjwal PhotoCollegeUniform.jpeg';
-
-const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Courses', href: '#courses' },
-  { label: 'Features', href: '#features' },
-  { label: 'Founder', href: '#founder' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
-];
+import Header from '../../components/layout/header/Header';
+import Footer from '../../components/layout/footer/Footer';
 
 const IMG = {
   hero: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80',
@@ -77,15 +68,7 @@ const VALUES = [
 ];
 
 export default function Home() {
-  const [navSolid, setNavSolid] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => setNavSolid(window.scrollY > 30);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   const scrollToId = (id) => {
     if (id === 'home') {
@@ -119,50 +102,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ============ NAVBAR ============ */}
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${navSolid ? 'bg-white/95 shadow-md backdrop-blur' : 'bg-white shadow-sm'}`}>
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8">
-          <a href="#home" onClick={(e) => handleNav(e, '#home')} className="flex items-center gap-2">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-navy-primary to-navy-hover text-lg text-white shadow-lg">🎓</span>
-            <span className="text-xl font-extrabold tracking-tight text-navy-dark">
-              Study<span className="text-navy-hover">Point</span>
-            </span>
-          </a>
-
-          <div className="hidden items-center gap-7 lg:flex">
-            {NAV_LINKS.map((l) => (
-              <a key={l.label} href={l.href} onClick={(e) => handleNav(e, l.href)} className="text-sm font-medium text-slate-600 transition hover:text-navy-primary">
-                {l.label}
-              </a>
-            ))}
-          </div>
-
-          <div className="hidden items-center gap-3 lg:flex">
-            <Link to="/login" className="text-sm font-semibold text-navy-primary transition hover:text-navy-hover">Login</Link>
-            <Link to="/register" className="rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-5 py-2 text-sm font-semibold text-white shadow-lg transition hover:scale-105">
-              Enroll Now
-            </Link>
-          </div>
-
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="text-navy-dark lg:hidden" aria-label="Toggle menu">
-            {mobileOpen ? <FiX className="h-7 w-7" /> : <FiMenu className="h-7 w-7" />}
-          </button>
-        </nav>
-
-        {mobileOpen && (
-          <div className="border-t border-lms-border bg-white px-6 py-4 lg:hidden">
-            {NAV_LINKS.map((l) => (
-              <a key={l.label} href={l.href} onClick={(e) => { handleNav(e, l.href); setMobileOpen(false); }} className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-navy-primary/5">
-                {l.label}
-              </a>
-            ))}
-            <div className="mt-3 flex gap-3">
-              <Link to="/login" className="flex-1 rounded-lg border border-navy-primary/30 py-2 text-center text-sm font-semibold text-navy-primary">Login</Link>
-              <Link to="/register" className="flex-1 rounded-lg bg-navy-primary py-2 text-center text-sm font-semibold text-white">Enroll Now</Link>
-            </div>
-          </div>
-        )}
-      </header>
+      {/* ============ HEADER ============ */}
+      <Header />
 
       {/* ============ HERO ============ */}
       <section id="home" className="relative overflow-hidden bg-navy-dark">
@@ -465,49 +406,7 @@ export default function Home() {
       </section>
 
       {/* ============ FOOTER ============ */}
-      <footer className="bg-navy-dark text-white">
-        <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8">
-          <div className="grid gap-10 md:grid-cols-4">
-            <div className="md:col-span-1">
-              <div className="flex items-center gap-2">
-                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-navy-primary to-navy-hover text-white">🎓</span>
-                <span className="text-lg font-extrabold">Study<span className="text-navy-hover">Point</span></span>
-              </div>
-              <p className="mt-4 max-w-xs text-sm text-white/70">Online coaching institute committed to excellence, concept clarity, and academic success.</p>
-            </div>
-            <div>
-              <p className="font-bold uppercase tracking-wider text-white/80">Quick Links</p>
-              <nav className="mt-4 grid gap-2 text-sm">
-                {NAV_LINKS.map((l) => (
-                  <a key={l.label} href={l.href} onClick={(e) => handleNav(e, l.href)} className="text-white/70 transition hover:text-white">{l.label}</a>
-                ))}
-              </nav>
-            </div>
-            <div>
-              <p className="font-bold uppercase tracking-wider text-white/80">Student Portal</p>
-              <nav className="mt-4 grid gap-2 text-sm">
-                <Link to="/login" className="text-white/70 transition hover:text-white">Login</Link>
-                <Link to="/register" className="text-white/70 transition hover:text-white">New Admission</Link>
-                <Link to="/about" className="text-white/70 transition hover:text-white">About Us</Link>
-                <Link to="/contact" className="text-white/70 transition hover:text-white">Contact</Link>
-              </nav>
-            </div>
-            <div>
-              <p className="font-bold uppercase tracking-wider text-white/80">Contact</p>
-              <div className="mt-4 space-y-3 text-sm text-white/70">
-                <p className="flex items-start gap-2"><FiMapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-amber" /> {CONTACT.address}</p>
-                <p className="flex items-center gap-2"><FiMail className="h-4 w-4 shrink-0 text-accent-amber" /> {CONTACT.email}</p>
-                <p className="flex items-center gap-2"><FiPhone className="h-4 w-4 shrink-0 text-accent-amber" /> {CONTACT.phoneDisplay}</p>
-                <p className="flex items-center gap-2"><FiUser className="h-4 w-4 shrink-0 text-accent-amber" /> Director: {CONTACT.founder}</p>
-              </div>
-            </div>
-          </div>
-          <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm text-white/60 sm:flex-row">
-            <p>© {new Date().getFullYear()} Study Point. All rights reserved.</p>
-            <p>Empowering Students through Quality Online Education.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

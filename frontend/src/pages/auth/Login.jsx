@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { FiMail, FiLock, FiEye, FiEyeOff, FiArrowRight, FiCheckCircle, FiShield, FiAlertCircle, FiLoader } from 'react-icons/fi';
 import { login as loginService } from '../../services/auth.service';
 import { setCredentials } from '../../store/slices/authSlice';
+import Header from '../../components/layout/header/Header';
+import Footer from '../../components/layout/footer/Footer';
 
 export default function Login() {
   const [form, setForm] = useState({ usernameOrEmail: '', password: '' });
@@ -41,25 +43,8 @@ export default function Login() {
         </div>
       </div>
 
-      {/* ============ NAVBAR ============ */}
-      <header className="sticky top-0 z-50 bg-white px-6 py-4 shadow-sm sm:px-8">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-navy-primary to-navy-hover text-lg text-white shadow-lg">🎓</span>
-            <span className="text-xl font-extrabold tracking-tight text-navy-dark">
-              Study<span className="text-navy-hover">Point</span>
-            </span>
-          </Link>
-
-          <div className="flex items-center gap-4 text-sm font-semibold">
-            <Link to="/" className="text-slate-600 transition hover:text-navy-primary">Home</Link>
-            <Link to="/about" className="hidden text-slate-600 transition hover:text-navy-primary sm:inline">About</Link>
-            <Link to="/register" className="rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-5 py-2 text-white shadow-md transition hover:scale-105">
-              New Admission
-            </Link>
-          </div>
-        </div>
-      </header>
+      {/* ============ HEADER ============ */}
+      <Header />
 
       {/* ============ MAIN AUTH SECTION ============ */}
       <main className="mx-auto flex w-full max-w-7xl flex-1 items-center justify-center px-4 py-10 sm:px-6 lg:px-8">
@@ -218,12 +203,7 @@ export default function Login() {
       </main>
 
       {/* ============ FOOTER ============ */}
-      <footer className="border-t border-gray-200 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-6 text-center text-sm text-slate-500 sm:flex sm:justify-between sm:text-left">
-          <p>© {new Date().getFullYear()} Study Point Coaching. All rights reserved.</p>
-          <p className="mt-2 sm:mt-0">Made with 💜 for learning by Ujjwal Mandal.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

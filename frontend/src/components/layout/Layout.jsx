@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../store/slices/authSlice';
+import { NavLink, Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Header from './header/Header';
+import Footer from './footer/Footer';
 
 const nav = [
   { to: '/dashboard', label: 'Dashboard', roles: ['ADMIN', 'SUPER_ADMIN', 'STUDENT', 'TEACHER', 'PARENT', 'RECEPTIONIST', 'ACCOUNTANT', 'LIBRARIAN'] },
@@ -33,14 +34,7 @@ const nav = [
 
 export default function Layout() {
   const [collapsed, setCollapsed] = useState(false);
-  const { user, role } = useSelector((s) => s.auth);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate('/login');
-  };
+  const { role } = useSelector((s) => s.auth);
 
   const filteredNav = nav.filter((item) => !item.roles || item.roles.includes(role));
 
@@ -108,28 +102,11 @@ export default function Layout() {
             <span className="hidden sm:inline">Study Point • Learning Management System</span>
           </div>
         </div>
-        <header className="flex h-14 items-center justify-between border-b border-gray-200 bg-white px-6 shadow-sm">
-          <div className="text-sm text-gray-600">
-            Signed in as{' '}
-            <span className="font-semibold text-navy-primary">
-              {user?.firstName || user?.username}
-            </span>{' '}
-            {role && (
-              <span className="ml-1 rounded-full bg-navy-primary/10 px-2 py-0.5 text-xs font-medium text-navy-primary">
-                {role.replace('_', ' ')}
-              </span>
-            )}
-          </div>
-          <button
-            onClick={handleLogout}
-            className="rounded-md border border-navy-primary px-3 py-1.5 text-sm font-medium text-navy-primary transition hover:bg-navy-primary hover:text-white"
-          >
-            Logout
-          </button>
-        </header>
+<Header sticky={false} />
         <main className="flex-1 p-6">
           <Outlet />
         </main>
+        <Footer />
       </div>
     </div>
   );

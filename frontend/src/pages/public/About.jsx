@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiMail, FiPhone, FiMapPin, FiUser, FiCheckCircle, FiBookOpen, FiAward, FiTarget, FiArrowRight } from 'react-icons/fi';
+import Header from '../../components/layout/header/Header';
+import Footer from '../../components/layout/footer/Footer';
 
 const CONTACT = {
   email: 'studypoint.ujjwal@gmail.com',
@@ -28,25 +30,8 @@ export default function About() {
         </div>
       </div>
 
-      {/* ============ NAVBAR ============ */}
-      <nav className="sticky top-0 z-50 bg-white px-6 py-4 shadow-sm sm:px-8">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-navy-primary to-navy-hover text-lg text-white shadow-lg">🎓</span>
-            <span className="text-xl font-extrabold tracking-tight text-navy-dark">
-              Study<span className="text-navy-hover">Point</span>
-            </span>
-          </Link>
-
-          <div className="flex items-center gap-4 text-sm font-semibold">
-            <Link to="/" className="text-slate-600 transition hover:text-navy-primary">Home</Link>
-            <Link to="/login" className="text-navy-primary transition hover:text-navy-hover">Login</Link>
-            <Link to="/register" className="rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-5 py-2 text-white shadow-md transition hover:scale-105">
-              Enroll Now
-            </Link>
-          </div>
-        </div>
-      </nav>
+      {/* ============ HEADER ============ */}
+      <Header />
 
       {/* ============ MAIN CONTENT ============ */}
       <main className="mx-auto max-w-5xl px-6 py-12 sm:px-8">
@@ -157,12 +142,7 @@ export default function About() {
       </main>
 
       {/* ============ FOOTER ============ */}
-      <footer className="mt-16 border-t border-gray-200 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-6 text-center text-sm text-slate-500 sm:flex sm:justify-between sm:text-left">
-          <p>© {new Date().getFullYear()} Study Point. All rights reserved.</p>
-          <p className="mt-2 sm:mt-0">Made with 💜 for learning by {CONTACT.founder}.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

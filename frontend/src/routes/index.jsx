@@ -12,6 +12,7 @@ import ParentDashboard from '../pages/parent/ParentDashboard';
 import Home from '../pages/public/Home';
 import About from '../pages/public/About';
 import Contact from '../pages/public/Contact';
+import PublicCourses from '../pages/public/Courses';
 
 import Courses from '../pages/Courses';
 import Subjects from '../pages/Subjects';
@@ -39,6 +40,7 @@ const routes = [
   { path: '/home', element: <Home /> },
   { path: '/about', element: <About /> },
   { path: '/contact', element: <Contact /> },
+  { path: '/courses', element: <PublicCourses /> },
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
   {

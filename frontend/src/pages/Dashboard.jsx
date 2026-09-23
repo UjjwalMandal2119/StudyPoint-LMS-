@@ -1,23 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout as clearAuth } from '../store/slices/authSlice';
-import { logout as logoutApi } from '../services/auth.service';
+import { useSelector } from 'react-redux';
+import Header from '../components/layout/header/Header';
+import Footer from '../components/layout/footer/Footer';
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { user, role } = useSelector((state) => state.auth);
-
-  const handleLogout = async () => {
-    try {
-      await logoutApi();
-    } catch (e) {
-      // ignore server-side logout errors; clear local session anyway
-    }
-    dispatch(clearAuth());
-    navigate('/login');
-  };
 
   const getDashboardLink = () => {
     switch (role) {
@@ -54,35 +43,8 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <header className="border-b border-gray-200 bg-white shadow-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8">
-
-          {/* Logo / Institute Name */}
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-navy-primary bg-white">
-              <span className="text-xl font-bold text-navy-primary">SP</span>
-            </div>
-
-            <div>
-              <h1 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
-                STUDY POINT
-              </h1>
-              <p className="text-xs font-medium uppercase tracking-[0.18em] text-navy-primary">
-                Learning Management Portal
-              </p>
-            </div>
-          </div>
-
-          {/* Logout */}
-          <button
-            onClick={handleLogout}
-            className="rounded-md border border-navy-primary px-4 py-2 text-sm font-semibold text-navy-primary transition hover:bg-navy-primary hover:text-white"
-          >
-            Logout
-          </button>
-        </div>
-      </header>
+      {/* Shared site header (auth-aware: shows Dashboard + Logout when signed in) */}
+      <Header />
 
       {/* Page Content */}
       <main className="mx-auto max-w-7xl px-6 py-8 sm:px-8 lg:py-12">
@@ -340,17 +302,7 @@ export default function Dashboard() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-10 border-t border-gray-200 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-6 py-6 text-sm text-gray-500 sm:flex-row sm:px-8">
-          <p>
-            © {new Date().getFullYear()} Study Point. All rights reserved.
-          </p>
-
-          <p>
-            Learning • Knowledge • Excellence
-          </p>
-        </div>
-      </footer>
+      <Footer />
 
     </div>
   );
