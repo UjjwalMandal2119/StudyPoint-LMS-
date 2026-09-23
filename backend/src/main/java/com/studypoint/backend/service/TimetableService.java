@@ -17,6 +17,10 @@ public interface TimetableService {
 
     void deleteTimetable(Long id);
 
+    TimetableResponse getTimetableById(Long id);
+
+    Page<TimetableListResponse> getAllTimetables(Pageable pageable);
+
     List<TimetableListResponse> getTimetableByBatchId(Long batchId);
 
     List<TimetableListResponse> getTimetableByBatchAndDay(Long batchId, DayOfWeek dayOfWeek);

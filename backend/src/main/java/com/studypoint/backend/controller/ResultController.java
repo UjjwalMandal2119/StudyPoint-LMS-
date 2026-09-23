@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -32,7 +33,7 @@ public class ResultController {
         return ResponseEntity.ok(ApiResponse.success(resultResponse, "Result created successfully", 200));
     }
 
-    @PostMapping("/{id}/publish")
+    @RequestMapping(value = "/{id}/publish", method = {RequestMethod.POST, RequestMethod.PUT})
     public ResponseEntity<ApiResponse<ResultResponse>> publishResult(@PathVariable Long id) {
         ResultResponse resultResponse = resultService.publishResult(id);
         return ResponseEntity.ok(ApiResponse.success(resultResponse, "Result published successfully", 200));

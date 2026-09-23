@@ -16,6 +16,7 @@ import com.studypoint.backend.repository.StudentRepository;
 import com.studypoint.backend.service.AttendanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class AttendanceServiceImpl implements AttendanceService {
     private final AttendanceRepository attendanceRepository;
     private final AttendanceMapper attendanceMapper;
@@ -30,6 +32,7 @@ public class AttendanceServiceImpl implements AttendanceService {
     private final BatchRepository batchRepository;
 
     @Override
+    @Transactional
     public AttendanceResponse markAttendance(AttendanceRequest request) {
         Student student = studentRepository.findById(request.getStudentId())
                 .orElseThrow(() -> new ResourceNotFoundException("Student", "id", request.getStudentId()));
@@ -51,6 +54,7 @@ public class AttendanceServiceImpl implements AttendanceService {
     }
 
     @Override
+    @Transactional
     public List<AttendanceResponse> markBulkAttendance(BulkAttendanceRequest request) {
         Batch batch = batchRepository.findById(request.getBatchId())
                 .orElseThrow(() -> new ResourceNotFoundException("Batch", "id", request.getBatchId()));

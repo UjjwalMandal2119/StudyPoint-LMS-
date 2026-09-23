@@ -15,12 +15,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class ParentServiceImpl implements ParentService {
     private final ParentRepository parentRepository;
     private final ParentMapper parentMapper;
@@ -28,6 +30,7 @@ public class ParentServiceImpl implements ParentService {
     private final StudentRepository studentRepository;
 
     @Override
+    @Transactional
     public ParentResponse createParent(ParentRequest request) {
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", request.getUserId()));
@@ -41,6 +44,7 @@ public class ParentServiceImpl implements ParentService {
     }
 
     @Override
+    @Transactional
     public ParentResponse updateParent(Long id, ParentRequest request) {
         Parent parent = parentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Parent", "id", id));
@@ -57,6 +61,7 @@ public class ParentServiceImpl implements ParentService {
     }
 
     @Override
+    @Transactional
     public void deleteParent(Long id) {
         Parent parent = parentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Parent", "id", id));

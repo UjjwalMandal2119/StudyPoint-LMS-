@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.DayOfWeek;
 import java.util.List;
@@ -33,6 +34,7 @@ public class TimetableServiceImpl implements TimetableService {
     private final TeacherRepository teacherRepository;
 
     @Override
+    @Transactional
     public TimetableResponse createTimetable(TimetableRequest request) {
         Timetable timetable = timetableMapper.toTimetable(request);
         setTimetableRelations(timetable, request);
@@ -41,6 +43,7 @@ public class TimetableServiceImpl implements TimetableService {
     }
 
     @Override
+    @Transactional
     public TimetableResponse updateTimetable(Long id, TimetableRequest request) {
         Timetable timetable = timetableRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Timetable", "id", id));
@@ -51,6 +54,7 @@ public class TimetableServiceImpl implements TimetableService {
     }
 
     @Override
+    @Transactional
     public void deleteTimetable(Long id) {
         Timetable timetable = timetableRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Timetable", "id", id));
@@ -59,6 +63,21 @@ public class TimetableServiceImpl implements TimetableService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public TimetableResponse getTimetableById(Long id) {
+        Timetable timetable = timetableRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Timetable", "id", id));
+        return timetableMapper.toTimetableResponse(timetable);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<TimetableListResponse> getAllTimetables(Pageable pageable) {
+        return timetableRepository.findAll(pageable).map(timetableMapper::toTimetableListResponse);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<TimetableListResponse> getTimetableByBatchId(Long batchId) {
         return timetableRepository.findByBatchId(batchId, Pageable.unpaged()).stream()
                 .map(timetableMapper::toTimetableListResponse)
@@ -73,6 +92,7 @@ public class TimetableServiceImpl implements TimetableService {
     }
 
     @Override
+    @Transactional
     public TimetableResponse toggleActive(Long id) {
         Timetable timetable = timetableRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Timetable", "id", id));

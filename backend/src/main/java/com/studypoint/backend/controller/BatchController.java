@@ -71,7 +71,7 @@ public class BatchController {
         return ApiResponse.success(batches, HttpStatus.OK.value());
     }
 
-    @PatchMapping("/{id}/toggle-active")
+    @RequestMapping(value = "/{id}/toggle-active", method = {RequestMethod.PATCH, RequestMethod.PUT})
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ApiResponse<BatchResponse> toggleActive(@PathVariable Long id) {
         BatchResponse batch = batchService.toggleActive(id);

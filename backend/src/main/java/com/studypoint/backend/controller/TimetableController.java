@@ -8,6 +8,8 @@ import com.studypoint.backend.service.TimetableService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,6 +44,20 @@ public class TimetableController {
         return ApiResponse.success("Timetable entry deleted successfully", HttpStatus.OK.value());
     }
 
+    @GetMapping
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
+    public ApiResponse<Page<TimetableListResponse>> getAllTimetables(Pageable pageable) {
+        Page<TimetableListResponse> entries = timetableService.getAllTimetables(pageable);
+        return ApiResponse.success(entries, "Timetable entries retrieved successfully", HttpStatus.OK.value());
+    }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public ApiResponse<TimetableResponse> getTimetableById(@PathVariable Long id) {
+        TimetableResponse entry = timetableService.getTimetableById(id);
+        return ApiResponse.success(entry, "Timetable entry retrieved successfully", HttpStatus.OK.value());
+    }
+
     @GetMapping("/batch/{batchId}")
     @PreAuthorize("isAuthenticated()")
     public ApiResponse<List<TimetableListResponse>> getTimetableByBatchId(@PathVariable Long batchId) {
@@ -56,7 +72,7 @@ public class TimetableController {
         return ApiResponse.success(entries, HttpStatus.OK.value());
     }
 
-    @PatchMapping("/{id}/toggle-active")
+    @RequestMapping(value = "/{id}/toggle-active", method = {RequestMethod.PATCH, RequestMethod.PUT})
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ApiResponse<TimetableResponse> toggleActive(@PathVariable Long id) {
         TimetableResponse entry = timetableService.toggleActive(id);

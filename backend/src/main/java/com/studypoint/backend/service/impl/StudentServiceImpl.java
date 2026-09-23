@@ -16,9 +16,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
@@ -26,6 +28,7 @@ public class StudentServiceImpl implements StudentService {
     private final BatchRepository batchRepository;
 
     @Override
+    @Transactional
     public StudentResponse createStudent(StudentRequest request) {
         if (studentRepository.existsByRollNumber(request.getRollNumber())) {
             throw new IllegalArgumentException("Roll number already exists");
@@ -42,6 +45,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional
     public StudentResponse updateStudent(Long id, StudentRequest request) {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student", "id", id));
@@ -62,6 +66,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional
     public void deleteStudent(Long id) {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student", "id", id));

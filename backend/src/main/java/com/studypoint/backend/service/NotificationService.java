@@ -12,6 +12,8 @@ public interface NotificationService {
 
     NotificationResponse getNotificationById(Long id);
 
+    Page<NotificationListResponse> getAllNotifications(Pageable pageable);
+
     Page<NotificationListResponse> getMyNotifications(Long userId, Pageable pageable);
 
     Page<NotificationListResponse> getUnread(Long userId, Pageable pageable);

@@ -35,6 +35,12 @@ public class NotificationController {
                 .body(ApiResponse.success(response, "Notification sent", HttpStatus.CREATED.value()));
     }
 
+    @GetMapping
+    @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN') or hasRole('TEACHER')")
+    public ResponseEntity<ApiResponse<Page<NotificationListResponse>>> getAllNotifications(Pageable pageable) {
+        return ResponseEntity.ok(ApiResponse.success(notificationService.getAllNotifications(pageable), HttpStatus.OK.value()));
+    }
+
     @GetMapping("/my")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<ApiResponse<Page<NotificationListResponse>>> getMyNotifications(

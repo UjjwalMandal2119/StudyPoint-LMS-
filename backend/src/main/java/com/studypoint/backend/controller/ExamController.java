@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -68,7 +69,7 @@ public class ExamController {
         return ResponseEntity.ok(ApiResponse.success(exams, "Exams retrieved successfully", 200));
     }
 
-    @PostMapping("/{id}/publish")
+    @RequestMapping(value = "/{id}/publish", method = {RequestMethod.POST, RequestMethod.PUT})
     public ResponseEntity<ApiResponse<ExamResponse>> publishExam(@PathVariable Long id) {
         ExamResponse examResponse = examService.publishExam(id);
         return ResponseEntity.ok(ApiResponse.success(examResponse, "Exam published successfully", 200));

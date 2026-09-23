@@ -47,7 +47,4 @@ public class Event extends BaseEntity {
 
     @Column(name = "meeting_link", length = 500)
     private String meetingLink;
-
-    @Column(name = "created_by", nullable = false)
-    private Long createdBy;
 }

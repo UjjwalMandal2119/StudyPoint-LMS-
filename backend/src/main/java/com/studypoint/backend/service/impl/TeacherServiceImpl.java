@@ -14,15 +14,18 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class TeacherServiceImpl implements TeacherService {
     private final TeacherRepository teacherRepository;
     private final TeacherMapper teacherMapper;
     private final UserRepository userRepository;
 
     @Override
+    @Transactional
     public TeacherResponse createTeacher(TeacherRequest request) {
         if (teacherRepository.existsByEmployeeId(request.getEmployeeId())) {
             throw new IllegalArgumentException("Employee ID already exists");
@@ -37,6 +40,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    @Transactional
     public TeacherResponse updateTeacher(Long id, TeacherRequest request) {
         Teacher teacher = teacherRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Teacher", "id", id));
@@ -55,6 +59,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    @Transactional
     public void deleteTeacher(Long id) {
         Teacher teacher = teacherRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Teacher", "id", id));

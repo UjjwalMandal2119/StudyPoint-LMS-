@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -71,7 +72,7 @@ public class QuestionController {
         return ResponseEntity.ok(ApiResponse.success(questions, "Questions retrieved successfully", 200));
     }
 
-    @PostMapping("/{id}/approve")
+    @RequestMapping(value = "/{id}/approve", method = {RequestMethod.POST, RequestMethod.PUT})
     public ResponseEntity<ApiResponse<QuestionResponse>> approveQuestion(@PathVariable Long id) {
         QuestionResponse questionResponse = questionService.approveQuestion(id);
         return ResponseEntity.ok(ApiResponse.success(questionResponse, "Question approved successfully", 200));

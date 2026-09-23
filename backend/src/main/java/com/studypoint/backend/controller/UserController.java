@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -71,13 +72,13 @@ public class UserController {
         return ResponseEntity.ok(ApiResponse.success(count, "User count retrieved", HttpStatus.OK.value()));
     }
 
-    @PostMapping("/{id}/lock")
+    @RequestMapping(value = "/{id}/lock", method = {RequestMethod.POST, RequestMethod.PUT})
     public ResponseEntity<ApiResponse<?>> lockUser(@PathVariable Long id) {
         UserResponse user = userService.lockUser(id);
         return ResponseEntity.ok(ApiResponse.success(user, "User locked", HttpStatus.OK.value()));
     }
 
-    @PostMapping("/{id}/unlock")
+    @RequestMapping(value = "/{id}/unlock", method = {RequestMethod.POST, RequestMethod.PUT})
     public ResponseEntity<ApiResponse<?>> unlockUser(@PathVariable Long id) {
         UserResponse user = userService.unlockUser(id);
         return ResponseEntity.ok(ApiResponse.success(user, "User unlocked", HttpStatus.OK.value()));

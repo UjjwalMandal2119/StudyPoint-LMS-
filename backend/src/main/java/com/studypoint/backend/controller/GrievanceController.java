@@ -86,7 +86,7 @@ public class GrievanceController {
         return ResponseEntity.ok(ApiResponse.success(grievanceService.getGrievanceById(id), HttpStatus.OK.value()));
     }
 
-    @PatchMapping("/{id}/status")
+    @RequestMapping(value = "/{id}/status", method = {RequestMethod.PATCH, RequestMethod.PUT})
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ResponseEntity<ApiResponse<GrievanceResponse>> updateStatus(
             @PathVariable Long id,

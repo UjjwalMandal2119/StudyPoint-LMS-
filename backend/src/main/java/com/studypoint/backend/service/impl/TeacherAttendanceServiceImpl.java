@@ -12,6 +12,7 @@ import com.studypoint.backend.repository.TeacherRepository;
 import com.studypoint.backend.service.TeacherAttendanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,12 +20,14 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class TeacherAttendanceServiceImpl implements TeacherAttendanceService {
     private final TeacherAttendanceRepository teacherAttendanceRepository;
     private final TeacherAttendanceMapper teacherAttendanceMapper;
     private final TeacherRepository teacherRepository;
 
     @Override
+    @Transactional
     public TeacherAttendanceResponse markTeacherAttendance(TeacherAttendanceRequest request) {
         Teacher teacher = teacherRepository.findById(request.getTeacherId())
                 .orElseThrow(() -> new ResourceNotFoundException("Teacher", "id", request.getTeacherId()));

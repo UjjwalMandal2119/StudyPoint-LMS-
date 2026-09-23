@@ -17,11 +17,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class BatchServiceImpl implements BatchService {
 
     private final BatchRepository batchRepository;
@@ -30,6 +32,7 @@ public class BatchServiceImpl implements BatchService {
     private final UserRepository userRepository;
 
     @Override
+    @Transactional
     public BatchResponse createBatch(BatchRequest request) {
         if (batchRepository.existsByCode(request.getCode())) {
             throw new ConflictException("Batch code already exists");
@@ -41,6 +44,7 @@ public class BatchServiceImpl implements BatchService {
     }
 
     @Override
+    @Transactional
     public BatchResponse updateBatch(Long id, BatchRequest request) {
         Batch batch = batchRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Batch", "id", id));
@@ -54,6 +58,7 @@ public class BatchServiceImpl implements BatchService {
     }
 
     @Override
+    @Transactional
     public void deleteBatch(Long id) {
         Batch batch = batchRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Batch", "id", id));
@@ -88,6 +93,7 @@ public class BatchServiceImpl implements BatchService {
     }
 
     @Override
+    @Transactional
     public BatchResponse toggleActive(Long id) {
         Batch batch = batchRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Batch", "id", id));

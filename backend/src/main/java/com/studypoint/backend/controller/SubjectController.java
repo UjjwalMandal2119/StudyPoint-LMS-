@@ -71,7 +71,7 @@ public class SubjectController {
         return ApiResponse.success(subjects, HttpStatus.OK.value());
     }
 
-    @PatchMapping("/{id}/toggle-active")
+    @RequestMapping(value = "/{id}/toggle-active", method = {RequestMethod.PATCH, RequestMethod.PUT})
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ApiResponse<SubjectResponse> toggleActive(@PathVariable Long id) {
         SubjectResponse subject = subjectService.toggleActive(id);

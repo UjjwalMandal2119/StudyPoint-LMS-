@@ -69,14 +69,14 @@ public class CourseController {
         return ApiResponse.success(courses, HttpStatus.OK.value());
     }
 
-    @PostMapping("/{id}/publish")
+    @RequestMapping(value = "/{id}/publish", method = {RequestMethod.POST, RequestMethod.PUT})
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ApiResponse<CourseResponse> publishCourse(@PathVariable Long id) {
         CourseResponse course = courseService.publishCourse(id);
         return ApiResponse.success(course, "Course published successfully", HttpStatus.OK.value());
     }
 
-    @PatchMapping("/{id}/toggle-active")
+    @RequestMapping(value = "/{id}/toggle-active", method = {RequestMethod.PATCH, RequestMethod.PUT})
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ApiResponse<CourseResponse> toggleActive(@PathVariable Long id) {
         CourseResponse course = courseService.toggleActive(id);

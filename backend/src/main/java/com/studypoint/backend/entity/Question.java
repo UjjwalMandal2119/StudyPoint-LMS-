@@ -22,7 +22,9 @@ import lombok.Setter;
 })
 public class Question extends BaseEntity {
 
-    @Column(name = "question_text", nullable = false, length = 5000)
+    // Multiple long VARCHAR columns would exceed MySQL's 65535-byte row limit in utf8mb4,
+    // so these are declared as TEXT.
+    @Column(name = "question_text", nullable = false, columnDefinition = "TEXT")
     private String questionText;
 
     @Enumerated(EnumType.STRING)
@@ -33,13 +35,13 @@ public class Question extends BaseEntity {
     @JoinColumn(name = "subject_id", nullable = false)
     private Subject subject;
 
-    @Column(name = "options", length = 5000)
+    @Column(name = "options", columnDefinition = "TEXT")
     private String options;
 
-    @Column(name = "correct_answer", length = 2000)
+    @Column(name = "correct_answer", columnDefinition = "TEXT")
     private String correctAnswer;
 
-    @Column(name = "explanation", length = 5000)
+    @Column(name = "explanation", columnDefinition = "TEXT")
     private String explanation;
 
     @Column(name = "marks", nullable = false)
@@ -47,9 +49,6 @@ public class Question extends BaseEntity {
 
     @Column(name = "difficulty_level", length = 20)
     private String difficultyLevel;
-
-    @Column(name = "created_by", nullable = false)
-    private Long createdBy;
 
     @Column(name = "is_approved", nullable = false)
     private boolean approved = false;
