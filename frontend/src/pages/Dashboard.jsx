@@ -36,10 +36,10 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] text-gray-800">
+    <div className="min-h-screen bg-lms-bg text-gray-800">
 
       {/* Top Government / Institute Style Bar */}
-      <div className="bg-[#7b1113] text-white">
+      <div className="bg-navy-primary text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs sm:px-8">
           <div className="flex items-center gap-4">
             <span>Study Point</span>
@@ -60,15 +60,15 @@ export default function Dashboard() {
 
           {/* Logo / Institute Name */}
           <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#7b1113] bg-white">
-              <span className="text-xl font-bold text-[#7b1113]">SP</span>
+            <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-navy-primary bg-white">
+              <span className="text-xl font-bold text-navy-primary">SP</span>
             </div>
 
             <div>
               <h1 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">
                 STUDY POINT
               </h1>
-              <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#7b1113]">
+              <p className="text-xs font-medium uppercase tracking-[0.18em] text-navy-primary">
                 Learning Management Portal
               </p>
             </div>
@@ -77,7 +77,7 @@ export default function Dashboard() {
           {/* Logout */}
           <button
             onClick={handleLogout}
-            className="rounded-md border border-[#7b1113] px-4 py-2 text-sm font-semibold text-[#7b1113] transition hover:bg-[#7b1113] hover:text-white"
+            className="rounded-md border border-navy-primary px-4 py-2 text-sm font-semibold text-navy-primary transition hover:bg-navy-primary hover:text-white"
           >
             Logout
           </button>
@@ -89,7 +89,7 @@ export default function Dashboard() {
 
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-sm text-gray-500">
-          <span className="font-medium text-[#7b1113]">
+          <span className="font-medium text-navy-primary">
             Home
           </span>
           <span>/</span>
@@ -97,7 +97,7 @@ export default function Dashboard() {
         </div>
 
         {/* Welcome Banner */}
-        <section className="relative mb-8 overflow-hidden rounded-lg bg-[#7b1113] px-6 py-8 text-white shadow-md sm:px-10 sm:py-10">
+        <section className="relative mb-8 overflow-hidden rounded-lg bg-navy-primary px-6 py-8 text-white shadow-md sm:px-10 sm:py-10">
 
           {/* Decorative Elements */}
           <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full border-[18px] border-white/10" />
@@ -125,7 +125,7 @@ export default function Dashboard() {
           {/* Account Card */}
           <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
             <div className="mb-5 flex items-center justify-between">
-              <div className="flex h-11 w-11 items-center justify-center rounded-md bg-red-50 text-[#7b1113]">
+              <div className="flex h-11 w-11 items-center justify-center rounded-md bg-red-50 text-navy-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -159,7 +159,7 @@ export default function Dashboard() {
           {/* Role Card */}
           <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
             <div className="mb-5 flex items-center justify-between">
-              <div className="flex h-11 w-11 items-center justify-center rounded-md bg-red-50 text-[#7b1113]">
+              <div className="flex h-11 w-11 items-center justify-center rounded-md bg-red-50 text-navy-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -198,7 +198,7 @@ export default function Dashboard() {
           {/* Portal Card */}
           <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
             <div className="mb-5 flex items-center justify-between">
-              <div className="flex h-11 w-11 items-center justify-center rounded-md bg-red-50 text-[#7b1113]">
+              <div className="flex h-11 w-11 items-center justify-center rounded-md bg-red-50 text-navy-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -238,7 +238,7 @@ export default function Dashboard() {
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
 
               <div>
-                <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-[#7b1113]">
+                <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-navy-primary">
                   Academic Portal
                 </p>
 
@@ -254,7 +254,7 @@ export default function Dashboard() {
               {/* Role Badge */}
               <div className="inline-flex w-fit items-center rounded-full bg-red-50 px-4 py-2">
                 <span className="mr-2 h-2 w-2 rounded-full bg-green-600" />
-                <span className="text-sm font-semibold text-[#7b1113]">
+                <span className="text-sm font-semibold text-navy-primary">
                   {role}
                 </span>
               </div>
@@ -281,7 +281,7 @@ export default function Dashboard() {
 
               <button
                 onClick={() => navigate(getDashboardLink())}
-                className="group flex shrink-0 items-center gap-3 rounded-md bg-[#7b1113] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5e0d0f] focus:outline-none focus:ring-2 focus:ring-[#7b1113] focus:ring-offset-2"
+                className="group flex shrink-0 items-center gap-3 rounded-md bg-navy-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-navy-hover focus:outline-none focus:ring-2 focus:ring-navy-primary focus:ring-offset-2"
               >
                 Go to {role} Dashboard
 
@@ -308,8 +308,8 @@ export default function Dashboard() {
         {/* Academic Values */}
         <section className="mt-8 grid gap-4 sm:grid-cols-3">
 
-          <div className="border-l-4 border-[#7b1113] bg-white px-5 py-4 shadow-sm">
-            <p className="text-xs font-bold uppercase tracking-wider text-[#7b1113]">
+          <div className="border-l-4 border-navy-primary bg-white px-5 py-4 shadow-sm">
+            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">
               Excellence
             </p>
             <p className="mt-1 text-sm text-gray-600">
@@ -317,8 +317,8 @@ export default function Dashboard() {
             </p>
           </div>
 
-          <div className="border-l-4 border-[#7b1113] bg-white px-5 py-4 shadow-sm">
-            <p className="text-xs font-bold uppercase tracking-wider text-[#7b1113]">
+          <div className="border-l-4 border-navy-primary bg-white px-5 py-4 shadow-sm">
+            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">
               Learning
             </p>
             <p className="mt-1 text-sm text-gray-600">
@@ -326,8 +326,8 @@ export default function Dashboard() {
             </p>
           </div>
 
-          <div className="border-l-4 border-[#7b1113] bg-white px-5 py-4 shadow-sm">
-            <p className="text-xs font-bold uppercase tracking-wider text-[#7b1113]">
+          <div className="border-l-4 border-navy-primary bg-white px-5 py-4 shadow-sm">
+            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">
               Community
             </p>
             <p className="mt-1 text-sm text-gray-600">

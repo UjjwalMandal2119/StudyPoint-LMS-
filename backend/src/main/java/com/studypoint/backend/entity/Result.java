@@ -41,7 +41,8 @@ public class Result extends BaseEntity {
     @Column(name = "grade", length = 5)
     private String grade;
 
-    @Column(name = "rank")
+    // "rank" is a MySQL reserved word — mapped to a safe physical column name.
+    @Column(name = "rank_position")
     private Integer rank;
 
     @Column(name = "is_passed", nullable = false)

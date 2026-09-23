@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getTeacherStats } from '../../services/dashboard.service';
@@ -50,12 +50,12 @@ export default function TeacherDashboard() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-2 text-sm text-gray-500">
-        <span className="font-medium text-[#7b1113]">Home</span>
+        <span className="font-medium text-navy-primary">Home</span>
         <span>/</span>
         <span>Teacher Dashboard</span>
       </div>
 
-      <section className="relative overflow-hidden rounded-lg bg-[#7b1113] px-6 py-8 text-white shadow-md sm:px-8">
+      <section className="relative overflow-hidden rounded-lg bg-navy-primary px-6 py-8 text-white shadow-md sm:px-8">
         <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full border-[18px] border-white/10" />
         <div className="absolute -bottom-16 right-24 h-44 w-44 rounded-full border-[12px] border-white/10" />
         <div className="relative">
@@ -70,7 +70,7 @@ export default function TeacherDashboard() {
       {error && <p className="rounded-md border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">{error}</p>}
 
       <section className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        <StatCard label="Subjects Taught" value={s.subjectCount ?? '—'} accent="text-[#7b1113]" />
+        <StatCard label="Subjects Taught" value={s.subjectCount ?? '—'} accent="text-navy-primary" />
         <StatCard label="Active Batches" value={s.batchCount ?? '—'} sub={`${s.studentCount ?? 0} students`} />
         <StatCard label="Assignments" value={s.assignmentCount ?? '—'} sub={`${s.pendingSubmissions ?? 0} pending submissions`} accent="text-amber-600" />
         <StatCard label="Exams Scheduled" value={s.examCount ?? '—'} />
@@ -83,7 +83,7 @@ export default function TeacherDashboard() {
             <button
               key={q.to}
               onClick={() => navigate(q.to)}
-              className="rounded-md border border-[#7b1113]/20 bg-[#7b1113]/5 px-4 py-3 text-sm font-semibold text-[#7b1113] transition hover:bg-[#7b1113] hover:text-white"
+              className="rounded-md border border-navy-primary/20 bg-navy-primary/5 px-4 py-3 text-sm font-semibold text-navy-primary transition hover:bg-navy-primary hover:text-white"
             >
               {q.label}
             </button>
@@ -95,7 +95,7 @@ export default function TeacherDashboard() {
         <h2 className="mb-4 text-lg font-bold text-gray-900">My Students</h2>
         <button
           onClick={() => navigate('/students')}
-          className="rounded-md bg-[#7b1113] px-4 py-2 text-sm font-semibold text-white hover:bg-[#5e0d0f]"
+          className="rounded-md bg-navy-primary px-4 py-2 text-sm font-semibold text-white hover:bg-navy-hover"
         >
           Manage Students ({s.studentCount ?? 0})
         </button>

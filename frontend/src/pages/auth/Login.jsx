@@ -1,6 +1,7 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { FiMail, FiLock, FiEye, FiEyeOff, FiArrowRight, FiCheckCircle, FiShield, FiAlertCircle, FiLoader } from 'react-icons/fi';
 import { login as loginService } from '../../services/auth.service';
 import { setCredentials } from '../../store/slices/authSlice';
 
@@ -8,6 +9,8 @@ export default function Login() {
   const [form, setForm] = useState({ usernameOrEmail: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -22,86 +25,203 @@ export default function Login() {
       dispatch(setCredentials(result));
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5]">
-      <div className="bg-[#7b1113] text-white">
+    <div className="flex min-h-screen flex-col bg-lms-bg font-sans text-slate-700">
+      {/* ============ TOP ANNOUNCEMENT BAR ============ */}
+      <div className="bg-navy-dark text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs sm:px-8">
-          <div className="flex items-center gap-4">
-            <span>Study Point</span>
-            <span className="hidden border-l border-white/30 pl-4 sm:inline">Education • Excellence • Growth</span>
-          </div>
-          <span className="hidden sm:block">Academic Portal</span>
+          <span className="flex items-center gap-2">🎓 Study Point — Student & Portal Gateway</span>
+          <span className="hidden sm:inline">Education • Excellence • Growth</span>
         </div>
       </div>
 
-      <header className="border-b border-gray-200 bg-white shadow-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8">
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#7b1113] bg-white">
-              <span className="text-xl font-bold text-[#7b1113]">SP</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">STUDY POINT</h1>
-              <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#7b1113]">Learning Management Portal</p>
-            </div>
+      {/* ============ NAVBAR ============ */}
+      <header className="sticky top-0 z-50 bg-white px-6 py-4 shadow-sm sm:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between">
+          <Link to="/" className="flex items-center gap-2">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-navy-primary to-navy-hover text-lg text-white shadow-lg">🎓</span>
+            <span className="text-xl font-extrabold tracking-tight text-navy-dark">
+              Study<span className="text-navy-hover">Point</span>
+            </span>
+          </Link>
+
+          <div className="flex items-center gap-4 text-sm font-semibold">
+            <Link to="/" className="text-slate-600 transition hover:text-navy-primary">Home</Link>
+            <Link to="/about" className="hidden text-slate-600 transition hover:text-navy-primary sm:inline">About</Link>
+            <Link to="/register" className="rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-5 py-2 text-white shadow-md transition hover:scale-105">
+              New Admission
+            </Link>
           </div>
-          <Link to="/" className="text-sm font-semibold text-gray-600 hover:text-[#7b1113]">Home</Link>
         </div>
       </header>
 
-      <main className="mx-auto flex min-h-[70vh] max-w-7xl items-center justify-center px-6 py-12">
-        <div className="w-full max-w-md overflow-hidden rounded-lg bg-white shadow-md">
-          <div className="bg-[#7b1113] px-6 py-5 text-center text-white">
-            <h2 className="text-xl font-bold">Sign In</h2>
-            <p className="mt-1 text-xs text-white/80">Access your academic dashboard</p>
+      {/* ============ MAIN AUTH SECTION ============ */}
+      <main className="mx-auto flex w-full max-w-7xl flex-1 items-center justify-center px-4 py-10 sm:px-6 lg:px-8">
+        <div className="grid w-full overflow-hidden rounded-3xl border border-lms-border bg-white shadow-xl lg:grid-cols-12">
+          
+          {/* Left Hero Panel (Enterprise Branding) */}
+          <div className="relative hidden flex-col justify-between bg-gradient-to-br from-navy-dark via-navy-primary to-navy-hover p-10 text-white lg:col-span-6 lg:flex xl:p-12">
+            <div className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-10 -left-10 h-52 w-52 rounded-full bg-accent-amber/20 blur-3xl" />
+
+            <div className="relative z-10">
+              <span className="inline-flex items-center gap-2 rounded-full border border-accent-amber/40 bg-accent-amber/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-accent-amber">
+                🎓 Portal Access
+              </span>
+              <h2 className="mt-6 text-3xl font-extrabold leading-tight text-white xl:text-4xl">
+                Welcome Back to <br />
+                <span className="bg-gradient-to-r from-white via-white/90 to-accent-amber bg-clip-text text-transparent">
+                  Study Point Coaching
+                </span>
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-white/80">
+                Log in to access your live batch schedules, recorded lectures, downloadable notes, and comprehensive mock test reports.
+              </p>
+            </div>
+
+            <div className="relative z-10 my-8 space-y-4">
+              <div className="flex items-center gap-3 rounded-xl bg-white/10 p-3.5 backdrop-blur">
+                <FiCheckCircle className="h-5 w-5 shrink-0 text-accent-amber" />
+                <p className="text-xs font-medium text-white/90">Interactive Live Classes & Video Backups</p>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl bg-white/10 p-3.5 backdrop-blur">
+                <FiCheckCircle className="h-5 w-5 shrink-0 text-accent-amber" />
+                <p className="text-xs font-medium text-white/90">Online Practice Tests & Analytics</p>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl bg-white/10 p-3.5 backdrop-blur">
+                <FiCheckCircle className="h-5 w-5 shrink-0 text-accent-amber" />
+                <p className="text-xs font-medium text-white/90">Personal Doubt Solving & PDF Notes</p>
+              </div>
+            </div>
+
+            <div className="relative z-10 border-t border-white/15 pt-6">
+              <p className="text-xs italic text-white/85">
+                "Empowering every student with concept clarity, discipline, and regular guidance."
+              </p>
+              <p className="mt-2 text-xs font-bold text-accent-amber">— Ujjwal Mandal, Founder & Director</p>
+            </div>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-4 p-6">
-            {error && <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
-            <div>
-              <label className="mb-1 block text-sm font-medium text-gray-700">Username or Email</label>
-              <input
-                name="usernameOrEmail"
-                value={form.usernameOrEmail}
-                onChange={handleChange}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#7b1113]"
-                required
-              />
+
+          {/* Right Form Panel */}
+          <div className="flex flex-col justify-center p-8 sm:p-12 lg:col-span-6">
+            <div className="mx-auto w-full max-w-md">
+              <div className="mb-8 text-center lg:text-left">
+                <h2 className="text-2xl font-extrabold text-navy-dark sm:text-3xl">Sign In</h2>
+                <p className="mt-2 text-sm text-slate-500">
+                  Enter your credentials to access your student or administrative dashboard.
+                </p>
+              </div>
+
+              {/* Error Message */}
+              {error && (
+                <div className="mb-6 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-xs font-medium text-red-700">
+                  <FiAlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Username or Email */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-600">
+                    Username or Email
+                  </label>
+                  <div className="relative">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                      <FiMail className="h-4 w-4" />
+                    </div>
+                    <input
+                      required
+                      name="usernameOrEmail"
+                      value={form.usernameOrEmail}
+                      onChange={handleChange}
+                      placeholder="e.g. rahul123 or student@example.com"
+                      className="w-full rounded-xl border border-lms-border bg-slate-50/50 py-3 pl-10 pr-4 text-sm font-medium text-navy-dark outline-none transition focus:border-navy-primary focus:bg-white focus:ring-2 focus:ring-navy-primary/20"
+                    />
+                  </div>
+                </div>
+
+                {/* Password */}
+                <div>
+                  <div className="mb-1.5 flex items-center justify-between">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600">
+                      Password
+                    </label>
+                  </div>
+                  <div className="relative">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                      <FiLock className="h-4 w-4" />
+                    </div>
+                    <input
+                      required
+                      type={showPassword ? 'text' : 'password'}
+                      name="password"
+                      value={form.password}
+                      onChange={handleChange}
+                      placeholder="••••••••"
+                      className="w-full rounded-xl border border-lms-border bg-slate-50/50 py-3 pl-10 pr-10 text-sm font-medium text-navy-dark outline-none transition focus:border-navy-primary focus:bg-white focus:ring-2 focus:ring-navy-primary/20"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 hover:text-navy-primary"
+                      aria-label="Toggle password visibility"
+                    >
+                      {showPassword ? <FiEyeOff className="h-4 w-4" /> : <FiEye className="h-4 w-4" />}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-navy-primary to-navy-hover py-3.5 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {loading ? (
+                    <>
+                      <FiLoader className="h-4 w-4 animate-spin" />
+                      Signing in...
+                    </>
+                  ) : (
+                    <>
+                      Sign In to Dashboard
+                      <FiArrowRight className="h-4 w-4" />
+                    </>
+                  )}
+                </button>
+
+                {/* Registration Link */}
+                <div className="pt-2 text-center text-sm text-slate-600">
+                  Don't have an account yet?{' '}
+                  <Link to="/register" className="font-bold text-navy-primary hover:underline">
+                    New Admission / Register
+                  </Link>
+                </div>
+              </form>
+
+              {/* Portal Security Note */}
+              <div className="mt-8 flex items-center justify-center gap-2 border-t border-lms-border pt-6 text-xs text-slate-400">
+                <FiShield className="h-3.5 w-3.5 text-emerald-600" />
+                <span>Protected with SSL encryption & Secure Auth</span>
+              </div>
             </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium text-gray-700">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#7b1113]"
-                required
-              />
-            </div>
-            <button
-              disabled={loading}
-              className="w-full rounded-md bg-[#7b1113] py-2 text-sm font-semibold text-white transition hover:bg-[#5e0d0f] disabled:opacity-60"
-            >
-              {loading ? 'Signing in…' : 'Sign In'}
-            </button>
-            <p className="text-center text-sm text-gray-600">
-              No account?{' '}
-              <Link to="/register" className="font-semibold text-[#7b1113] hover:underline">Register</Link>
-            </p>
-          </form>
+          </div>
+
         </div>
       </main>
 
+      {/* ============ FOOTER ============ */}
       <footer className="border-t border-gray-200 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-6 py-6 text-sm text-gray-500 sm:flex-row sm:px-8">
-          <p>© {new Date().getFullYear()} Study Point. All rights reserved.</p>
-          <p>Learning • Knowledge • Excellence</p>
+        <div className="mx-auto max-w-7xl px-6 py-6 text-center text-sm text-slate-500 sm:flex sm:justify-between sm:text-left">
+          <p>© {new Date().getFullYear()} Study Point Coaching. All rights reserved.</p>
+          <p className="mt-2 sm:mt-0">Made with 💜 for learning by Ujjwal Mandal.</p>
         </div>
       </footer>
     </div>

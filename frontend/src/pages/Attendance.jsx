@@ -46,7 +46,7 @@ export default function Attendance() {
       <div className="flex gap-2">
         <input type="number" placeholder="Batch ID" value={batchId} onChange={(e) => setBatchId(e.target.value)} className="rounded-md border border-gray-300 px-3 py-1.5 text-sm" />
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="rounded-md border border-gray-300 px-3 py-1.5 text-sm" />
-        <button onClick={load} className="rounded-md bg-[#7b1113] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#5e0d0f]">Load</button>
+        <button onClick={load} className="rounded-md bg-navy-primary px-3 py-1.5 text-sm font-medium text-white hover:bg-navy-hover">Load</button>
       </div>
       {error && <p className="text-sm text-red-600">{error}</p>}
       <DataTable columns={COLS} data={items} loading={loading} error={error} />

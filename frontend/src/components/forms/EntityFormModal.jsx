@@ -30,7 +30,7 @@ export default function EntityFormModal({ open, title, fields, initialValues = {
       id: f.name,
       name: f.name,
       required: f.required,
-      className: 'w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#7b1113]',
+      className: 'input',
     };
     switch (f.type) {
       case 'textarea':
@@ -111,13 +111,13 @@ export default function EntityFormModal({ open, title, fields, initialValues = {
   };
 
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40">
-      <div className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-xl">
-        <h2 className="mb-4 text-xl font-bold">{title}</h2>
+    <div className="fixed inset-0 z-40 flex items-center justify-center bg-navy-dark/50">
+      <div className="w-full max-w-2xl rounded-lg bg-lms-card p-6 shadow-lift">
+        <h2 className="mb-4 text-xl font-bold text-navy-dark">{title}</h2>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {fields.map((f) => (
             <div key={f.name} className={f.half ? '' : 'sm:col-span-2'}>
-              <label className="mb-1 block text-sm font-medium text-gray-700" htmlFor={f.name}>
+              <label className="mb-1 block text-sm font-medium text-slate-600" htmlFor={f.name}>
                 {f.label}{f.required && ' *'}
               </label>
               {renderField(f)}
@@ -127,14 +127,14 @@ export default function EntityFormModal({ open, title, fields, initialValues = {
             <button
               type="button"
               onClick={onClose}
-              className="rounded-md border border-gray-300 px-4 py-1.5 text-sm hover:bg-gray-100"
+              className="rounded-md btn btn-ghost"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="rounded-md bg-[#7b1113] px-4 py-1.5 text-sm font-medium text-white hover:bg-[#5e0d0f] disabled:opacity-60"
+              className="btn btn-primary"
             >
               {loading ? 'Saving...' : 'Save'}
             </button>

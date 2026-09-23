@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getAdminStats } from '../../services/dashboard.service';
@@ -54,13 +54,13 @@ export default function AdminDashboard() {
     <div className="space-y-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm text-gray-500">
-        <span className="font-medium text-[#7b1113]">Home</span>
+        <span className="font-medium text-navy-primary">Home</span>
         <span>/</span>
         <span>Admin Dashboard</span>
       </div>
 
       {/* Welcome banner */}
-      <section className="relative overflow-hidden rounded-lg bg-[#7b1113] px-6 py-8 text-white shadow-md sm:px-8">
+      <section className="relative overflow-hidden rounded-lg bg-navy-primary px-6 py-8 text-white shadow-md sm:px-8">
         <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full border-[18px] border-white/10" />
         <div className="absolute -bottom-16 right-24 h-44 w-44 rounded-full border-[12px] border-white/10" />
         <div className="relative">
@@ -76,7 +76,7 @@ export default function AdminDashboard() {
 
       {/* Stat cards */}
       <section className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        <StatCard label="Students" value={s.totalStudents ?? '—'} sub="Enrolled learners" accent="text-[#7b1113]" />
+        <StatCard label="Students" value={s.totalStudents ?? '—'} sub="Enrolled learners" accent="text-navy-primary" />
         <StatCard label="Teachers" value={s.totalTeachers ?? '—'} sub="Faculty members" />
         <StatCard label="Parents" value={s.totalParents ?? '—'} sub="Registered parents" />
         <StatCard label="Courses" value={s.totalCourses ?? '—'} sub={`${s.totalSubjects ?? 0} subjects · ${s.totalBatches ?? 0} batches`} />
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
               <h2 className="text-lg font-bold text-gray-900">New Registrations (6 months)</h2>
               <p className="text-xs text-gray-500">{s.totalUsers ?? 0} total users on the platform</p>
             </div>
-            <span className="rounded-full bg-[#7b1113]/10 px-3 py-1 text-xs font-semibold text-[#7b1113]">
+            <span className="rounded-full bg-navy-primary/10 px-3 py-1 text-xs font-semibold text-navy-primary">
               {s.maleStudents ?? 0} ♂ · {s.femaleStudents ?? 0} ♀ students
             </span>
           </div>
@@ -104,9 +104,9 @@ export default function AdminDashboard() {
             <div className="flex h-48 items-end gap-3">
               {trend.map((m, i) => (
                 <div key={i} className="flex flex-1 flex-col items-center gap-1">
-                  <span className="text-xs font-bold text-[#7b1113]">{m.count}</span>
+                  <span className="text-xs font-bold text-navy-primary">{m.count}</span>
                   <div
-                    className="w-full rounded-t-md bg-[#7b1113] transition-all"
+                    className="w-full rounded-t-md bg-navy-primary transition-all"
                     style={{ height: `${Math.max(6, Math.round((m.count / maxTrend) * 100))}%` }}
                   />
                   <span className="whitespace-nowrap text-[10px] text-gray-500">{m.month}</span>
@@ -120,7 +120,7 @@ export default function AdminDashboard() {
         <section className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-lg font-bold text-gray-900">Recent Notices</h2>
-            <button onClick={() => navigate('/notices')} className="text-sm font-medium text-[#7b1113] hover:underline">
+            <button onClick={() => navigate('/notices')} className="text-sm font-medium text-navy-primary hover:underline">
               View all
             </button>
           </div>
@@ -154,7 +154,7 @@ export default function AdminDashboard() {
             <button
               key={q.to}
               onClick={() => navigate(q.to)}
-              className="rounded-md border border-[#7b1113]/20 bg-[#7b1113]/5 px-4 py-3 text-sm font-semibold text-[#7b1113] transition hover:bg-[#7b1113] hover:text-white"
+              className="rounded-md border border-navy-primary/20 bg-navy-primary/5 px-4 py-3 text-sm font-semibold text-navy-primary transition hover:bg-navy-primary hover:text-white"
             >
               {q.label}
             </button>

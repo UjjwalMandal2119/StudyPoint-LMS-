@@ -85,7 +85,7 @@ export default function Grievances() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Grievances</h1>
-        <button onClick={() => setOpenModal(true)} className="rounded-md bg-[#7b1113] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#5e0d0f]">Submit Grievance</button>
+        <button onClick={() => setOpenModal(true)} className="rounded-md bg-navy-primary px-3 py-1.5 text-sm font-medium text-white hover:bg-navy-hover">Submit Grievance</button>
       </div>
       <div className="flex flex-wrap gap-2">
         {STATUSES.map((s) => (

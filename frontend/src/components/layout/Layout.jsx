@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
@@ -45,12 +45,12 @@ export default function Layout() {
   const filteredNav = nav.filter((item) => !item.roles || item.roles.includes(role));
 
   return (
-    <div className="flex min-h-screen bg-[#f5f5f5] text-gray-800">
+    <div className="flex min-h-screen bg-lms-bg text-gray-800">
       {/* Sidebar */}
       <aside
         className={`${
           collapsed ? 'w-16' : 'w-64'
-        } flex shrink-0 flex-col bg-[#5e0d0f] text-white shadow-lg transition-all duration-200`}
+        } flex shrink-0 flex-col bg-navy-dark text-white shadow-lg transition-all duration-200`}
       >
         {/* Brand */}
         <div className="flex h-16 items-center gap-3 border-b border-white/10 px-4">
@@ -88,7 +88,7 @@ export default function Layout() {
               className={({ isActive }) =>
                 `flex items-center gap-2 rounded-md border-l-4 px-2 py-2 text-sm transition ${
                   isActive
-                    ? 'border-white bg-white/15 font-semibold'
+                    ? 'border-accent-amber bg-navy-primary font-semibold'
                     : 'border-transparent hover:bg-white/10'
                 }`
               }
@@ -102,7 +102,7 @@ export default function Layout() {
 
       {/* Main column */}
       <div className="flex min-w-0 flex-1 flex-col">
-        <div className="bg-[#7b1113] text-white">
+        <div className="bg-navy-primary text-white">
           <div className="flex items-center justify-between px-6 py-1.5 text-xs">
             <span className="font-medium">Academic Portal</span>
             <span className="hidden sm:inline">Study Point • Learning Management System</span>
@@ -111,18 +111,18 @@ export default function Layout() {
         <header className="flex h-14 items-center justify-between border-b border-gray-200 bg-white px-6 shadow-sm">
           <div className="text-sm text-gray-600">
             Signed in as{' '}
-            <span className="font-semibold text-[#7b1113]">
+            <span className="font-semibold text-navy-primary">
               {user?.firstName || user?.username}
             </span>{' '}
             {role && (
-              <span className="ml-1 rounded-full bg-[#7b1113]/10 px-2 py-0.5 text-xs font-medium text-[#7b1113]">
+              <span className="ml-1 rounded-full bg-navy-primary/10 px-2 py-0.5 text-xs font-medium text-navy-primary">
                 {role.replace('_', ' ')}
               </span>
             )}
           </div>
           <button
             onClick={handleLogout}
-            className="rounded-md border border-[#7b1113] px-3 py-1.5 text-sm font-medium text-[#7b1113] transition hover:bg-[#7b1113] hover:text-white"
+            className="rounded-md border border-navy-primary px-3 py-1.5 text-sm font-medium text-navy-primary transition hover:bg-navy-primary hover:text-white"
           >
             Logout
           </button>

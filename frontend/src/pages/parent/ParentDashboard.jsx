@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getParentStats } from '../../services/dashboard.service';
@@ -8,11 +8,11 @@ function Progress({ label, percent }) {
     <div>
       <div className="mb-1 flex items-center justify-between text-sm">
         <span className="font-medium text-gray-600">{label}</span>
-        <span className="font-bold text-[#7b1113]">{percent}%</span>
+        <span className="font-bold text-navy-primary">{percent}%</span>
       </div>
       <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
         <div
-          className="h-full rounded-full bg-[#7b1113]"
+          className="h-full rounded-full bg-navy-primary"
           style={{ width: `${Math.min(100, Math.max(0, percent))}%` }}
         />
       </div>
@@ -47,12 +47,12 @@ export default function ParentDashboard() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-2 text-sm text-gray-500">
-        <span className="font-medium text-[#7b1113]">Home</span>
+        <span className="font-medium text-navy-primary">Home</span>
         <span>/</span>
         <span>Parent Dashboard</span>
       </div>
 
-      <section className="relative overflow-hidden rounded-lg bg-[#7b1113] px-6 py-8 text-white shadow-md sm:px-8">
+      <section className="relative overflow-hidden rounded-lg bg-navy-primary px-6 py-8 text-white shadow-md sm:px-8">
         <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full border-[18px] border-white/10" />
         <div className="absolute -bottom-16 right-24 h-44 w-44 rounded-full border-[12px] border-white/10" />
         <div className="relative flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
@@ -75,7 +75,7 @@ export default function ParentDashboard() {
       <section className="grid grid-cols-2 gap-4 md:grid-cols-3">
         <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
           <p className="text-xs font-bold uppercase tracking-wider text-gray-500">Children</p>
-          <p className="mt-2 text-3xl font-extrabold text-[#7b1113]">{s.childCount ?? 0}</p>
+          <p className="mt-2 text-3xl font-extrabold text-navy-primary">{s.childCount ?? 0}</p>
         </div>
         <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
           <p className="text-xs font-bold uppercase tracking-wider text-gray-500">Notifications</p>
@@ -85,9 +85,9 @@ export default function ParentDashboard() {
         <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
           <p className="text-xs font-bold uppercase tracking-wider text-gray-500">Actions</p>
           <div className="mt-2 flex flex-wrap gap-2">
-            <button onClick={() => navigate('/attendance')} className="rounded border border-[#7b1113] px-3 py-1.5 text-xs font-semibold text-[#7b1113] hover:bg-[#7b1113] hover:text-white">Attendance</button>
-            <button onClick={() => navigate('/results')} className="rounded border border-[#7b1113] px-3 py-1.5 text-xs font-semibold text-[#7b1113] hover:bg-[#7b1113] hover:text-white">Results</button>
-            <button onClick={() => navigate('/notices')} className="rounded border border-[#7b1113] px-3 py-1.5 text-xs font-semibold text-[#7b1113] hover:bg-[#7b1113] hover:text-white">Notices</button>
+            <button onClick={() => navigate('/attendance')} className="rounded border border-navy-primary px-3 py-1.5 text-xs font-semibold text-navy-primary hover:bg-navy-primary hover:text-white">Attendance</button>
+            <button onClick={() => navigate('/results')} className="rounded border border-navy-primary px-3 py-1.5 text-xs font-semibold text-navy-primary hover:bg-navy-primary hover:text-white">Results</button>
+            <button onClick={() => navigate('/notices')} className="rounded border border-navy-primary px-3 py-1.5 text-xs font-semibold text-navy-primary hover:bg-navy-primary hover:text-white">Notices</button>
           </div>
         </div>
       </section>
@@ -109,7 +109,7 @@ export default function ParentDashboard() {
                   </div>
                   <button
                     onClick={() => navigate('/students')}
-                    className="rounded border border-[#7b1113] px-2.5 py-1 text-xs font-semibold text-[#7b1113] hover:bg-[#7b1113] hover:text-white"
+                    className="rounded border border-navy-primary px-2.5 py-1 text-xs font-semibold text-navy-primary hover:bg-navy-primary hover:text-white"
                   >
                     Details
                   </button>

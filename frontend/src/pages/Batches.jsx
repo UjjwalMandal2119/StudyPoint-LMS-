@@ -113,9 +113,9 @@ export default function Batches() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Batches</h1>
-        <button onClick={openCreate} className="rounded-md bg-[#7b1113] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#5e0d0f]">New Batch</button>
+        <button onClick={openCreate} className="rounded-md bg-navy-primary px-3 py-1.5 text-sm font-medium text-white hover:bg-navy-hover">New Batch</button>
       </div>
-      <input type="search" placeholder="Search batches..." className="w-full max-w-sm rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#7b1113]" onChange={(e) => setSearchTerm(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && fetchPage(0)} />
+      <input type="search" placeholder="Search batches..." className="w-full max-w-sm rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy-primary" onChange={(e) => setSearchTerm(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && fetchPage(0)} />
       {error && <p className="text-sm text-red-600">{error}</p>}
       <DataTable columns={COLS} data={page.items} loading={loading} error={error} totalElements={page.totalElements} totalPages={page.totalPages} pageNumber={page.number} pageSize={page.size} onPageChange={(n) => fetchPage(n)} />
       <EntityFormModal open={openModal} title={editing ? 'Edit Batch' : 'New Batch'} fields={FIELDS} initialValues={editing || {}} onSubmit={onSubmit} onClose={() => { setOpenModal(false); setEditing(null); }} loading={formLoading} />

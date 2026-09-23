@@ -1,5 +1,4 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
 import ProtectedRoute from '../components/common/ProtectedRoute';
 import Layout from '../components/layout/Layout';
 
@@ -37,6 +36,7 @@ import Grievances from '../pages/Grievances';
 
 const routes = [
   { path: '/', element: <Home /> },
+  { path: '/home', element: <Home /> },
   { path: '/about', element: <About /> },
   { path: '/contact', element: <Contact /> },
   { path: '/login', element: <Login /> },
@@ -80,7 +80,6 @@ const routes = [
       { path: 'study-materials', element: <StudyMaterials /> },
       { path: 'discussions', element: <Discussions /> },
       { path: 'grievances', element: <Grievances /> },
-      { index: true, element: <Navigate to="/dashboard" replace /> },
     ],
   },
 ];

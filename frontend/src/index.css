@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-lms-bg text-slate-700 antialiased;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-navy-dark;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-lms-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-lms-border;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-300;
+  }
+}
+
+@layer components {
+  /* Card */
+  .card {
+    @apply rounded-lg border border-lms-border bg-lms-card shadow-card;
+  }
+  .card-pad {
+    @apply p-5;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-navy-hover focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply bg-navy-primary text-white hover:bg-navy-hover;
+  }
+  .btn-outline {
+    @apply border border-navy-primary bg-transparent text-navy-primary hover:bg-navy-primary hover:text-white;
+  }
+  .btn-ghost {
+    @apply border border-lms-border bg-white text-slate-600 hover:bg-slate-50 hover:text-navy-dark;
+  }
+  .btn-danger {
+    @apply border border-red-300 bg-white text-red-700 hover:bg-red-50;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full rounded-md border border-lms-border bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-navy-primary focus:outline-none focus:ring-2 focus:ring-navy-primary/20;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+}

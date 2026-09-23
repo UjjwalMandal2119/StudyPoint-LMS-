@@ -67,14 +67,14 @@ export default function Discussions() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Discussion Forum</h1>
-        <button onClick={() => setOpenModal(true)} className="rounded-md bg-[#7b1113] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#5e0d0f]">New Discussion</button>
+        <button onClick={() => setOpenModal(true)} className="rounded-md bg-navy-primary px-3 py-1.5 text-sm font-medium text-white hover:bg-navy-hover">New Discussion</button>
       </div>
       {error && <p className="text-sm text-red-600">{error}</p>}
       {loading ? <p className="text-gray-500">Loading...</p> : items.map((d) => (
         <div key={d.id} className="rounded-lg border border-gray-200 bg-white p-4">
           <div className="flex items-start justify-between gap-2">
             <div>
-              <p className="font-medium">{d.title} {d.pinned && <span className="ml-1 rounded bg-[#7b1113]/10 px-1.5 py-0.5 text-xs text-[#7b1113]">Pinned</span>}</p>
+              <p className="font-medium">{d.title} {d.pinned && <span className="ml-1 rounded bg-navy-primary/10 px-1.5 py-0.5 text-xs text-navy-primary">Pinned</span>}</p>
               <p className="text-xs text-gray-500">by {d.userName} Â· {d.tag || 'general'} Â· {d.status}</p>
             </div>
             <div className="flex flex-wrap gap-1">
@@ -118,10 +118,10 @@ export default function Discussions() {
           </div>
           <div className="mt-3 flex gap-2">
             <input
-              className="flex-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#7b1113]"
+              className="flex-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy-primary"
               value={replyText} onChange={(e) => setReplyText(e.target.value)} placeholder="Write a reply..."
             />
-            <button onClick={doSubmitReply} className="rounded-md bg-[#7b1113] px-3 py-1.5 text-sm text-white hover:bg-[#5e0d0f]">Reply</button>
+            <button onClick={doSubmitReply} className="rounded-md bg-navy-primary px-3 py-1.5 text-sm text-white hover:bg-navy-hover">Reply</button>
           </div>
         </div>
       )}
