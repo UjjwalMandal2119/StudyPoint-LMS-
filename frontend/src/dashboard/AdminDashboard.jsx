@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getAdminStats } from '../../services/dashboard.service';
+import { getAdminStats } from '../services/dashboard.service';
 
 function StatCard({ label, value, sub, accent }) {
   return (

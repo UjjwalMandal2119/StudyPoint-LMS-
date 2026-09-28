@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getParentStats } from '../../services/dashboard.service';
+import { getParentStats } from '../services/dashboard.service';
 
 function Progress({ label, percent }) {
   return (

@@ -4,11 +4,11 @@ import Layout from '../components/layout/Layout';
 
 import Login from '../pages/auth/Login';
 import Register from '../pages/auth/Register';
-import Dashboard from '../pages/Dashboard';
-import AdminDashboard from '../pages/admin/AdminDashboard';
-import StudentDashboard from '../pages/student/StudentDashboard';
-import TeacherDashboard from '../pages/teacher/TeacherDashboard';
-import ParentDashboard from '../pages/parent/ParentDashboard';
+import Dashboard from '../dashboard/Dashboard';
+import AdminDashboard from '../dashboard/AdminDashboard';
+import StudentDashboard from '../dashboard/StudentDashboard';
+import TeacherDashboard from '../dashboard/TeacherDashboard';
+import ParentDashboard from '../dashboard/ParentDashboard';
 import Home from '../pages/public/Home';
 import About from '../pages/public/About';
 import Contact from '../pages/public/Contact';

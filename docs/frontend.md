@@ -199,10 +199,10 @@ All routes are declared declaratively in `src/routes/index.jsx` with `useRoutes(
 
 | Path | Component | File |
 |---|---|---|
-| `/admin-dashboard` | `AdminDashboard` | `pages/admin/AdminDashboard.jsx` |
-| `/student-dashboard` | `StudentDashboard` | `pages/student/StudentDashboard.jsx` |
-| `/teacher-dashboard` | `TeacherDashboard` | `pages/teacher/TeacherDashboard.jsx` |
-| `/parent-dashboard` | `ParentDashboard` | `pages/parent/ParentDashboard.jsx` |
+| `/admin-dashboard` | `AdminDashboard` | `dashboard/AdminDashboard.jsx` |
+| `/student-dashboard` | `StudentDashboard` | `dashboard/StudentDashboard.jsx` |
+| `/teacher-dashboard` | `TeacherDashboard` | `dashboard/TeacherDashboard.jsx` |
+| `/parent-dashboard` | `ParentDashboard` | `dashboard/ParentDashboard.jsx` |
 | `/courses` | `Courses` | `pages/Courses.jsx` |
 | `/subjects` | `Subjects` | `pages/Subjects.jsx` |
 | `/batches` | `Batches` | `pages/Batches.jsx` |
