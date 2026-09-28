@@ -92,7 +92,10 @@ function Header({ sticky = true }) {
           <DesktopNavigation />
 
           {/* SECTION 3 — RIGHT: auth actions (guest vs signed-in) + mobile menu toggle */}
-          <div className="flex min-w-0 items-center justify-end gap-2.5 lg:gap-3">
+          {/* col-start-3 pins this to the right track so the hamburger stays at the far
+             right on mobile even when DesktopNavigation (col 2) is display:none and
+             would otherwise let auto-placement drop here into the empty center slot. */}
+          <div className="flex min-w-0 items-center justify-end gap-2.5 col-start-3 lg:col-start-3 lg:gap-3">
             {token ? (
               <>
                 <Link
