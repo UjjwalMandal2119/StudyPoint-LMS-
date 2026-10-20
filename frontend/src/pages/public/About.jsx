@@ -69,27 +69,13 @@ const WHY = [
 ];
 
 const VALUES = [
-  { icon: '🎯', title: 'Our Vision', desc: 'To provide affordable, high-quality online coaching and guidance to every student.' },
+  { icon: '🎯', title: 'Our Vision', desc: 'To provide affordable, high-quality online coaching and guidance to every student across Jharkhand.' },
   { icon: '🚀', title: 'Our Mission', desc: 'To simplify complex topics through innovative teaching methods and structured test practice.' },
   { icon: '💎', title: 'Our Core Values', desc: 'Academic discipline, continuous improvement, and unwavering support for every student.' },
 ];
 export default function About() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-700">
-      {/* ============ ANNOUNCEMENT BAR ============ */}
-      <div className="bg-navy-dark text-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-6 py-2 text-xs sm:justify-between sm:px-8">
-          <p className="flex items-center gap-2">🎓 Study Point — Online Coaching Institute</p>
-          <p className="hidden items-center gap-2 font-medium sm:flex">
-            <FiPhone className="h-3.5 w-3.5 text-accent-amber" />
-            {CONTACT.phoneDisplay}
-          </p>
-        </div>
-      </div>
-
-      {/* ============ HEADER ============ */}
-      <Header />
-
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden bg-navy-dark">
         <img
@@ -118,8 +104,7 @@ export default function About() {
                 to="/courses"
                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-7 py-3 text-sm font-semibold text-white shadow-xl transition hover:scale-105"
               >
-                Explore Our Programs
-                <FiArrowRight className="h-4 w-4" />
+                Explore Our Programs <FiArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/contact"
@@ -160,7 +145,21 @@ export default function About() {
           </div>
         </div>
       </section>
-{/* ============ OUR STORY ============ */}
+
+      {/* ============ ANNOUNCEMENT BAR ============ */}
+      <div className="bg-navy-dark text-white">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-6 py-2 text-xs sm:justify-between sm:px-8">
+          <p className="flex items-center gap-2">🎓 Study Point — Online Coaching Institute</p>
+          <p className="hidden items-center gap-2 font-medium sm:flex">
+            <FiPhone className="h-3.5 w-3.5 text-accent-amber" />
+            {CONTACT.phoneDisplay}
+          </p>
+        </div>
+      </div>
+
+      {/* ============ HEADER ============ */}
+      <Header />
+      {/* ============ OUR STORY ============ */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="relative order-2 lg:order-1">
@@ -204,22 +203,18 @@ export default function About() {
               to="/courses"
               className="mt-8 inline-flex items-center gap-2 rounded-lg border border-navy-primary px-6 py-3 text-sm font-semibold text-navy-primary transition hover:bg-navy-primary hover:text-white"
             >
-              Explore Our Programs
-              <FiArrowRight className="h-4 w-4" />
+              Explore Our Programs <FiArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </section>
-
       {/* ============ WHY CHOOSE US ============ */}
       <section className="bg-lms-bg py-20">
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Why Study With Us</p>
             <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">What Makes Study Point Different</h2>
-            <p className="mt-4 text-slate-600">
-              A complete learning system designed to make every student exam-ready and confident.
-            </p>
+            <p className="mt-4 text-slate-600">A complete learning system designed to make every student exam-ready and confident.</p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {WHY.map((f) => (
@@ -237,7 +232,7 @@ export default function About() {
           </div>
         </div>
       </section>
-{/* ============ VISION / MISSION / VALUES ============ */}
+      {/* ============ VISION / MISSION / VALUES ============ */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Our Foundation</p>
@@ -253,7 +248,6 @@ export default function About() {
           ))}
         </div>
       </section>
-
       {/* ============ FOUNDER & DIRECTOR ============ */}
       <section className="bg-navy-dark py-20 text-white">
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
@@ -287,54 +281,26 @@ export default function About() {
           </div>
         </div>
       </section>
-{/* ============ CONTACT STRIP ============ */}
+      {/* ============ COMPACT CONTACT CARD ============ */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Get In Touch</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">Visit or Contact Our Centre</h2>
-          <p className="mt-4 text-slate-600">Have questions about admissions, batches, or courses? Reach out to us directly!</p>
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          <div className="rounded-2xl border border-lms-border bg-white p-6 shadow-card">
-            <div className="flex items-start gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white">
-                <FiMapPin className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="font-bold text-navy-dark">Address</p>
-                <p className="mt-1 text-sm text-slate-600">{CONTACT.address}</p>
-              </div>
-            </div>
+        <div className="rounded-2xl border border-lms-border bg-white p-8 md:p-12 shadow-card flex flex-col md:flex-row items-center gap-8">
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white">
+            <FiMapPin className="h-6 w-6" />
           </div>
-          <div className="rounded-2xl border border-lms-border bg-white p-6 shadow-card">
-            <div className="flex items-start gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white">
-                <FiPhone className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="font-bold text-navy-dark">Phone / WhatsApp</p>
-                <a href={`tel:${CONTACT.phone}`} className="mt-1 block text-sm text-navy-hover hover:underline">
-                  {CONTACT.phoneDisplay}
-                </a>
-              </div>
-            </div>
+          <div className="space-y-2">
+            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Visit Our Centre</p>
+            <p className="font-bold text-navy-dark">{CONTACT.address}</p>
           </div>
-          <div className="rounded-2xl border border-lms-border bg-white p-6 shadow-card">
-            <div className="flex items-start gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white">
-                <FiMail className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="font-bold text-navy-dark">Email</p>
-                <a href={`mailto:${CONTACT.email}`} className="mt-1 block text-sm text-navy-hover hover:underline">
-                  {CONTACT.email}
-                </a>
-              </div>
-            </div>
+          <div className="flex items-center gap-4 text-sm text-slate-600">
+            <a href={`tel:${CONTACT.phone}`} className="hover:text-navy-primary transition">{CONTACT.phoneDisplay}</a>
+            <span className="text-slate-400">|</span>
+            <a href={`mailto:${CONTACT.email}`} className="hover:text-navy-primary transition">{CONTACT.email}</a>
           </div>
+          <Link to="/contact" className="mt-6 md:mt-0 inline-flex items-center gap-2 rounded-full bg-navy-primary px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-navy-hover">
+            Full Contact Details <FiArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
-
       {/* ============ CTA ============ */}
       <section className="mx-auto max-w-6xl px-6 pb-20">
         <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-navy-primary via-navy-primary to-navy-hover px-8 py-16 text-center text-white shadow-2xl">
