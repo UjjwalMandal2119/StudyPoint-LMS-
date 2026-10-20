@@ -61,12 +61,14 @@ const FAQS = [
   { q: 'How can I contact Study Point for admission queries?', a: 'You can visit our center at Bindapathar, Jamtara, Jharkhand, call us at +91 82948 23430, or email studypoint.ujjwal@gmail.com.' },
 ];
 
-const VALUES = [
-  { icon: '🎯', title: 'Our Vision', desc: 'To provide affordable, high-quality online coaching and guidance to every student.' },
-  { icon: '🚀', title: 'Our Mission', desc: 'To simplify complex topics through innovative teaching methods and structured test practice.' },
-  { icon: '💎', title: 'Our Core Values', desc: 'Academic discipline, continuous improvement, and unwavering support for every student.' },
+const JHARKHAND_DISTRICTS = [
+  { name: 'Jamtara', status: 'Current Center', desc: 'Bindapathar, Jamtara — Our headquarters and first coaching center.', color: 'bg-navy-primary' },
+  { name: 'Dhanbad', status: 'Coming Soon', desc: 'Coal capital of Jharkhand — expanding online batches soon.', color: 'bg-slate-200' },
+  { name: 'Ranchi', status: 'Coming Soon', desc: 'State capital — online coaching for Ranchi students.', color: 'bg-slate-200' },
+  { name: 'Deoghar', status: 'Coming Soon', desc: 'Pilgrimage city — structured batches for Deoghar learners.', color: 'bg-slate-200' },
+  { name: 'Bokaro', status: 'Coming Soon', desc: 'Steel city — test series and live classes launching.', color: 'bg-slate-200' },
+  { name: 'Hazaribagh', status: 'Coming Soon', desc: 'Bringing quality coaching to Hazaribagh students.', color: 'bg-slate-200' },
 ];
-
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(0);
 
@@ -91,6 +93,64 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-700">
+      {/* ============ EXPANDING ACROSS JHARKHAND ============ */}
+      <section id="expansion" className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Our Growth Plan</p>
+          <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">From Jamtara to Every Corner of Jharkhand</h2>
+          <p className="mt-4 text-slate-600">
+            We started in Bindapathar, Jamtara. Our goal is to open Study Point branches in every district of Jharkhand — bringing affordable, quality coaching to students everywhere.
+          </p>
+        </div>
+        <div className="mt-16 grid gap-6 md:grid-cols-3 lg:grid-cols-4">
+          {JHARKHAND_DISTRICTS.map((d) => (
+            <div key={d.name} className={`rounded-2xl border p-6 text-center shadow-card transition hover:border-navy-primary/30 hover:shadow-lift ${d.color}`}>
+              <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold mb-3 {d.color === 'bg-navy-primary' ? 'border-accent-amber text-accent-amber bg-accent-amber/10' : 'border-slate-300 text-slate-500'}">
+                {d.status}
+              </span>
+              <h3 className="mt-2 text-xl font-bold text-navy-dark">{d.name}</h3>
+              <p className="mt-3 text-sm text-slate-600 leading-relaxed">{d.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-12 flex items-center justify-center">
+          <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-8 py-3 text-sm font-semibold text-white shadow-xl transition hover:scale-105">
+            Enquire About Expansion <FiArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* ============ HERO ============ */}
+      <section id="home" className="relative overflow-hidden bg-navy-dark">
+        <img src={IMG.hero} alt="Students preparing for exams at Study Point" className="absolute inset-0 h-full w-full object-cover opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-dark via-navy-dark/90 to-navy-primary/50" />
+        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:py-24">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-accent-amber/40 bg-accent-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-amber">
+              🎓 Online Coaching & Test Series
+            </span>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-[3.4rem]">
+              Quality Coaching from <br />
+              <span className="bg-gradient-to-r from-navy-hover to-accent-amber bg-clip-text text-transparent">Jamtara, Jharkhand</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
+              Structured live and recorded batches, mock tests, PDF notes, and doubt clearing — built for students across Jharkhand.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link to="/register" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-7 py-3 text-sm font-semibold text-white shadow-xl transition hover:scale-105">
+                Create Free Account <FiArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/courses" className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/20">
+                Explore Programs
+              </Link>
+            </div>
+          </div>
+          <div className="relative">
+            <img src={IMG.classroom} alt="Classroom at Study Point online coaching" className="w-full rounded-3xl border border-white/15 object-cover shadow-2xl" />
+          </div>
+        </div>
+      </section>
+
       {/* ============ ANNOUNCEMENT BAR ============ */}
       <div className="bg-navy-dark text-white">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-6 py-2 text-xs sm:justify-between sm:px-8">
@@ -104,51 +164,10 @@ export default function Home() {
 
       {/* ============ HEADER ============ */}
       <Header />
-
-      {/* ============ HERO ============ */}
-      <section id="home" className="relative overflow-hidden bg-navy-dark">
-        <img src={IMG.hero} alt="Students preparing for exams at Study Point" className="absolute inset-0 h-full w-full object-cover opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-dark via-navy-dark/90 to-navy-primary/50" />
-        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:py-24">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-accent-amber/40 bg-accent-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-amber">
-              🎓 Online Coaching & Test Series
-            </span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-[3.4rem]">
-              Empowering Students for{' '}
-              <span className="bg-gradient-to-r from-navy-hover to-accent-amber bg-clip-text text-transparent">Academic Success</span>
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-              Welcome to Study Point! We provide high-quality online classes, comprehensive study materials, regular mock tests, and individual doubt-solving to help you achieve your learning goals.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a href="#about" onClick={(e) => handleNav(e, '#about')} className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-7 py-3 text-sm font-semibold text-white shadow-xl transition hover:scale-105">
-                Explore Courses
-                <FiArrowRight className="h-4 w-4" />
-              </a>
-              <a href="#contact" onClick={(e) => handleNav(e, '#contact')} className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/20">
-                Contact Director
-              </a>
-            </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-white/70">
-              <span className="flex items-center gap-2"><FiCheck className="h-4 w-4 text-accent-amber" /> Live & Recorded Classes</span>
-              <span className="flex items-center gap-2"><FiCheck className="h-4 w-4 text-accent-amber" /> Online Mock Tests</span>
-              <span className="flex items-center gap-2"><FiCheck className="h-4 w-4 text-accent-amber" /> Personal Doubt Clearing</span>
-            </div>
-          </div>
-
-          <div className="relative">
-            <img src={IMG.dashboard} alt="Study Point online learning dashboard" className="w-full rounded-3xl border border-white/15 object-cover shadow-2xl" />
-            <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-white p-5 shadow-lift sm:block">
-              <p className="text-2xl font-extrabold text-navy-primary">98%</p>
-              <p className="text-xs font-medium text-slate-500">Student Satisfaction</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats strip */}
-        <div className="relative border-t border-white/10 bg-white/5 backdrop-blur">
-          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-6 py-8 text-center sm:px-8 md:grid-cols-4">
+      {/* ============ STATS ============ */}
+      <section className="bg-navy-dark py-20 text-white">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+          <div className="grid grid-cols-2 gap-4 px-6 py-8 text-center sm:px-8 md:grid-cols-4 border-t border-white/10 bg-white/5 backdrop-blur">
             {STATS.map((s) => (
               <div key={s.label}>
                 <p className="text-3xl font-extrabold text-white">{s.value}</p>
@@ -159,57 +178,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ ABOUT ============ */}
-      <section id="about" className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative">
-            <img src={IMG.about} alt="About Study Point online coaching" className="w-full rounded-3xl object-cover shadow-2xl" />
-            <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-navy-primary px-6 py-5 text-white shadow-lift sm:block">
-              <p className="text-3xl font-extrabold">100%</p>
-              <p className="text-xs uppercase tracking-wider text-white/80">Dedicated Mentorship</p>
-            </div>
-          </div>
-          <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">About Study Point</p>
-            <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">Your Trusted Online Coaching Destination</h2>
-            <p className="mt-5 leading-relaxed text-slate-600">
-              Study Point was founded with a clear goal: to make high-quality, concept-driven education accessible to students everywhere. We combine structured online teaching with continuous testing and doubt clearing so every learner can reach their potential.
-            </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {['Interactive live lectures & recordings', 'Regular mock exams & performance analytics', 'Chapter-wise PDF notes & exercise solutions', 'One-on-one doubt clearing sessions'].map((t) => (
-                <li key={t} className="flex items-center gap-3 text-slate-700">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-status-easy-bg text-status-easy-text">
-                    <FiCheck className="h-4 w-4" />
-                  </span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <a href="#features" onClick={(e) => handleNav(e, '#features')} className="mt-8 inline-flex items-center gap-2 rounded-lg border border-navy-primary px-6 py-3 text-sm font-semibold text-navy-primary transition hover:bg-navy-primary hover:text-white">
-              Explore Our Features
-              <FiArrowRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* ============ FEATURES ============ */}
-      <section id="features" className="bg-lms-bg py-20">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Why Study With Us</p>
-            <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">Everything You Need To Rank Higher</h2>
-            <p className="mt-4 text-slate-600">Designed to make learning engaging, structured, and result-oriented.</p>
-          </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURES.map((f) => (
-              <div key={f.title} className="group rounded-2xl border border-lms-border bg-white p-6 shadow-card transition hover:-translate-y-1 hover:border-navy-primary/30 hover:shadow-lift">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-primary/10 text-2xl transition group-hover:scale-110">{f.icon}</span>
-                <h3 className="mt-4 text-lg font-bold text-navy-dark">{f.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{f.desc}</p>
-              </div>
-            ))}
-          </div>
+      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Why Study With Us</p>
+          <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">Everything You Need To Rank Higher</h2>
+          <p className="mt-4 text-slate-600">Designed to make learning engaging, structured, and result-oriented.</p>
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {FEATURES.map((f) => (
+            <div key={f.title} className="group rounded-2xl border border-lms-border bg-white p-6 shadow-card transition hover:-translate-y-1 hover:border-navy-primary/30 hover:shadow-lift">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-primary/10 text-2xl transition group-hover:scale-110">{f.icon}</span>
+              <h3 className="mt-4 text-lg font-bold text-navy-dark">{f.title}</h3>
+              <p className="mt-2 text-sm text-slate-600">{f.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -229,33 +212,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      {/* ============ FOUNDER & DIRECTOR ============ */}
-      <section id="founder" className="bg-navy-dark py-20 text-white">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-5">
-            <div className="lg:col-span-2">
-              <div className="overflow-hidden rounded-3xl border border-white/15 p-3">
-                <img src={IMG.founder} alt="Ujjwal Mandal, Founder & Director of Study Point" className="w-full rounded-2xl object-cover" />
-              </div>
-            </div>
-            <div className="lg:col-span-3">
-              <p className="text-xs font-bold uppercase tracking-wider text-accent-amber">Founder's Vision</p>
-              <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">Founder & Director</h2>
-              <h3 className="mt-6 text-2xl font-extrabold">Ujjwal Mandal</h3>
-              <p className="mt-1 text-sm font-semibold uppercase tracking-wider text-navy-hover">Founder & Lead Educator</p>
-              <div className="mt-6 border-l-4 border-accent-amber bg-white/5 p-6">
-                <p className="text-lg font-semibold italic text-white">“A Message to Our Students”</p>
-                <p className="mt-3 leading-relaxed text-white/85">
-                  Education has the power to transform lives. At Study Point, my mission is to give every student clear concept clarity, consistent guidance, and the right technical tools to succeed in their academic journey. Together, let's turn effort into achievement.
-                </p>
-                <p className="mt-4 text-sm font-bold">— Ujjwal Mandal, Director</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ============ TESTIMONIALS ============ */}
       <section id="testimonials" className="bg-lms-bg py-20">
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
@@ -266,14 +222,10 @@ export default function Home() {
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {TESTIMONIALS.map((t) => (
               <figure key={t.name} className="rounded-2xl border border-lms-border bg-white p-7 shadow-card">
-                <div className="flex gap-1 text-accent-amber">
-                  {'★★★★★'.split('').map((s, i) => <span key={i}>{s}</span>)}
-                </div>
+                <div className="flex gap-1 text-accent-amber">{'★★★★★'.split('').map((s, i) => <span key={i}>{s}</span>)}</div>
                 <blockquote className="mt-4 text-sm leading-relaxed text-slate-600">“{t.quote}”</blockquote>
                 <figcaption className="mt-6 flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-primary/10 font-bold text-navy-primary">
-                    {t.name.charAt(0)}
-                  </span>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-primary/10 font-bold text-navy-primary">{t.name.charAt(0)}</span>
                   <div>
                     <p className="text-sm font-bold text-navy-dark">{t.name}</p>
                     <p className="text-xs text-slate-500">{t.role}</p>
@@ -282,23 +234,6 @@ export default function Home() {
               </figure>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ============ VISION / MISSION / VALUES ============ */}
-      <section id="vision" className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Our Foundation</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">Vision, Mission & Values</h2>
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {VALUES.map((v) => (
-            <div key={v.title} className="rounded-2xl border border-lms-border bg-white p-7 text-center shadow-card">
-              <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-primary/10 text-3xl">{v.icon}</span>
-              <h3 className="mt-4 text-xl font-bold text-navy-dark">{v.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{v.desc}</p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -312,10 +247,7 @@ export default function Home() {
           <div className="mt-10 space-y-3">
             {FAQS.map((f, i) => (
               <div key={f.q} className="overflow-hidden rounded-xl border border-lms-border bg-white shadow-card">
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left font-semibold text-navy-dark transition hover:bg-lms-bg"
-                >
+                <button onClick={() => setOpenFaq(openFaq === i ? -1 : i)} className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left font-semibold text-navy-dark transition hover:bg-lms-bg">
                   {f.q}
                   {openFaq === i ? <FiMinus className="h-5 w-5 shrink-0 text-navy-hover" /> : <FiPlus className="h-5 w-5 shrink-0 text-navy-hover" />}
                 </button>
@@ -327,70 +259,29 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ============ CONTACT ============ */}
+      {/* ============ COMPACT CONTACT CTA ============ */}
       <section id="contact" className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Get In Touch</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">Contact Study Point</h2>
-          <p className="mt-4 text-slate-600">Have questions about admissions, batches, or courses? Reach out to us directly!</p>
-        </div>
-        <div className="mt-12 grid gap-8 lg:grid-cols-5">
-          <div className="space-y-5 lg:col-span-2">
-            <div className="rounded-2xl border border-lms-border bg-white p-6 shadow-card">
-              <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white"><FiMapPin className="h-5 w-5" /></span>
-                <div>
-                  <p className="font-bold text-navy-dark">Address</p>
-                  <p className="mt-1 text-sm text-slate-600">{CONTACT.address}</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-lms-border bg-white p-6 shadow-card">
-              <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white"><FiMail className="h-5 w-5" /></span>
-                <div>
-                  <p className="font-bold text-navy-dark">Email</p>
-                  <a href={`mailto:${CONTACT.email}`} className="mt-1 block text-sm text-navy-hover hover:underline">{CONTACT.email}</a>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-lms-border bg-white p-6 shadow-card">
-              <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white"><FiPhone className="h-5 w-5" /></span>
-                <div>
-                  <p className="font-bold text-navy-dark">Phone / WhatsApp</p>
-                  <a href={`tel:${CONTACT.phone}`} className="mt-1 block text-sm text-navy-hover hover:underline">{CONTACT.phoneDisplay}</a>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-accent-amber/40 bg-accent-amber/5 p-6">
-              <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-amber text-white"><FiUser className="h-5 w-5" /></span>
-                <div>
-                  <p className="font-bold text-navy-dark">Founder & Director</p>
-                  <p className="mt-1 text-sm text-slate-700">{CONTACT.founder}</p>
-                </div>
-              </div>
-            </div>
+        <div className="rounded-[2rem] bg-gradient-to-r from-navy-primary via-navy-primary to-navy-hover px-8 py-16 text-center text-white shadow-2xl overflow-hidden relative">
+          <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/20 blur-2xl" />
+          <div className="pointer-events-none absolute -bottom-10 -left-10 h-44 w-44 rounded-full bg-accent-amber/20 blur-2xl" />
+          <h2 className="text-3xl font-extrabold md:text-5xl">Get In Touch — Jamtara, Jharkhand</h2>
+          <p className="mx-auto mt-4 max-w-xl text-white/90">
+            Have questions about admissions, batches, or our expansion across Jharkhand? Reach out to us directly.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <a href={`tel:${CONTACT.phone}`} className="rounded-full border-2 border-white/70 px-8 py-3 font-semibold text-white transition hover:bg-white/20">
+              <FiPhone className="mr-2 h-4 w-4" /> Call {CONTACT.phoneDisplay}
+            </a>
+            <a href={`mailto:${CONTACT.email}`} className="rounded-full border-2 border-white/70 px-8 py-3 font-semibold text-white transition hover:bg-white/20">
+              <FiMail className="mr-2 h-4 w-4" /> Email Us
+            </a>
+            <Link to="/contact" className="rounded-full bg-white px-8 py-3 font-semibold text-navy-primary shadow-xl transition hover:scale-105">
+              Contact Page <FiArrowRight className="h-4 w-4" />
+            </Link>
           </div>
-
-          <div className="rounded-3xl border border-lms-border bg-white p-8 shadow-xl lg:col-span-3">
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input required placeholder="Your Full Name" className="input" />
-                <input required type="email" placeholder="Your Email Address" className="input" />
-              </div>
-              <input required type="tel" placeholder="Mobile / WhatsApp Number" className="input" />
-              <textarea required rows={5} placeholder="Which course or batch are you interested in?" className="input" />
-              <button className="w-full rounded-xl bg-gradient-to-r from-navy-primary to-navy-hover py-3 font-semibold text-white shadow-lg transition hover:scale-[1.01]">
-                Send Inquiry
-              </button>
-            </form>
-          </div>
+          <p className="mt-6 text-sm text-white/80">{CONTACT.address}</p>
         </div>
       </section>
-
       {/* ============ CTA ============ */}
       <section className="mx-auto max-w-6xl px-6 pb-20">
         <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-navy-primary via-navy-primary to-navy-hover px-8 py-16 text-center text-white shadow-2xl">
