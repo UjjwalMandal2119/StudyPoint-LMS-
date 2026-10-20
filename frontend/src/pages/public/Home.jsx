@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiMail, FiPhone, FiMapPin, FiUser, FiPlus, FiMinus, FiCheck, FiArrowRight } from 'react-icons/fi';
+import { FiMail, FiPhone, FiPlus, FiMinus, FiArrowRight } from 'react-icons/fi';
 import founderPhoto from '../../assets/ujjwal PhotoCollegeUniform.jpeg';
+import AnnouncementBar from '../../components/layout/header/AnnouncementBar';
 import Header from '../../components/layout/header/Header';
 import Footer from '../../components/layout/footer/Footer';
 
@@ -62,63 +63,23 @@ const FAQS = [
 ];
 
 const JHARKHAND_DISTRICTS = [
-  { name: 'Jamtara', status: 'Current Center', desc: 'Bindapathar, Jamtara — Our headquarters and first coaching center.', color: 'bg-navy-primary' },
-  { name: 'Dhanbad', status: 'Coming Soon', desc: 'Coal capital of Jharkhand — expanding online batches soon.', color: 'bg-slate-200' },
-  { name: 'Ranchi', status: 'Coming Soon', desc: 'State capital — online coaching for Ranchi students.', color: 'bg-slate-200' },
-  { name: 'Deoghar', status: 'Coming Soon', desc: 'Pilgrimage city — structured batches for Deoghar learners.', color: 'bg-slate-200' },
-  { name: 'Bokaro', status: 'Coming Soon', desc: 'Steel city — test series and live classes launching.', color: 'bg-slate-200' },
-  { name: 'Hazaribagh', status: 'Coming Soon', desc: 'Bringing quality coaching to Hazaribagh students.', color: 'bg-slate-200' },
+  { name: 'Jamtara', status: 'Current centre', x: 274, y: 112, current: true },
+  { name: 'Dhanbad', status: 'Planned', x: 251, y: 139 },
+  { name: 'Ranchi', status: 'Planned', x: 205, y: 159 },
+  { name: 'Deoghar', status: 'Planned', x: 285, y: 87 },
+  { name: 'Bokaro', status: 'Planned', x: 235, y: 168 },
+  { name: 'Hazaribagh', status: 'Planned', x: 213, y: 133 },
 ];
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(0);
 
-  const scrollToId = (id) => {
-    if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    const el = document.getElementById(id);
-    if (el) {
-      const header = document.querySelector('header');
-      const offset = header ? header.offsetHeight + 12 : 0;
-      const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  };
-
-  const handleNav = (e, href) => {
-    e.preventDefault();
-    scrollToId(href.replace('#', ''));
-  };
-
   return (
     <div className="min-h-screen bg-white font-sans text-slate-700">
-      {/* ============ EXPANDING ACROSS JHARKHAND ============ */}
-      <section id="expansion" className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Our Growth Plan</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">From Jamtara to Every Corner of Jharkhand</h2>
-          <p className="mt-4 text-slate-600">
-            We started in Bindapathar, Jamtara. Our goal is to open Study Point branches in every district of Jharkhand — bringing affordable, quality coaching to students everywhere.
-          </p>
-        </div>
-        <div className="mt-16 grid gap-6 md:grid-cols-3 lg:grid-cols-4">
-          {JHARKHAND_DISTRICTS.map((d) => (
-            <div key={d.name} className={`rounded-2xl border p-6 text-center shadow-card transition hover:border-navy-primary/30 hover:shadow-lift ${d.color}`}>
-              <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold mb-3 {d.color === 'bg-navy-primary' ? 'border-accent-amber text-accent-amber bg-accent-amber/10' : 'border-slate-300 text-slate-500'}">
-                {d.status}
-              </span>
-              <h3 className="mt-2 text-xl font-bold text-navy-dark">{d.name}</h3>
-              <p className="mt-3 text-sm text-slate-600 leading-relaxed">{d.desc}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-12 flex items-center justify-center">
-          <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-8 py-3 text-sm font-semibold text-white shadow-xl transition hover:scale-105">
-            Enquire About Expansion <FiArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
+      {/* ============ ANNOUNCEMENT BAR ============ */}
+      <AnnouncementBar phone={CONTACT.phone} phoneDisplay={CONTACT.phoneDisplay} />
+
+      {/* ============ HEADER ============ */}
+      <Header />
 
       {/* ============ HERO ============ */}
       <section id="home" className="relative overflow-hidden bg-navy-dark">
@@ -150,20 +111,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ============ ANNOUNCEMENT BAR ============ */}
-      <div className="bg-navy-dark text-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-6 py-2 text-xs sm:justify-between sm:px-8">
-          <p className="flex items-center gap-2">🎓 Admissions Open for New Batches — Bindapathar, Jamtara, Jharkhand</p>
-          <a href="#contact" onClick={(e) => handleNav(e, '#contact')} className="hidden items-center gap-2 font-medium sm:flex">
-            <FiPhone className="h-3.5 w-3.5 text-accent-amber" />
-            {CONTACT.phoneDisplay}
-          </a>
-        </div>
-      </div>
-
-      {/* ============ HEADER ============ */}
-      <Header />
       {/* ============ STATS ============ */}
       <section className="bg-navy-dark py-20 text-white">
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
@@ -259,27 +206,161 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* ============ EXPANDING ACROSS JHARKHAND ============ */}
+      <section id="expansion" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Our Expansion</p>
+            <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">
+              From Jamtara to Every Corner of Jharkhand
+            </h2>
+            <p className="mt-4 text-slate-600">
+              We’re growing from our Bindapathar centre to reach more students across Jharkhand.
+            </p>
+          </div>
+
+          <div className="mt-12 grid items-center gap-10 rounded-3xl border border-lms-border bg-white p-6 shadow-card sm:p-8 lg:grid-cols-2 lg:gap-14">
+            <div className="mx-auto w-full max-w-lg">
+              <svg
+                viewBox="0 0 360 280"
+                role="img"
+                aria-labelledby="jharkhand-map-title jharkhand-map-description"
+                className="h-auto w-full"
+              >
+                <title id="jharkhand-map-title">Study Point expansion map of Jharkhand</title>
+                <desc id="jharkhand-map-description">
+                  Map of Jharkhand showing the current Study Point centre in Jamtara and planned reach in Dhanbad, Ranchi, Deoghar, Bokaro, and Hazaribagh.
+                </desc>
+                <path
+                  d="M91 19 119 25 143 13 164 22 187 19 207 28 229 27 246 39 270 42 282 55 305 56 320 69 313 85 326 99 315 116 330 130 317 145 326 160 307 174 299 194 282 205 274 223 255 229 245 248 224 255 210 246 191 251 177 236 155 237 148 219 127 210 117 192 95 187 87 168 70 163 67 143 45 133 52 116 34 101 41 84 28 67 43 53 46 37 67 35 72 24Z"
+                  fill="#eff6ff"
+                  stroke="#1e3a8a"
+                  strokeWidth="3"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="m78 56 44 20 36-14 28 28 43-11 30 20m-161 2 37 17 24-7 26 22 36-7 39 18m-143 4 40 7 27-13 26 22 32-4m-94 18 34-10 32 13 28-8m-66 33 6-25 30-13 1-25m-30 63 20-25 31-13 2-25m31-22 17-24"
+                  fill="none"
+                  stroke="#bfdbfe"
+                  strokeWidth="1.5"
+                  strokeDasharray="3 4"
+                  strokeLinecap="round"
+                />
+                {JHARKHAND_DISTRICTS.map((district, index) => (
+                  <g key={district.name}>
+                    <circle
+                      cx={district.x}
+                      cy={district.y}
+                      r="9"
+                      fill={district.current ? '#f59e0b' : '#2563eb'}
+                      stroke="white"
+                      strokeWidth="3"
+                    />
+                    <circle
+                      cx={district.x}
+                      cy={district.y}
+                      r="13"
+                      fill="none"
+                      stroke={district.current ? '#f59e0b' : '#2563eb'}
+                      strokeOpacity="0.35"
+                      strokeWidth="2"
+                    />
+                    <text
+                      x={district.x}
+                      y={district.y + 0.5}
+                      fill="white"
+                      fontSize="7"
+                      fontWeight="700"
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                    >
+                      {index + 1}
+                    </text>
+                  </g>
+                ))}
+                <text x="120" y="220" fill="#1e3a8a" fillOpacity="0.45" fontSize="19" fontWeight="700">
+                  JHARKHAND
+                </text>
+              </svg>
+              <div className="mt-2 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-slate-600">
+                <span className="inline-flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-accent-amber" />
+                  Current centre
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-navy-hover" />
+                  Planned reach
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-end justify-between gap-4 border-b border-lms-border pb-4">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Growing our reach</p>
+                  <h3 className="mt-1 text-xl font-bold text-navy-dark">Our district roadmap</h3>
+                </div>
+                <span className="shrink-0 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-500">
+                  6 locations
+                </span>
+              </div>
+              <ul className="mt-2 divide-y divide-lms-border">
+                {JHARKHAND_DISTRICTS.map((district, index) => (
+                  <li key={district.name} className="flex items-center justify-between gap-4 py-3">
+                    <span className="flex min-w-0 items-center gap-3">
+                      <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white ${district.current ? 'bg-accent-amber' : 'bg-navy-hover'}`}>
+                        {index + 1}
+                      </span>
+                      <span className="truncate text-sm font-semibold text-navy-dark">{district.name}</span>
+                    </span>
+                    <span className={`shrink-0 text-xs font-medium ${district.current ? 'text-amber-700' : 'text-slate-500'}`}>
+                      {district.status}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to="/contact"
+                className="mt-5 inline-flex items-center gap-2 rounded-lg bg-navy-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-navy-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy-hover/40 focus-visible:ring-offset-2"
+              >
+                Enquire about expansion <FiArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============ COMPACT CONTACT CTA ============ */}
-      <section id="contact" className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="rounded-[2rem] bg-gradient-to-r from-navy-primary via-navy-primary to-navy-hover px-8 py-16 text-center text-white shadow-2xl overflow-hidden relative">
-          <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/20 blur-2xl" />
-          <div className="pointer-events-none absolute -bottom-10 -left-10 h-44 w-44 rounded-full bg-accent-amber/20 blur-2xl" />
-          <h2 className="text-3xl font-extrabold md:text-5xl">Get In Touch — Jamtara, Jharkhand</h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/90">
-            Have questions about admissions, batches, or our expansion across Jharkhand? Reach out to us directly.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <a href={`tel:${CONTACT.phone}`} className="rounded-full border-2 border-white/70 px-8 py-3 font-semibold text-white transition hover:bg-white/20">
-              <FiPhone className="mr-2 h-4 w-4" /> Call {CONTACT.phoneDisplay}
+      <section id="contact" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-10 sm:px-8 sm:py-12">
+        <div className="flex flex-col gap-6 rounded-2xl bg-navy-dark px-6 py-7 text-white sm:px-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-xl">
+            <p className="text-xs font-semibold uppercase tracking-wider text-accent-amber">Get in touch</p>
+            <h2 className="mt-1 text-2xl font-bold text-white">Questions? We’re here to help.</h2>
+            <p className="mt-2 text-sm text-white/70">
+              Admissions, batches, or our expansion across Jharkhand — reach out to our team.
+            </p>
+            <p className="mt-2 text-xs text-white/60">{CONTACT.address}</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={`tel:${CONTACT.phone}`}
+              className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              <FiPhone className="h-4 w-4" /> Call us
             </a>
-            <a href={`mailto:${CONTACT.email}`} className="rounded-full border-2 border-white/70 px-8 py-3 font-semibold text-white transition hover:bg-white/20">
-              <FiMail className="mr-2 h-4 w-4" /> Email Us
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              <FiMail className="h-4 w-4" /> Email us
             </a>
-            <Link to="/contact" className="rounded-full bg-white px-8 py-3 font-semibold text-navy-primary shadow-xl transition hover:scale-105">
-              Contact Page <FiArrowRight className="h-4 w-4" />
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-navy-primary transition hover:bg-slate-100"
+            >
+              Contact page <FiArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <p className="mt-6 text-sm text-white/80">{CONTACT.address}</p>
         </div>
       </section>
       {/* ============ CTA ============ */}

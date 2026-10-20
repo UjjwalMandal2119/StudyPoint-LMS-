@@ -9,6 +9,7 @@ import {
   FiSend,
   FiUser,
 } from 'react-icons/fi';
+import AnnouncementBar from '../../components/layout/header/AnnouncementBar';
 import Header from '../../components/layout/header/Header';
 import Footer from '../../components/layout/footer/Footer';
 
@@ -82,15 +83,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-700">
-      <div className="bg-navy-dark text-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-6 py-2 text-xs sm:justify-between sm:px-8">
-          <p className="flex items-center gap-2">🎓 Study Point — Online Coaching Institute</p>
-          <a href={`tel:${CONTACT.phone}`} className="hidden items-center gap-2 font-medium sm:flex">
-            <FiPhone className="h-3.5 w-3.5 text-accent-amber" />
-            {CONTACT.phoneDisplay}
-          </a>
-        </div>
-      </div>
+      <AnnouncementBar phone={CONTACT.phone} phoneDisplay={CONTACT.phoneDisplay} />
 
       <Header />
 

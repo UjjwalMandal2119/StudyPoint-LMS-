@@ -13,6 +13,7 @@ import {
   FiPhone,
   FiMail,
 } from 'react-icons/fi';
+import AnnouncementBar from '../../components/layout/header/AnnouncementBar';
 import Header from '../../components/layout/header/Header';
 import Footer from '../../components/layout/footer/Footer';
 
@@ -92,15 +93,7 @@ export default function Courses() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-700">
       {/* ============ ANNOUNCEMENT BAR ============ */}
-      <div className="bg-navy-dark text-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-6 py-2 text-xs sm:justify-between sm:px-8">
-          <p className="flex items-center gap-2">🎓 Admissions Open for New Batches — Bindapathar, Jamtara, Jharkhand</p>
-          <p className="hidden items-center gap-2 font-medium sm:flex">
-            <FiPhone className="h-3.5 w-3.5 text-accent-amber" />
-            {CONTACT.phoneDisplay}
-          </p>
-        </div>
-      </div>
+      <AnnouncementBar phone={CONTACT.phone} phoneDisplay={CONTACT.phoneDisplay} />
 
       {/* ============ HEADER ============ */}
       <Header />

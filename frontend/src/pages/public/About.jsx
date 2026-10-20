@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   FiCheck,
   FiArrowRight,
-  FiPhone,
   FiMail,
   FiMapPin,
   FiBookOpen,
@@ -12,6 +11,7 @@ import {
   FiUsers,
 } from 'react-icons/fi';
 import founderPhoto from '../../assets/ujjwal PhotoCollegeUniform.jpeg';
+import AnnouncementBar from '../../components/layout/header/AnnouncementBar';
 import Header from '../../components/layout/header/Header';
 import Footer from '../../components/layout/footer/Footer';
 
@@ -76,6 +76,12 @@ const VALUES = [
 export default function About() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-700">
+      {/* ============ ANNOUNCEMENT BAR ============ */}
+      <AnnouncementBar phone={CONTACT.phone} phoneDisplay={CONTACT.phoneDisplay} />
+
+      {/* ============ HEADER ============ */}
+      <Header />
+
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden bg-navy-dark">
         <img
@@ -146,19 +152,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ============ ANNOUNCEMENT BAR ============ */}
-      <div className="bg-navy-dark text-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-6 py-2 text-xs sm:justify-between sm:px-8">
-          <p className="flex items-center gap-2">🎓 Study Point — Online Coaching Institute</p>
-          <p className="hidden items-center gap-2 font-medium sm:flex">
-            <FiPhone className="h-3.5 w-3.5 text-accent-amber" />
-            {CONTACT.phoneDisplay}
-          </p>
-        </div>
-      </div>
-
-      {/* ============ HEADER ============ */}
-      <Header />
       {/* ============ OUR STORY ============ */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">
