@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { FiMail, FiPhone, FiMapPin, FiUser, FiClock, FiSend, FiCheckCircle } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import {
+  FiArrowRight,
+  FiClock,
+  FiMail,
+  FiMapPin,
+  FiPhone,
+  FiSend,
+  FiUser,
+} from 'react-icons/fi';
 import Header from '../../components/layout/header/Header';
 import Footer from '../../components/layout/footer/Footer';
 
@@ -9,225 +18,331 @@ const CONTACT = {
   phoneDisplay: '+91 82948 23430',
   address: 'Bindapathar, Jamtara, Jharkhand — 815351',
   founder: 'Ujjwal Mandal',
-  role: 'Founder & Director, Study Point',
-  hours: 'Mon - Sat: 8:00 AM - 8:00 PM',
+  hours: 'Monday – Saturday, 8:00 AM – 8:00 PM',
+};
+
+const CONTACT_METHODS = [
+  {
+    icon: FiPhone,
+    label: 'Call or WhatsApp',
+    value: CONTACT.phoneDisplay,
+    href: `tel:${CONTACT.phone}`,
+  },
+  {
+    icon: FiMail,
+    label: 'Email our team',
+    value: CONTACT.email,
+    href: `mailto:${CONTACT.email}`,
+  },
+  {
+    icon: FiMapPin,
+    label: 'Visit our centre',
+    value: CONTACT.address,
+    href: `https://maps.google.com/?q=${encodeURIComponent(CONTACT.address)}`,
+  },
+  {
+    icon: FiClock,
+    label: 'Inquiry hours',
+    value: CONTACT.hours,
+  },
+];
+
+const INITIAL_FORM = {
+  name: '',
+  email: '',
+  phone: '',
+  course: '',
+  message: '',
 };
 
 export default function Contact() {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    course: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState(INITIAL_FORM);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Front-end handler - ready to connect to your backend API
-    setFormSubmitted(true);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone}`,
+      `Course or subject: ${formData.course || 'Not specified'}`,
+      '',
+      'Message:',
+      formData.message,
+    ].join('\n');
+    const subject = `Study Point inquiry from ${formData.name}`;
+
+    window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
-    <div className="min-h-screen bg-lms-bg font-sans text-slate-700">
-      {/* ============ TOP ANNOUNCEMENT BAR ============ */}
+    <div className="min-h-screen bg-white font-sans text-slate-700">
       <div className="bg-navy-dark text-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs sm:px-8">
-          <span className="flex items-center gap-2">🎓 Study Point — Admissions Open</span>
-          <span className="hidden sm:inline">Education • Excellence • Growth</span>
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-6 py-2 text-xs sm:justify-between sm:px-8">
+          <p className="flex items-center gap-2">🎓 Study Point — Online Coaching Institute</p>
+          <a href={`tel:${CONTACT.phone}`} className="hidden items-center gap-2 font-medium sm:flex">
+            <FiPhone className="h-3.5 w-3.5 text-accent-amber" />
+            {CONTACT.phoneDisplay}
+          </a>
         </div>
       </div>
 
-      {/* ============ HEADER ============ */}
       <Header />
 
-      {/* ============ MAIN CONTENT ============ */}
-      <main className="mx-auto max-w-5xl px-6 py-12 sm:px-8">
-        {/* Header Hero */}
-        <header className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-navy-dark via-navy-primary to-navy-hover px-8 py-12 text-white shadow-xl">
-          <div className="relative z-10 max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-accent-amber/40 bg-accent-amber/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-accent-amber">
-              We're Here to Help
-            </span>
-            <h1 className="mt-4 text-3xl font-extrabold sm:text-4xl">Contact Study Point</h1>
-            <p className="mt-3 text-base leading-relaxed text-white/90 sm:text-lg">
-              Have questions regarding admissions, batch timings, or course details? Get in touch with us!
-            </p>
-          </div>
-        </header>
-
-        {/* Content Grid */}
-        <div className="mt-10 grid gap-8 lg:grid-cols-5">
-          {/* Contact Details Column */}
-          <div className="space-y-4 lg:col-span-2">
-            <div className="rounded-2xl border border-lms-border bg-white p-6 shadow-card">
-              <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white">
-                  <FiMapPin className="h-5 w-5" />
+      <main>
+        <section className="relative overflow-hidden bg-navy-dark">
+          <img
+            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80"
+            alt="Students learning together"
+            className="absolute inset-0 h-full w-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-dark via-navy-dark/90 to-navy-primary/50" />
+          <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:py-24">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-accent-amber/40 bg-accent-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-amber">
+                We’re Here to Help
+              </span>
+              <h1 className="mt-5 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-[3.4rem]">
+                Let’s plan your{' '}
+                <span className="bg-gradient-to-r from-navy-hover to-accent-amber bg-clip-text text-transparent">
+                  next step
                 </span>
-                <div>
-                  <p className="font-bold text-navy-dark">Address</p>
-                  <p className="mt-1 text-sm text-slate-600">{CONTACT.address}</p>
-                </div>
+              </h1>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
+                Ask us about courses, admissions, or batch timings. Our team is happy to help you find the right path.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="#inquiry"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-7 py-3 text-sm font-semibold text-white shadow-xl transition hover:scale-105"
+                >
+                  Send an inquiry
+                  <FiArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href={`tel:${CONTACT.phone}`}
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+                >
+                  <FiPhone className="h-4 w-4" />
+                  Call us
+                </a>
+              </div>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-white/70">
+                <span className="flex items-center gap-2">
+                  <FiClock className="h-4 w-4 text-accent-amber" />
+                  Mon – Sat, 8 AM – 8 PM
+                </span>
+                <span className="flex items-center gap-2">
+                  <FiMapPin className="h-4 w-4 text-accent-amber" />
+                  Bindapathar, Jamtara
+                </span>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-lms-border bg-white p-6 shadow-card">
-              <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white">
-                  <FiPhone className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="font-bold text-navy-dark">Phone / WhatsApp</p>
-                  <a href={`tel:${CONTACT.phone}`} className="mt-1 block text-sm text-navy-hover hover:underline">
-                    {CONTACT.phoneDisplay}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-lms-border bg-white p-6 shadow-card">
-              <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white">
-                  <FiMail className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="font-bold text-navy-dark">Email</p>
-                  <a href={`mailto:${CONTACT.email}`} className="mt-1 block text-sm text-navy-hover hover:underline">
-                    {CONTACT.email}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-lms-border bg-white p-6 shadow-card">
-              <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white">
-                  <FiClock className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="font-bold text-navy-dark">Inquiry Hours</p>
-                  <p className="mt-1 text-sm text-slate-600">{CONTACT.hours}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-accent-amber/40 bg-accent-amber/5 p-6">
-              <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-amber text-white">
-                  <FiUser className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="font-bold text-navy-dark">Founder & Director</p>
-                  <p className="mt-1 text-sm font-semibold text-slate-700">{CONTACT.founder}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Inquiry Form */}
-          <div className="rounded-3xl border border-lms-border bg-white p-8 shadow-xl lg:col-span-3">
-            <h3 className="text-xl font-bold text-navy-dark">Send Us an Admission Inquiry</h3>
-            <p className="mt-1 text-sm text-slate-600">Fill out your details and we will contact you shortly.</p>
-
-            {formSubmitted ? (
-              <div className="mt-8 rounded-2xl bg-emerald-50 border border-emerald-200 p-6 text-center text-emerald-800">
-                <FiCheckCircle className="mx-auto h-12 w-12 text-emerald-600" />
-                <h4 className="mt-3 text-lg font-bold">Inquiry Sent Successfully!</h4>
-                <p className="mt-2 text-sm text-emerald-700">
-                  Thank you for reaching out to Study Point. We will respond to your query at <strong>{formData.email || 'your email'}</strong> soon.
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
+                alt="Books and learning materials"
+                className="w-full rounded-3xl border border-white/15 object-cover shadow-2xl"
+              />
+              <div className="absolute -bottom-6 -left-6 hidden max-w-xs rounded-2xl bg-white p-5 shadow-lift sm:block">
+                <p className="text-sm font-bold text-navy-dark">A real person, ready to help</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500">
+                  Talk directly with {CONTACT.founder}, Founder & Director of Study Point.
                 </p>
-                <button
-                  onClick={() => setFormSubmitted(false)}
-                  className="mt-5 rounded-lg bg-emerald-600 px-6 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700"
-                >
-                  Send Another Inquiry
-                </button>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">Your Full Name</label>
-                    <input
-                      required
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="e.g. Rahul Kumar"
-                      className="w-full rounded-xl border border-lms-border px-4 py-2.5 text-sm outline-none transition focus:border-navy-primary focus:ring-1 focus:ring-navy-primary"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">Email Address</label>
-                    <input
-                      required
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="name@example.com"
-                      className="w-full rounded-xl border border-lms-border px-4 py-2.5 text-sm outline-none transition focus:border-navy-primary focus:ring-1 focus:ring-navy-primary"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">Mobile / WhatsApp</label>
-                    <input
-                      required
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+91 82948 23430"
-                      className="w-full rounded-xl border border-lms-border px-4 py-2.5 text-sm outline-none transition focus:border-navy-primary focus:ring-1 focus:ring-navy-primary"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">Target Course / Subject</label>
-                    <input
-                      name="course"
-                      value={formData.course}
-                      onChange={handleChange}
-                      placeholder="e.g. Mathematics, Test Series"
-                      className="w-full rounded-xl border border-lms-border px-4 py-2.5 text-sm outline-none transition focus:border-navy-primary focus:ring-1 focus:ring-navy-primary"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold uppercase text-slate-500 mb-1">Your Message or Query</label>
-                  <textarea
-                    required
-                    rows={4}
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about what you want to learn or ask about batches..."
-                    className="w-full rounded-xl border border-lms-border px-4 py-2.5 text-sm outline-none transition focus:border-navy-primary focus:ring-1 focus:ring-navy-primary"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-navy-primary to-navy-hover py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.01]"
-                >
-                  <FiSend className="h-4 w-4" /> Send Inquiry
-                </button>
-              </form>
-            )}
+            </div>
           </div>
-        </div>
+        </section>
+
+        <section id="inquiry" className="bg-lms-bg py-20">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Get in touch</p>
+              <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">
+                We’d love to hear from you
+              </h2>
+              <p className="mt-4 text-slate-600">
+                Choose the way that works best for you, or send us a message and we’ll help with your inquiry.
+              </p>
+            </div>
+
+            <div className="mt-12 grid items-start gap-8 lg:grid-cols-5">
+              <div className="grid gap-4 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-1">
+                {CONTACT_METHODS.map(({ icon: Icon, label, value, href }) => {
+                  const content = (
+                    <>
+                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy-primary/10 text-navy-primary transition group-hover:bg-navy-primary group-hover:text-white">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-sm font-bold text-navy-dark">{label}</span>
+                        <span className="mt-1 block break-words text-sm leading-relaxed text-slate-600">{value}</span>
+                      </span>
+                    </>
+                  );
+
+                  return href ? (
+                    <a
+                      key={label}
+                      href={href}
+                      target={href.startsWith('https:') ? '_blank' : undefined}
+                      rel={href.startsWith('https:') ? 'noreferrer' : undefined}
+                      className="group flex items-start gap-4 rounded-2xl border border-lms-border bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:border-navy-primary/30 hover:shadow-lift"
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div
+                      key={label}
+                      className="group flex items-start gap-4 rounded-2xl border border-lms-border bg-white p-5 shadow-card"
+                    >
+                      {content}
+                    </div>
+                  );
+                })}
+
+                <div className="rounded-2xl border border-accent-amber/30 bg-accent-amber/10 p-5 sm:col-span-2 lg:col-span-1">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-amber text-white">
+                      <FiUser className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Founder & Director</p>
+                      <p className="mt-0.5 font-bold text-navy-dark">{CONTACT.founder}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-lms-border bg-white p-6 shadow-card sm:p-8 lg:col-span-3">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Admission inquiry</p>
+                  <h3 className="mt-2 text-2xl font-extrabold text-navy-dark">How can we help?</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    Share a few details and your email app will open with a message ready to send.
+                  </p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="mt-7 space-y-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="contact-name" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                        Full name
+                      </label>
+                      <input
+                        id="contact-name"
+                        autoComplete="name"
+                        required
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Your name"
+                        className="input"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-email" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                        Email address
+                      </label>
+                      <input
+                        id="contact-email"
+                        autoComplete="email"
+                        required
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="you@example.com"
+                        className="input"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="contact-phone" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                        Phone or WhatsApp
+                      </label>
+                      <input
+                        id="contact-phone"
+                        autoComplete="tel"
+                        required
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91 00000 00000"
+                        className="input"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-course" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                        Course or subject
+                      </label>
+                      <input
+                        id="contact-course"
+                        name="course"
+                        value={formData.course}
+                        onChange={handleChange}
+                        placeholder="What are you interested in?"
+                        className="input"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="contact-message" className="mb-1.5 block text-sm font-semibold text-slate-700">
+                      Your message
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      required
+                      rows={5}
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell us what you’d like to know..."
+                      className="input resize-y"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy-hover focus-visible:ring-offset-2 sm:w-auto"
+                  >
+                    <FiSend className="h-4 w-4" />
+                    Prepare email
+                  </button>
+                  <p className="text-xs leading-relaxed text-slate-500">
+                    This form opens your default email app; it does not send or store your information on this website.
+                  </p>
+                </form>
+              </div>
+            </div>
+
+            <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-2xl bg-navy-dark px-6 py-6 text-center text-white sm:flex-row sm:text-left sm:px-8">
+              <div>
+                <p className="text-lg font-bold">Still exploring your options?</p>
+                <p className="mt-1 text-sm text-white/70">Take a look at the programs available at Study Point.</p>
+              </div>
+              <Link
+                to="/courses"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-navy-dark transition hover:bg-accent-amber"
+              >
+                Explore courses
+                <FiArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
 
-      {/* ============ FOOTER ============ */}
       <Footer />
     </div>
   );
