@@ -32,7 +32,8 @@ The frontend is a **Vite + React 19** SPA that:
 - Uses **React Router DOM v7** (`useRoutes`) for declarative routing.
 - Uses **Redux Toolkit** for global state (auth session only — everything else is local state).
 - Talks to the backend through a single **Axios** instance with a JWT bearer-token interceptor.
-- Is styled entirely with **Tailwind CSS 3** using a navy/amber "academic" theme.
+- Uses **Tailwind CSS 3** for utility styling and page-scoped CSS for custom layouts, animation,
+  and card treatments, with a blue/white and amber academic palette.
 - Consumes Spring's paginated `Page<T>` responses via reusable `DataTable` + `EntityFormModal`
   components, so every CRUD page follows the same pattern.
 
@@ -40,7 +41,7 @@ The frontend is a **Vite + React 19** SPA that:
 
 | Area | Path prefix | Notes |
 |---|---|---|
-| Public site | `/`, `/about`, `/contact`, `/courses` | Marketing pages |
+| Public site | `/`, `/about`, `/contact`, `/courses` | Marketing pages; `/courses` is titled **Academics** |
 | Auth | `/login`, `/register` | JWT login/register |
 | Landing | `/dashboard` | Role-based redirect hub |
 | Admin portal | `/admin-dashboard`, all CRUD pages | Role-gated sidebar |
@@ -127,13 +128,15 @@ frontend/
     │   ├── student/            # StudentDashboard
     │   ├── teacher/            # TeacherDashboard
     │   ├── parent/             # ParentDashboard
-    │   └── public/             # Home, About, Contact, Courses
+    │   └── public/             # Home, About, Contact, Academics (Courses.jsx)
+    ├── components/academics/   # Program, scholarship, learning mode, FAQ, admission timeline
     ├── routes/index.jsx        # Central route table
     ├── services/               # One module per backend resource (see API layer)
     ├── store/
     │   ├── index.js            # configureStore({ auth: authReducer })
     │   └── slices/authSlice.js # auth slice (token/user/role + localStorage)
     ├── utils/dashboardPath.js  # role → dashboard route mapping
+    ├── styles/                 # Page-scoped CSS alongside Tailwind utilities
     └── (scaffold dirs) hooks/ layouts/ context/ tests/ chatbot/ discussion/ dashboard/
 ```
 
@@ -184,7 +187,7 @@ All routes are declared declaratively in `src/routes/index.jsx` with `useRoutes(
 | `/` and `/home` | `Home` | `pages/public/Home.jsx` |
 | `/about` | `About` | `pages/public/About.jsx` |
 | `/contact` | `Contact` | `pages/public/Contact.jsx` |
-| `/courses` | `PublicCourses` | `pages/public/Courses.jsx` |
+| `/courses` | `Academics` (`PublicCourses`) | `pages/public/Courses.jsx` |
 | `/login` | `Login` | `pages/auth/Login.jsx` |
 | `/register` | `Register` | `pages/auth/Register.jsx` |
 
@@ -289,12 +292,13 @@ const filteredNav = nav.filter((item) => !item.roles || item.roles.includes(role
 ### Public header — `components/layout/header/Header.jsx`
 
 - Three-section CSS grid (`1fr auto 1fr`): logo | centered nav | auth actions.
-- **Guest**: "Login" (outline) + "Enroll Now" (solid). **Signed in**: "Dashboard" +
+- **Guest**: "Login" (outline) + "Take Admission" (solid). **Signed in**: "Dashboard" +
   "Logout" buttons.
 - Sticky by default; pass `sticky={false}` inside the portal layout.
 - Accessible mobile menu (Escape closes, focus returns to toggle) via `MobileNavigation`.
 
-Navigation config lives in `components/layout/header/navigation.js` (Home, About, Courses, Contact)
+Navigation config lives in `components/layout/header/navigation.js` (Home, About, Academics, Contact;
+Academics retains the `/courses` route)
 and is shared by `DesktopNavigation` and `MobileNavigation`.
 
 ### Footer — `components/layout/footer/Footer.jsx`
@@ -377,6 +381,7 @@ remove/search where applicable).
 | `attendance.service.js` | `/attendance` | `mark`, `bulkMark`, `getByStudent`, `getByBatch`, `summary` |
 | `batch.service.js` | `/batches` | CRUD + `getByCourse`, `getByTeacher` |
 | `course.service.js` | `/courses` | CRUD + `search`, `publish`, `toggleActive`, `getByCode` |
+| `public-program.service.js` | `/public/programs` | `listPublicPrograms` for the public Academics catalog |
 | `dashboard.service.js` | `/dashboard/{admin,student,teacher,parent}` | `getAdminStats`, `getStudentStats`, `getTeacherStats`, `getParentStats` |
 | `discussion.service.js` | `/discussions` | CRUD + reply, like, resolve, close, pin, report |
 | `enrollment.service.js` | `/enrollments` | CRUD + `approve`, `reject`, `getByStudent`, `getByBatch` |
@@ -436,7 +441,18 @@ remove/search where applicable).
 
 ### Public pages
 
-- `Home`, `About`, `Contact`, `Courses` (marketing/public course list) — see `pages/public/`.
+- `Home`, `About`, `Contact`, and `Academics` (`pages/public/Courses.jsx`) — see `pages/public/`.
+- Academics uses reusable components from `components/academics/`: `ProgramCard`,
+  `ScholarshipCard`, `LearningModeCard`, `FAQAccordion`, and `AdmissionTimeline`.
+- Its school-program cards start from the page's canonical pathway definitions and enrich matching
+  entries with published/active backend data (name, description, duration, image, syllabus subjects).
+  The current backend course model does not store class group, medium, learning mode, or availability;
+  those details remain page metadata. Scholarship offerings and FAQs are currently static page
+  content, not API-backed resources.
+- The page requests `GET /api/public/programs`. A visible status message reports loading/failure;
+  course pathway information remains available if the API is unavailable. Only published, active
+  records appear in the API result. Admission enquiry is handled through the Contact page's WhatsApp
+  handoff, not through the public course catalog endpoint.
 
 ### Auth pages
 
@@ -508,6 +524,10 @@ Defined under `@layer components` and reused everywhere:
 | `.badge` | Pill badge |
 
 Base layer: body background, headings colored `navy-dark`, custom scrollbar, antialiasing.
+
+Page-scoped styles under `src/styles/` implement the public Home, About, Contact, and Academics
+layouts and reveal animations. The Academics-specific styles are in `styles/academics.css`; reduced
+motion preferences are respected.
 
 ---
 

@@ -67,14 +67,14 @@ MapStruct annotation processor pipeline.
 ### Prerequisites
 
 - JDK 21
-- Maven 3.9+ (or `./mvnw`)
+- Maven 3.9+ (there is no checked-in Maven wrapper)
 - MySQL 8 running locally (or via Docker Compose)
 
 ### Run
 
 ```bash
 cd backend
-./mvnw spring-boot:run          # or mvn spring-boot:run
+mvn spring-boot:run
 # API base:   http://localhost:8080/api
 # Swagger UI: http://localhost:8080/api/swagger-ui.html
 ```
@@ -86,7 +86,7 @@ Active profile defaults to `dev` (`SPRING_PROFILES_ACTIVE=dev`). The dev profile
 ### Tests
 
 ```bash
-./mvnw test                     # JUnit 5 + Spring Security test + H2
+mvn test                        # JUnit 5 + Spring Security test + H2 dependencies
 ```
 
 ---
@@ -216,13 +216,14 @@ All endpoints are prefixed with the server context path **`/api`**. Pagination u
 
 | Method | Path | Description | Access |
 |---|---|---|---|
-| GET | `/admissions` | List applications (paged) | Public (permitAll) |
-| GET | `/admissions/status/{status}` | Filter by status | Public |
-| GET | `/admissions/track` | Track by reference | Public |
-| GET | `/admissions/{id}` | Get one application | Public |
-| PUT | `/admissions/{id}` | Update application | Public |
-| POST | `/admissions/{id}/review` | Review / change status | Public |
-| DELETE | `/admissions/{id}` | Delete application | Public |
+| POST | `/admissions` | Submit an application | Public (`permitAll`) |
+| GET | `/admissions/track?email=` | List applications matching the supplied email | Public (`permitAll`) |
+| GET | `/admissions` | List applications (paged) | ADMIN, SUPER_ADMIN, RECEPTIONIST |
+| GET | `/admissions/status/{status}` | Filter applications by status | ADMIN, SUPER_ADMIN, RECEPTIONIST |
+| GET | `/admissions/{id}` | Get one application | ADMIN, SUPER_ADMIN, RECEPTIONIST |
+| PUT | `/admissions/{id}` | Update an application | ADMIN, SUPER_ADMIN, RECEPTIONIST |
+| POST | `/admissions/{id}/review` | Review / change status | ADMIN, SUPER_ADMIN, RECEPTIONIST |
+| DELETE | `/admissions/{id}` | Delete an application | ADMIN, SUPER_ADMIN |
 
 ### Courses — `CourseController` (`/courses`)
 
@@ -235,8 +236,24 @@ All endpoints are prefixed with the server context path **`/api`**. Pagination u
 | GET | `/courses/{id}` | Get course | Authenticated |
 | GET | `/courses/code/{code}` | Get by code | Authenticated |
 | GET | `/courses/search?search=` | Search | Authenticated |
-| POST/PUT | `/courses/{id}/publish` | Publish/unpublish | ADMIN, SUPER_ADMIN |
+| POST/PUT | `/courses/{id}/publish` | Publish a course | ADMIN, SUPER_ADMIN |
 | PATCH/PUT | `/courses/{id}/toggle-active` | Toggle active | ADMIN, SUPER_ADMIN |
+
+### Public program catalog — `PublicProgramController` (`/public/programs`)
+
+| Method | Path | Description | Access |
+|---|---|---|---|
+| GET | `/public/programs` | Return published and active course records, ordered by name | Public |
+
+This endpoint is consumed by the public Academics page. Each `PublicProgramResponse` contains
+`id`, `name`, `code`, `description`, `durationMonths`, `imageUrl`, and `syllabus`. It deliberately
+does not expose course fees or administrative fields. The existing `/courses` list/detail/search
+endpoints remain authenticated; create/update/delete/publish/active management remains admin-only.
+
+The current `Course` model has no class-group, medium, learning-mode, or live-availability fields.
+The Academics UI supplies those pathway details as page metadata and matches API records to the
+five school pathways using course code or name. Scholarship data and FAQs do not currently have
+public API endpoints.
 
 ### Students — `StudentController` (`/students`)
 
@@ -403,7 +420,7 @@ Each resolves the current user from the JWT principal and returns role-specific 
 ### `SecurityConfig` rules
 
 - CSRF disabled, CORS enabled from `app.cors.allowed-origins`, sessions stateless.
-- Public: `/auth/**`, `/public/**`, `/admissions/**`, Swagger (`/swagger-ui/**`,
+- Public: `/auth/**`, `/public/**`, `/admissions/**` at the filter-chain level, Swagger (`/swagger-ui/**`,
   `/swagger-ui.html`, `/api-docs/**`, `/v3/api-docs/**`), `/actuator/health`, `/uploads/**`,
   `/websocket/**`.
 - Role-gated path rules: `/admin/**` (SUPER_ADMIN, ADMIN), `/students/**` (STUDENT, TEACHER,
@@ -487,7 +504,7 @@ public interface CourseMapper {
   "message": "Course created successfully",
   "data": { "...": "..." },
   "statusCode": 201,
-  "timestamp": "2026-09-28T10:00:00"
+  "timestamp": "2026-10-22T10:00:00"
 }
 ```
 
@@ -520,8 +537,8 @@ Request DTOs use Jakarta Bean Validation (`@NotBlank`, `@Valid @RequestBody` in 
 
 - **Engine**: MySQL 8, database name `study_point`.
 - **Schema management**: dev `ddl-auto: update`; prod `ddl-auto: validate`.
-- **Seed/bootstrap**: `database/mysql-init.sql` is mounted into the MySQL container by
-  Docker Compose as the init script.
+- **Seed/bootstrap**: `database/mysql-init.sql` creates the database. Docker Compose declares an
+  init-script mount, but its current relative path is incorrect; see the deployment guide.
 - **Persistence**: Spring Data JPA repositories (`repository/`), HikariCP connection pools.
 - **Auditing**: `BaseEntity` + `AuditConfig` give every entity audited timestamps.
 - **Batching**: Hibernate batch inserts/updates (size 25) enabled in the base config.
@@ -541,8 +558,9 @@ SpringDoc OpenAPI 3 is included. With the backend running:
 - Swagger UI: `http://localhost:8080/api/swagger-ui.html`
 - OpenAPI JSON: `http://localhost:8080/api/api-docs`
 
-The docs scan `com.studypoint.backend.controller` (tags sorted alphabetically). Auth endpoints are
-public; other endpoints show the JWT bearer security requirement.
+The docs scan `com.studypoint.backend.controller` (tags sorted alphabetically). Auth endpoints and
+the public program catalog are public; protected endpoints require the JWT bearer security
+requirement. Admission endpoint permissions vary by operation; see the endpoint table above.
 
 ---
 
@@ -552,23 +570,20 @@ public; other endpoints show the JWT bearer security requirement.
 
 ```bash
 cd backend
-./mvnw clean package          # compile + generate MapStruct mappers + run tests
-./mvnw test                   # run tests only (JUnit 5 + H2 for integration)
+mvn clean package             # compile + generate MapStruct mappers + run tests
+mvn test                      # run tests (no committed backend test sources currently)
 java -jar target/studypoint-backend-1.0.0.jar
 ```
 
-### Docker image (`docker/backend/Dockerfile`)
-
-Build stage (`eclipse-temraform:21-jre` as written in the Dockerfile — effectively the Temurin
-JRE image) → `./mvnw -B -DskipTests package`; runtime stage copies
-`target/studypoint-backend-*.jar` and runs `java -jar app.jar`, exposing `8080`.
+There is no Maven wrapper checked into the repository. The Docker build file and deployment
+limitations are documented in [the deployment guide](deployment/deployment-guide.md); do not rely
+on it as a ready-to-run production image without correcting its documented blockers.
 
 ### Docker Compose (`docker/compose/docker-compose.yml`)
 
-- `mysql:8.0` — health-checked, mounts `database/mysql-init.sql` and a named volume.
-- `backend` — built from `docker/backend/Dockerfile`, depends on healthy MySQL, env-driven config,
-  uploads volume at `/app/uploads`.
-- `frontend` — nginx-served React build (see frontend docs).
+Compose declares MySQL, backend, and frontend services, but its current relative paths and backend
+Dockerfile have known blockers. Review [the deployment guide](deployment/deployment-guide.md)
+before attempting to run it.
 
 ### Kubernetes
 
@@ -578,7 +593,8 @@ Base manifests in `kubernetes/base/` (`backend-deployment/service`, `frontend-de
 
 ### CI/CD
 
-`.github/workflows/ci.yml` builds and tests both backend and frontend on push/PR.
+`.github/workflows/ci.yml` builds the backend Maven package and frontend production bundle on its
+configured push/PR events. It does not run frontend unit tests or lint.
 
 ---
 

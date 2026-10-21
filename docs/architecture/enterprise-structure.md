@@ -1,8 +1,10 @@
 # Study Point — Enterprise Backend Structure
 
-This document defines the **standardized enterprise package and file structure** for the
-Study Point backend (`com.studypoint.backend`). Every package declares its responsibility
-via a `package-info.java`; keep this layout when adding or moving code.
+This document describes the **target package conventions** for the Study Point backend
+(`com.studypoint.backend`). It is a design guide, not a literal inventory: current controllers
+are primarily in the root `controller/` package and service implementations use `service/impl/`.
+Some directories are reserved for future work. Update this guide when the implemented structure
+changes.
 
 ## Layered Architecture
 
@@ -44,7 +46,7 @@ com.studypoint.backend
 ├── security/                       # JwtService, JwtAuthenticationFilter, UserDetails
 ├── service/
 │   ├── impl/                       # Concrete @Service implementations
-│   ├── admin/ │ auth/ │ student/ │ teacher/   # role-scoped interfaces
+│   ├── admin/ │ auth/ │ student/ │ teacher/   # optional role-scoped interfaces
 ├── util/                           # Stateless helpers
 ├── validator/                       # Reusable validation constraints
 └── websocket/                       # (reserved) WebSocket handling
@@ -65,8 +67,11 @@ com.studypoint.backend
 
 ```bash
 # 1. MySQL (local) — or: docker compose up mysql
-# 2. Backend
+# 2. Backend (Maven must be installed; no wrapper is checked in)
 cd backend && mvn spring-boot:run        # http://localhost:8080/api  (Swagger: /api/swagger-ui.html)
 # 3. Frontend
 cd frontend && npm run dev              # http://localhost:5173
 ```
+
+The public program catalog is implemented by `controller/PublicProgramController` at
+`GET /api/public/programs`; it is a read-only public view of active, published course records.

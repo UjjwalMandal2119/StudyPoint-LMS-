@@ -26,6 +26,8 @@ The current web application provides public pages, sign-in and registration, rol
 - Study materials
 - Notices, notifications, discussions, and grievances
 
+The public website presents **Study Point Academics** for Classes 1–12, with Hindi and English Medium options, offline and hybrid learning, PCM/PCB pathways, scholarship preparation, and JEE/NEET foundations. The public Academics page is served at `/courses` and reads published, active course records from `GET /api/public/programs`; pathway details not stored in the current course model are maintained as page metadata.
+
 The frontend defines roles for `SUPER_ADMIN`, `ADMIN`, `TEACHER`, `STUDENT`, `PARENT`, `RECEPTIONIST`, `ACCOUNTANT`, and `LIBRARIAN`. Dashboards are provided for administrators, students, teachers, and parents; the remaining roles use the application's general dashboard behavior.
 
 ## Technology
@@ -137,6 +139,8 @@ npm run build
 
 The frontend package also declares `npm test` and `npm run lint` scripts, but their runners (Vitest and ESLint) are not declared in `frontend/package.json`; those commands are not currently ready to use. The CI workflow builds the backend and frontend, but does not run frontend tests or lint.
 
+The latest public-site labels use **Academics** in the header and **Take Admission** for the primary header action. The existing public route remains `/courses` for compatibility.
+
 ## API and documentation
 
 With the backend running:
@@ -150,7 +154,7 @@ Further project documentation:
 
 - [Master documentation](docs/master.md) — project overview and architecture notes
 - [Backend guide](docs/backend.md) — backend structure, API, security, configuration, and build
-- [Frontend guide](docs/frontend.md) — frontend structure, routing, state, and components
+- [Frontend guide](docs/frontend.md) — frontend structure, routing, state, public pages, and components
 - [Test plan and status](docs/test.md) — current test setup and gaps
 - [Architecture overview](docs/architecture/architecture.md)
 - [Backend package structure](docs/architecture/enterprise-structure.md)
