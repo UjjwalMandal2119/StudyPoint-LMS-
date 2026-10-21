@@ -3,6 +3,7 @@ package com.studypoint.backend.service.impl;
 import com.studypoint.backend.dto.request.CourseRequest;
 import com.studypoint.backend.dto.response.CourseListResponse;
 import com.studypoint.backend.dto.response.CourseResponse;
+import com.studypoint.backend.dto.response.PublicProgramResponse;
 import com.studypoint.backend.entity.Course;
 import com.studypoint.backend.exception.ConflictException;
 import com.studypoint.backend.exception.ResourceNotFoundException;
@@ -13,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -73,6 +76,20 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Page<CourseListResponse> searchCourses(String search, Pageable pageable) {
         return courseRepository.search(search, pageable).map(courseMapper::toCourseListResponse);
+    }
+
+    @Override
+    public List<PublicProgramResponse> getPublicPrograms() {
+        return courseRepository.findByPublishedTrueAndActiveTrueOrderByNameAsc().stream()
+                .map(course -> new PublicProgramResponse(
+                        course.getId(),
+                        course.getName(),
+                        course.getCode(),
+                        course.getDescription(),
+                        course.getDurationMonths(),
+                        course.getImageUrl(),
+                        course.getSyllabus()))
+                .toList();
     }
 
     @Override

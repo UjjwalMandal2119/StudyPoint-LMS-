@@ -8,7 +8,7 @@
 export const navigationItems = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Courses', path: '/courses' },
+  { label: 'Academics', path: '/courses' },
   { label: 'Contact', path: '/contact' },
 ];
 

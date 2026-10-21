@@ -24,7 +24,7 @@ import getDashboardPath from '../../../utils/dashboardPath';
  *   LEFT    → Study Point logo
  *   CENTER  → primary navigation (always visually centered in the header,
  *             independent of the logo and auth button widths)
- *   RIGHT   → Login (outline) + Enroll Now (solid) + mobile menu toggle
+ *   RIGHT   → Login (outline) + Take Admission (solid) + mobile menu toggle
  *
  * The inner content is constrained to `max-w-7xl` so it aligns with the
  * announcement bar above it and the page content below it — the header no
@@ -33,7 +33,7 @@ import getDashboardPath from '../../../utils/dashboardPath';
  * Sticky at the top of the viewport (pass `sticky={false}` inside the
  * authenticated portal, where the sidebar already shares the top edge)
  * and keyboard accessible. When a user is signed in, the right side shows
- * "Dashboard / Logout" instead of "Login / Enroll Now". Usage:
+ * "Dashboard / Logout" instead of "Login / Take Admission". Usage:
  *
  *   <Header />                 // public pages (sticky)
  *   <Header sticky={false} />  // inside the authenticated portal

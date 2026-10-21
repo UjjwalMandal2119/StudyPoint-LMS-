@@ -1,327 +1,506 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  FiCheck,
+  FiActivity,
   FiArrowRight,
-  FiMail,
-  FiMapPin,
-  FiBookOpen,
+  FiArrowUpRight,
   FiAward,
+  FiBookOpen,
+  FiCheck,
+  FiCheckCircle,
+  FiClipboard,
+  FiCreditCard,
+  FiFileText,
+  FiGlobe,
+  FiHeart,
+  FiLayers,
+  FiMapPin,
+  FiMessageCircle,
+  FiMonitor,
+  FiPhone,
+  FiShield,
   FiTarget,
+  FiTrendingUp,
   FiUsers,
+  FiVideo,
+  FiZap,
 } from 'react-icons/fi';
 import founderPhoto from '../../assets/ujjwal PhotoCollegeUniform.jpeg';
 import AnnouncementBar from '../../components/layout/header/AnnouncementBar';
 import Header from '../../components/layout/header/Header';
 import Footer from '../../components/layout/footer/Footer';
-
-const IMG = {
-  hero: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80',
-  classroom:
-    'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80',
-  founder: founderPhoto,
-};
+import '../../styles/about.css';
 
 const CONTACT = {
-  email: 'studypoint.ujjwal@gmail.com',
   phone: '8294823430',
   phoneDisplay: '+91 82948 23430',
+  email: 'studypoint.ujjwal@gmail.com',
   address: 'Bindapathar, Jamtara, Jharkhand — 815351',
-  founder: 'Ujjwal Mandal',
-  role: 'Founder & Director, Study Point',
 };
 
-const STATS = [
-  { value: '5+', label: 'Years of Teaching' },
-  { value: '1,000+', label: 'Active Students' },
-  { value: '95%', label: 'Success Rate' },
-  { value: '50+', label: 'Mock Tests & Series' },
+const PURPOSES = [
+  {
+    icon: <FiBookOpen />,
+    title: 'Quality teaching',
+    description: 'Students need clear explanations and a strong understanding of the subjects they study.',
+  },
+  {
+    icon: <FiTarget />,
+    title: 'Guidance that continues',
+    description: 'Regular encouragement, assessment, and academic direction help learners keep moving forward.',
+  },
+  {
+    icon: <FiUsers />,
+    title: 'Parents in the loop',
+    description: 'Families deserve to stay connected to attendance, assignments, and a student’s progress.',
+  },
 ];
 
-const STORY_POINTS = [
-  'Interactive live lectures & recorded backups',
-  'Regular mock exams & performance analytics',
-  'Chapter-wise PDF notes & solved exercises',
-  'One-on-one doubt clearing sessions',
+const LEARNING_MODEL = [
+  {
+    icon: <FiUsers />,
+    title: 'Offline learning',
+    description: 'Meaningful classroom learning and direct teacher support.',
+    features: ['Classroom teaching', 'Personal guidance', 'Teacher interaction'],
+    color: 'blue',
+  },
+  {
+    icon: <FiMonitor />,
+    title: 'Digital support',
+    description: 'Useful academic information, organized in one place.',
+    features: ['Notes & assignments', 'Notices', 'Academic updates'],
+    color: 'amber',
+  },
+  {
+    icon: <FiActivity />,
+    title: 'Academic tracking',
+    description: 'A clearer view of learning for students, parents, and teachers.',
+    features: ['Attendance & results', 'Parent communication', 'Performance monitoring'],
+    color: 'violet',
+  },
 ];
 
-const WHY = [
+const JOURNEY = [
   {
-    icon: <FiBookOpen className="h-6 w-6 text-navy-primary" />,
-    title: 'Concept-Driven Learning',
-    desc: 'Comprehensive online lectures and structured course materials tailored for academic success.',
+    grade: 'Classes 1–5',
+    title: 'Foundation Learning',
+    description: 'Build literacy, numeracy, discipline, and positive study habits.',
+    icon: <FiBookOpen />,
   },
   {
-    icon: <FiAward className="h-6 w-6 text-navy-primary" />,
-    title: 'Regular Testing & Analytics',
-    desc: 'Subject-wise quizzes and full-length mock exams to evaluate progress regularly.',
+    grade: 'Classes 6–8',
+    title: 'Concept Building',
+    description: 'Develop a deeper understanding of core subjects with regular assessment.',
+    icon: <FiTarget />,
   },
   {
-    icon: <FiTarget className="h-6 w-6 text-navy-primary" />,
-    title: 'Personalized Mentorship',
-    desc: 'Dedicated doubt-solving sessions and direct guidance for every enrolled student.',
+    grade: 'Classes 9–10',
+    title: 'Board Preparation',
+    description: 'Focus on tests, assignments, revision strategies, and concept mastery.',
+    icon: <FiClipboard />,
   },
   {
-    icon: <FiUsers className="h-6 w-6 text-navy-primary" />,
-    title: 'Focused Batch Sizes',
-    desc: 'Small, disciplined batches so every teacher knows every student and tracks individual growth.',
+    grade: 'Classes 11–12',
+    title: 'Science Academy',
+    description: 'Choose the science pathway that fits your interests and goals.',
+    icon: <FiZap />,
+    streams: ['PCM', 'Physics · Chemistry · Mathematics', 'PCB', 'Physics · Chemistry · Biology'],
+  },
+  {
+    grade: 'Next steps',
+    title: 'Career & scholarships',
+    description: 'Build foundations for entrance and scholarship examinations.',
+    icon: <FiAward />,
+    streams: ['JEE', 'NEET', 'NDA', 'Scholarship exams'],
   },
 ];
 
 const VALUES = [
-  { icon: '🎯', title: 'Our Vision', desc: 'To provide affordable, high-quality online coaching and guidance to every student across Jharkhand.' },
-  { icon: '🚀', title: 'Our Mission', desc: 'To simplify complex topics through innovative teaching methods and structured test practice.' },
-  { icon: '💎', title: 'Our Core Values', desc: 'Academic discipline, continuous improvement, and unwavering support for every student.' },
+  { icon: <FiHeart />, title: 'Student First', description: 'Every decision prioritizes student growth and development.', color: 'rose' },
+  { icon: <FiTarget />, title: 'Discipline', description: 'Consistency and dedication make learning a lasting habit.', color: 'blue' },
+  { icon: <FiShield />, title: 'Integrity', description: 'Honesty, transparency, and trust guide how we work.', color: 'violet' },
+  { icon: <FiAward />, title: 'Excellence', description: 'We keep improving the quality of teaching and learning.', color: 'amber' },
+  { icon: <FiZap />, title: 'Innovation', description: 'We bring education and useful modern technology together.', color: 'green' },
+  { icon: <FiUsers />, title: 'Responsibility', description: 'We help learners build the skills to shape their own futures.', color: 'blue' },
 ];
+
+const DIFFERENCES = [
+  { icon: <FiBookOpen />, title: 'Classes 1–12 under one platform', description: 'A connected academic journey from foundation learning to senior secondary.' },
+  { icon: <FiGlobe />, title: 'Hindi & English medium', description: 'Learning support that welcomes students across both mediums.' },
+  { icon: <FiMonitor />, title: 'Offline & hybrid learning', description: 'Classroom teaching supported by accessible digital tools.' },
+  { icon: <FiMessageCircle />, title: 'Parent communication', description: 'Keep families informed and connected to academic life.' },
+  { icon: <FiActivity />, title: 'Attendance & academic tracking', description: 'Bring important learning records and updates together.' },
+  { icon: <FiZap />, title: 'Science-focused programs', description: 'Focused PCM and PCB learning for senior secondary students.' },
+  { icon: <FiFileText />, title: 'Assignments & assessments', description: 'Provide practice and feedback as part of structured learning.' },
+  { icon: <FiUsers />, title: 'Personal academic guidance', description: 'Support students with encouragement and direction.' },
+];
+
+function SectionHeading({ eyebrow, title, description }) {
+  return (
+    <div className="mx-auto max-w-2xl text-center">
+      <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700">{eyebrow}</p>
+      <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">{title}</h2>
+      {description && <p className="mx-auto mt-4 max-w-xl leading-relaxed text-slate-600">{description}</p>}
+    </div>
+  );
+}
+
 export default function About() {
+  useEffect(() => {
+    const elements = document.querySelectorAll('.about-reveal');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      elements.forEach((element) => element.classList.add('is-visible'));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        activeObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white font-sans text-slate-700">
-      {/* ============ ANNOUNCEMENT BAR ============ */}
       <AnnouncementBar phone={CONTACT.phone} phoneDisplay={CONTACT.phoneDisplay} />
-
-      {/* ============ HEADER ============ */}
       <Header />
 
-      {/* ============ HERO ============ */}
-      <section className="relative overflow-hidden bg-navy-dark">
-        <img
-          src={IMG.hero}
-          alt="Students learning at Study Point"
-          className="absolute inset-0 h-full w-full object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-dark via-navy-dark/90 to-navy-primary/50" />
-        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:py-24">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-accent-amber/40 bg-accent-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-amber">
-              About Our Coaching
-            </span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-[3.4rem]">
-              About{' '}
-              <span className="bg-gradient-to-r from-navy-hover to-accent-amber bg-clip-text text-transparent">
-                Study Point
+      <main>
+        <section className="about-hero relative isolate overflow-hidden bg-blue-950">
+          <img
+            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1800&q=85"
+            alt="Students learning together in a bright classroom"
+            className="absolute inset-0 -z-20 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-950 via-blue-950/90 to-blue-900/50" />
+          <div className="absolute -right-20 top-0 -z-10 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl" />
+          <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8 sm:py-20 lg:py-24">
+            <nav aria-label="Breadcrumb" className="about-reveal text-sm text-blue-100/80">
+              <ol className="flex items-center gap-2">
+                <li><Link to="/" className="transition hover:text-white">Home</Link></li>
+                <li aria-hidden="true">/</li>
+                <li aria-current="page" className="font-semibold text-white">About</li>
+              </ol>
+            </nav>
+            <div className="about-reveal mt-10 max-w-3xl">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-amber-300 backdrop-blur">
+                Learning for every stage
               </span>
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-              Empowering students through high-quality online lectures, a structured test series,
-              and dedicated individual mentorship — built on a clear goal of concept clarity for every learner.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                to="/courses"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-7 py-3 text-sm font-semibold text-white shadow-xl transition hover:scale-105"
-              >
-                Explore Our Programs <FiArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
-              >
-                Talk to the Director
-              </Link>
-            </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-white/70">
-              <span className="flex items-center gap-2"><FiCheck className="h-4 w-4 text-accent-amber" /> Live & Recorded Classes</span>
-              <span className="flex items-center gap-2"><FiCheck className="h-4 w-4 text-accent-amber" /> Online Mock Tests</span>
-              <span className="flex items-center gap-2"><FiCheck className="h-4 w-4 text-accent-amber" /> Personal Doubt Clearing</span>
-            </div>
-          </div>
-
-          <div className="relative">
-            <img
-              src={IMG.classroom}
-              alt="Classroom at Study Point online coaching"
-              className="w-full rounded-3xl border border-white/15 object-cover shadow-2xl"
-            />
-            <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-white p-5 shadow-lift sm:block">
-              <p className="text-2xl font-extrabold text-navy-primary">100%</p>
-              <p className="text-xs font-medium text-slate-500">Dedicated Mentorship</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats strip */}
-        <div className="relative border-t border-white/10 bg-white/5 backdrop-blur">
-          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-6 py-8 text-center sm:px-8 md:grid-cols-4">
-            {STATS.map((s) => (
-              <div key={s.label}>
-                <p className="text-3xl font-extrabold text-white">{s.value}</p>
-                <p className="mt-1 text-xs uppercase tracking-wider text-white/70">{s.label}</p>
+              <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Building Strong Foundations for <span className="text-amber-300">Lifelong Success</span>
+              </h1>
+              <p className="mt-6 max-w-2xl text-base leading-7 text-blue-50/90 sm:text-lg">
+                Study Point is committed to helping students learn, grow, and succeed through quality education, structured guidance, and modern learning support.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link to="/courses" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-400 px-6 py-3 text-sm font-extrabold text-blue-950 transition hover:-translate-y-0.5 hover:bg-amber-300">
+                  Explore Programs <FiArrowRight className="h-4 w-4" />
+                </Link>
+                <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20">
+                  Contact Us <FiArrowUpRight className="h-4 w-4" />
+                </Link>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ OUR STORY ============ */}
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative order-2 lg:order-1">
-            <img
-              src={IMG.hero}
-              alt="Welcome to Study Point online coaching"
-              className="w-full rounded-3xl object-cover shadow-2xl"
-            />
-            <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-navy-primary px-6 py-5 text-white shadow-lift sm:block">
-              <p className="text-3xl font-extrabold">5+</p>
-              <p className="text-xs uppercase tracking-wider text-white/80">Years of Mentorship</p>
             </div>
           </div>
-          <div className="order-1 lg:order-2">
-            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Welcome to Study Point</p>
-            <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">
-              Your Trusted Online Coaching Destination
-            </h2>
-            <p className="mt-5 leading-relaxed text-slate-600">
-              Study Point is an online coaching institute built to deliver quality education and
-              concept clarity straight to your screen. Whether you are aiming to strengthen your
-              fundamental subject knowledge or preparing for competitive examinations, our platform
-              offers a complete learning ecosystem.
-            </p>
-            <p className="mt-3 leading-relaxed text-slate-600">
-              We provide structured live and recorded batches, downloadable PDF notes, homework
-              assignments, and comprehensive online mock tests — ensuring every student receives
-              clear guidance and measurable academic growth.
-            </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {STORY_POINTS.map((t) => (
-                <li key={t} className="flex items-center gap-3 text-slate-700">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-status-easy-bg text-status-easy-text">
-                    <FiCheck className="h-4 w-4" />
+          <div className="h-1.5 bg-gradient-to-r from-amber-400 via-amber-300 to-transparent" />
+        </section>
+
+        <section id="who-we-are" className="py-20 sm:py-24">
+          <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="about-reveal">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700">Who we are</p>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">A learning platform built around students and families.</h2>
+              <p className="mt-5 leading-relaxed text-slate-600">
+                Study Point is a learning platform dedicated to supporting students from Class 1 to Class 12 through classroom teaching, academic mentoring, and technology-enabled learning support.
+              </p>
+              <p className="mt-4 leading-relaxed text-slate-600">
+                We believe education should be accessible, structured, and effective. By combining traditional teaching values with modern tools, Study Point creates an environment where students can build strong concepts, improve performance, and develop confidence.
+              </p>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {[
+                  'Hindi & English Medium',
+                  'Offline & Hybrid Learning',
+                  'Parent Engagement',
+                  'Science-Focused Learning',
+                  'Academic Excellence',
+                ].map((item) => (
+                  <span key={item} className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-700"><FiCheck className="h-3.5 w-3.5" /></span>
+                    {item}
                   </span>
-                  {t}
+                ))}
+              </div>
+            </div>
+            <div className="about-reveal relative">
+              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-blue-100 via-transparent to-amber-100/80 blur-xl" />
+              <div className="relative overflow-hidden rounded-[1.75rem] border border-white bg-white p-2 shadow-2xl shadow-blue-950/10">
+                <img
+                  src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1100&q=85"
+                  alt="Teacher supporting students during a classroom lesson"
+                  className="h-[320px] w-full rounded-[1.35rem] object-cover sm:h-[410px]"
+                />
+                <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/70 bg-white/90 p-4 shadow-lg backdrop-blur sm:bottom-7 sm:left-7 sm:right-7">
+                  <p className="text-xs font-bold uppercase tracking-wider text-blue-700">Our approach</p>
+                  <p className="mt-1 text-lg font-extrabold text-slate-950">Teaching, guidance, and family connection.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="our-purpose" className="bg-slate-50 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="about-reveal">
+              <SectionHeading
+                eyebrow="Our purpose"
+                title="Why Study Point Exists"
+                description="Many students need more than classroom teaching. They need guidance, encouragement, regular assessment, and a system that keeps parents involved in the learning journey. Study Point brings these parts of academic support together."
+              />
+            </div>
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {PURPOSES.map((item, index) => (
+                <article key={item.title} className="about-reveal rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-950/5 sm:p-7" style={{ '--reveal-delay': `${index * 70}ms` }}>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-700">{React.cloneElement(item.icon, { className: 'h-6 w-6' })}</span>
+                  <h3 className="mt-5 text-lg font-bold text-slate-950">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="learning-model" className="py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="about-reveal">
+              <SectionHeading
+                eyebrow="Our learning model"
+                title="Learning Beyond the Classroom"
+                description="Our hybrid approach connects classroom teaching with digital resources and academic tracking—supporting students and keeping parents informed."
+              />
+            </div>
+            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+              {LEARNING_MODEL.map((model, index) => (
+                <article key={model.title} className={`about-reveal about-model-card about-model-${model.color}`} style={{ '--reveal-delay': `${index * 70}ms` }}>
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-blue-700 shadow-sm">{React.cloneElement(model.icon, { className: 'h-6 w-6' })}</span>
+                    <span className="text-xs font-extrabold tracking-widest text-blue-200">0{index + 1}</span>
+                  </div>
+                  <h3 className="mt-5 text-xl font-extrabold text-slate-950">{model.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{model.description}</p>
+                  <ul className="mt-5 grid gap-3">
+                    {model.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm font-medium text-slate-700">
+                        <FiCheckCircle className="h-4 w-4 text-blue-700" /> {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="academic-journey" className="bg-blue-50/60 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="about-reveal">
+              <SectionHeading
+                eyebrow="Class 1 to 12"
+                title="Supporting Students at Every Stage"
+                description="A connected academic journey with the right kind of learning support as students grow."
+              />
+            </div>
+            <ol className="about-journey mt-12 grid gap-4 md:grid-cols-5">
+              {JOURNEY.map((step, index) => (
+                <li key={step.grade} className="about-reveal relative rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6" style={{ '--reveal-delay': `${index * 55}ms` }}>
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-700">{React.cloneElement(step.icon, { className: 'h-5 w-5' })}</span>
+                    <span className="text-xs font-extrabold tracking-widest text-blue-100">0{index + 1}</span>
+                  </div>
+                  <p className="mt-5 text-xs font-bold uppercase tracking-wider text-blue-700">{step.grade}</p>
+                  <h3 className="mt-1 font-bold text-slate-950">{step.title}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-500">{step.description}</p>
+                  {step.streams && (
+                    <div className="mt-4 grid gap-2">
+                      {step.streams.map((stream) => (
+                        <span key={stream} className="rounded-lg bg-slate-50 px-2.5 py-1.5 text-[10px] font-bold text-slate-700">{stream}</span>
+                      ))}
+                    </div>
+                  )}
                 </li>
               ))}
-            </ul>
-            <Link
-              to="/courses"
-              className="mt-8 inline-flex items-center gap-2 rounded-lg border border-navy-primary px-6 py-3 text-sm font-semibold text-navy-primary transition hover:bg-navy-primary hover:text-white"
-            >
-              Explore Our Programs <FiArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-      {/* ============ WHY CHOOSE US ============ */}
-      <section className="bg-lms-bg py-20">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Why Study With Us</p>
-            <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">What Makes Study Point Different</h2>
-            <p className="mt-4 text-slate-600">A complete learning system designed to make every student exam-ready and confident.</p>
-          </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {WHY.map((f) => (
-              <div
-                key={f.title}
-                className="group rounded-2xl border border-lms-border bg-white p-6 shadow-card transition hover:-translate-y-1 hover:border-navy-primary/30 hover:shadow-lift"
-              >
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-primary/10 transition group-hover:scale-110">
-                  {f.icon}
-                </span>
-                <h3 className="mt-4 text-lg font-bold text-navy-dark">{f.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      {/* ============ VISION / MISSION / VALUES ============ */}
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Our Foundation</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">Vision, Mission & Core Values</h2>
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {VALUES.map((v) => (
-            <div key={v.title} className="rounded-2xl border border-lms-border bg-white p-7 text-center shadow-card">
-              <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-primary/10 text-3xl">{v.icon}</span>
-              <h3 className="mt-4 text-xl font-bold text-navy-dark">{v.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{v.desc}</p>
+            </ol>
+            <div className="about-reveal mt-5 flex flex-wrap justify-center gap-2">
+              {['Hindi Medium', 'English Medium', 'Offline learning', 'Hybrid support'].map((item) => (
+                <span key={item} className="rounded-full border border-blue-100 bg-white px-3 py-1.5 text-xs font-semibold text-blue-800">{item}</span>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
-      {/* ============ FOUNDER & DIRECTOR ============ */}
-      <section className="bg-navy-dark py-20 text-white">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-5">
-            <div className="lg:col-span-2">
-              <div className="overflow-hidden rounded-3xl border border-white/15 p-3">
-                <img
-                  src={IMG.founder}
-                  alt="Ujjwal Mandal, Founder & Director of Study Point"
-                  className="w-full rounded-2xl object-cover"
+          </div>
+        </section>
+
+        <section id="values" className="py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="about-reveal">
+              <SectionHeading
+                eyebrow="Our values"
+                title="The Principles That Guide Us"
+                description="The way we teach and support learners begins with the values we bring into every class."
+              />
+            </div>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {VALUES.map((value, index) => (
+                <article key={value.title} className={`about-reveal about-value-card about-value-${value.color}`} style={{ '--reveal-delay': `${(index % 3) * 60}ms` }}>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-blue-700 shadow-sm">{React.cloneElement(value.icon, { className: 'h-5 w-5' })}</span>
+                  <h3 className="mt-4 font-bold text-slate-950">{value.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{value.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="founder" className="bg-slate-50 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="about-reveal grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-900/5 lg:grid-cols-[0.82fr_1.18fr]">
+              <div className="relative min-h-[360px] bg-blue-100 sm:min-h-[500px]">
+                <img src={founderPhoto} alt="Ujjwal Mandal, Founder and Director of Study Point" className="absolute inset-0 h-full w-full object-cover object-top" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-blue-950/85 via-blue-950/15 to-transparent p-6 pt-28 text-white sm:p-8 sm:pt-32">
+                  <p className="text-xl font-extrabold">Ujjwal Mandal</p>
+                  <p className="mt-1 text-sm text-white/80">Founder & Director</p>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700">A personal commitment to learning</p>
+                <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">Meet Our Founder</h2>
+                <p className="mt-3 text-sm font-semibold text-slate-600">B.Tech in Computer Science & Engineering</p>
+                <p className="mt-1 text-sm text-slate-500">Educator, mentor, and advocate for student development</p>
+                <blockquote className="mt-7 rounded-2xl border-l-4 border-amber-400 bg-slate-50 p-5 text-base leading-relaxed text-slate-700 sm:p-6">
+                  “Education is not just about scoring marks. It is about developing confidence, discipline, curiosity, and the ability to solve problems. Study Point was created with a vision to provide students with the guidance, support, and learning environment they need to achieve their goals.”
+                </blockquote>
+                <div className="mt-7 flex items-end justify-between gap-4 border-t border-slate-100 pt-5">
+                  <div>
+                    <p className="font-serif text-2xl italic text-blue-800">Ujjwal Mandal</p>
+                    <p className="mt-1 text-xs font-bold uppercase tracking-wider text-slate-500">Founder & Director, Study Point</p>
+                  </div>
+                  <Link to="/contact" className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-blue-700 transition hover:gap-3">
+                    Get in touch <FiArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="what-makes-us-different" className="py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="about-reveal">
+              <SectionHeading
+                eyebrow="For students and families"
+                title="Why Families Choose Study Point"
+                description="An integrated way to support academics, parent involvement, and student progress."
+              />
+            </div>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {DIFFERENCES.map((item, index) => (
+                <article key={item.title} className="about-reveal group rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-950/5 sm:p-6" style={{ '--reveal-delay': `${(index % 4) * 50}ms` }}>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-700 transition group-hover:bg-blue-700 group-hover:text-white">{React.cloneElement(item.icon, { className: 'h-5 w-5' })}</span>
+                  <h3 className="mt-4 font-bold text-slate-950">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="our-vision" className="bg-blue-950 py-20 text-white sm:py-24">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="about-reveal">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">Our vision</p>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Learning that stays with you.</h2>
+            </div>
+            <div className="about-reveal rounded-3xl border border-white/10 bg-white/[0.07] p-6 backdrop-blur sm:p-9">
+              <p className="text-lg leading-relaxed text-blue-50 sm:text-xl">
+                To create an educational environment where students receive quality learning experiences, develop strong academic foundations, and gain the confidence to pursue their future goals.
+              </p>
+              <p className="mt-4 leading-relaxed text-blue-100/75">
+                We aim to support students not only in examinations but throughout their complete learning journey—with parents involved and student growth at the center.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="visit-us" className="bg-slate-50 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="about-reveal">
+              <SectionHeading
+                eyebrow="Visit us"
+                title="Study Point in Jamtara"
+                description="For program enquiries or a conversation with our team, reach us by phone, WhatsApp, or email."
+              />
+            </div>
+            <div className="about-reveal mt-10 grid overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg md:grid-cols-[1.15fr_0.85fr]">
+              <div className="min-h-[280px] bg-slate-200 sm:min-h-[360px]">
+                <iframe
+                  title="Map to Study Point in Jamtara, Jharkhand"
+                  src="https://maps.google.com/maps?q=Bindapathar%2C%20Jamtara%2C%20Jharkhand%20815351&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                  className="h-full min-h-[280px] w-full border-0 sm:min-h-[360px]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-            </div>
-            <div className="lg:col-span-3">
-              <p className="text-xs font-bold uppercase tracking-wider text-accent-amber">Founder's Vision</p>
-              <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">A Message From Our Director</h2>
-              <h3 className="mt-6 text-2xl font-extrabold">{CONTACT.founder}</h3>
-              <p className="mt-1 text-sm font-semibold uppercase tracking-wider text-navy-hover">{CONTACT.role}</p>
-              <div className="mt-6 border-l-4 border-accent-amber bg-white/5 p-6">
-                <p className="text-lg font-semibold italic text-white">“Dear Students & Parents”</p>
-                <p className="mt-3 leading-relaxed text-white/85">
-                  Study Point was founded with a clear vision: to ensure that every student,
-                  regardless of location, receives top-tier online coaching, continuous
-                  encouragement, and the exact academic resources required to excel. My commitment
-                  is to simplify complex concepts, build problem-solving confidence, and provide
-                  every student with a clear, measurable path to academic success.
-                </p>
-                <p className="mt-4 text-sm font-bold">— Ujjwal Mandal, Director</p>
+              <div className="flex flex-col justify-center p-6 sm:p-9">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-700"><FiMapPin className="h-6 w-6" /></span>
+                <h3 className="mt-5 text-xl font-extrabold text-slate-950">Visit Study Point</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{CONTACT.address}</p>
+                <a href={`tel:${CONTACT.phone}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-blue-700">
+                  <FiPhone className="h-4 w-4 text-blue-700" /> {CONTACT.phoneDisplay}
+                </a>
+                <a href={`mailto:${CONTACT.email}`} className="mt-3 inline-flex items-center gap-2 break-all text-sm font-semibold text-slate-700 hover:text-blue-700">
+                  <FiMessageCircle className="h-4 w-4 shrink-0 text-blue-700" /> {CONTACT.email}
+                </a>
+                <div className="mt-7 grid grid-cols-2 gap-3">
+                  <a href={`tel:${CONTACT.phone}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-blue-700 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-800">
+                    Call <FiPhone className="h-4 w-4" />
+                  </a>
+                  <a href={`https://wa.me/91${CONTACT.phone}`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm font-bold text-emerald-800 transition hover:bg-emerald-100">
+                    WhatsApp <FiMessageCircle className="h-4 w-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      {/* ============ COMPACT CONTACT CARD ============ */}
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="rounded-2xl border border-lms-border bg-white p-8 md:p-12 shadow-card flex flex-col md:flex-row items-center gap-8">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-navy-primary text-white">
-            <FiMapPin className="h-6 w-6" />
-          </div>
-          <div className="space-y-2">
-            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Visit Our Centre</p>
-            <p className="font-bold text-navy-dark">{CONTACT.address}</p>
-          </div>
-          <div className="flex items-center gap-4 text-sm text-slate-600">
-            <a href={`tel:${CONTACT.phone}`} className="hover:text-navy-primary transition">{CONTACT.phoneDisplay}</a>
-            <span className="text-slate-400">|</span>
-            <a href={`mailto:${CONTACT.email}`} className="hover:text-navy-primary transition">{CONTACT.email}</a>
-          </div>
-          <Link to="/contact" className="mt-6 md:mt-0 inline-flex items-center gap-2 rounded-full bg-navy-primary px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-navy-hover">
-            Full Contact Details <FiArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
-      {/* ============ CTA ============ */}
-      <section className="mx-auto max-w-6xl px-6 pb-20">
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-navy-primary via-navy-primary to-navy-hover px-8 py-16 text-center text-white shadow-2xl">
-          <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/20 blur-2xl" />
-          <div className="pointer-events-none absolute -bottom-10 -left-10 h-44 w-44 rounded-full bg-accent-amber/20 blur-2xl" />
-          <h2 className="text-3xl font-extrabold md:text-5xl">Ready to Start Learning With Us?</h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/90">
-            Join Study Point today and gain instant access to our online classes, mock tests, and study notes.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              to="/register"
-              className="rounded-full bg-white px-8 py-3 font-semibold text-navy-primary shadow-xl transition hover:scale-105"
-            >
-              Create Account
-            </Link>
-            <Link
-              to="/login"
-              className="rounded-full border-2 border-white/70 px-8 py-3 font-semibold text-white transition hover:bg-white/20"
-            >
-              I Already Have an Account
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ============ FOOTER ============ */}
-      <Footer />
+        <section className="px-6 pb-20 sm:px-8 sm:pb-24">
+          <div className="about-reveal relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-blue-800 via-blue-700 to-blue-950 px-6 py-14 text-center text-white shadow-2xl shadow-blue-900/20 sm:px-12 sm:py-16">
+            <div className="pointer-events-none absolute -right-16 -top-24 h-72 w-72 rounded-full border-[40px] border-white/5" />
+            <div className="pointer-events-none absolute -bottom-36 -left-20 h-80 w-80 rounded-full bg-amber-400/15 blur-3xl" />
+            <div className="relative mx-auto max-w-2xl">
+              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-amber-300 backdrop-blur"><FiHeart className="h-6 w-6" /></span>
+              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Become Part of the Study Point Learning Community</h2>
+              <p className="mx-auto mt-4 max-w-xl leading-relaxed text-blue-100/85">
+                Join a platform where students learn, parents stay connected, and academic growth remains the top priority.
+              </p>
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <Link to="/courses" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-400 px-6 py-3 text-sm font-extrabold text-blue-950 transition hover:-translate-y-0.5 hover:bg-amber-300">
+                  Explore Programs <FiArrowRight className="h-4 w-4" />
+                </Link>
+                <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20">
+                  Contact Us <FiArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer hideLocation />
     </div>
   );
 }

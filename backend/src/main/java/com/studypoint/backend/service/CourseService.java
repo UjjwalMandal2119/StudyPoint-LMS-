@@ -3,8 +3,11 @@ package com.studypoint.backend.service;
 import com.studypoint.backend.dto.request.CourseRequest;
 import com.studypoint.backend.dto.response.CourseListResponse;
 import com.studypoint.backend.dto.response.CourseResponse;
+import com.studypoint.backend.dto.response.PublicProgramResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 public interface CourseService {
 
@@ -21,6 +24,8 @@ public interface CourseService {
     CourseResponse getCourseByCode(String code);
 
     Page<CourseListResponse> searchCourses(String search, Pageable pageable);
+
+    List<PublicProgramResponse> getPublicPrograms();
 
     CourseResponse publishCourse(Long id);
 

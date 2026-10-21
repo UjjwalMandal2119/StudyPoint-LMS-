@@ -1,384 +1,668 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FiMail, FiPhone, FiPlus, FiMinus, FiArrowRight } from 'react-icons/fi';
+import {
+  FiActivity,
+  FiArrowRight,
+  FiArrowUpRight,
+  FiAward,
+  FiBookOpen,
+  FiCalendar,
+  FiCheck,
+  FiCheckCircle,
+  FiClipboard,
+  FiCreditCard,
+  FiFileText,
+  FiGlobe,
+  FiHeart,
+  FiMapPin,
+  FiMessageCircle,
+  FiMonitor,
+  FiBell,
+  FiPhone,
+  FiShield,
+  FiStar,
+  FiTarget,
+  FiTrendingUp,
+  FiUsers,
+  FiVideo,
+  FiZap,
+} from 'react-icons/fi';
 import founderPhoto from '../../assets/ujjwal PhotoCollegeUniform.jpeg';
-import AnnouncementBar from '../../components/layout/header/AnnouncementBar';
 import Header from '../../components/layout/header/Header';
 import Footer from '../../components/layout/footer/Footer';
-
-const IMG = {
-  hero: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80',
-  about: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80',
-  classroom: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80',
-  dashboard: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-  founder: founderPhoto,
-};
+import '../../styles/home.css';
 
 const CONTACT = {
-  email: 'studypoint.ujjwal@gmail.com',
   phone: '8294823430',
   phoneDisplay: '+91 82948 23430',
+  email: 'studypoint.ujjwal@gmail.com',
   address: 'Bindapathar, Jamtara, Jharkhand — 815351',
-  founder: 'Ujjwal Mandal',
-  role: 'Founder & Director, Study Point',
 };
 
-const STATS = [
-  { value: '1,000+', label: 'Active Students' },
-  { value: '95%', label: 'Success Rate' },
-  { value: '500+', label: 'Video Lectures' },
-  { value: '50+', label: 'Mock Tests' },
+const TRUST_POINTS = [
+  { icon: <FiBookOpen />, title: 'Class 1–12 education', detail: 'Learning support from foundational years to senior secondary.' },
+  { icon: <FiGlobe />, title: 'Hindi & English medium', detail: 'A welcoming learning experience for both language groups.' },
+  { icon: <FiZap />, title: 'Science-focused learning', detail: 'PCM and PCB pathways with clear academic foundations.' },
+  { icon: <FiUsers />, title: 'Parent monitoring', detail: 'Keep up with attendance, fees, assignments, and progress.' },
+  { icon: <FiMonitor />, title: 'Offline & hybrid support', detail: 'Classroom teaching connected with useful digital tools.' },
+  { icon: <FiAward />, title: 'Expert academic guidance', detail: 'Support for school learning, scholarships, and entrance goals.' },
 ];
 
-const FEATURES = [
-  { icon: '💻', title: 'Live & Recorded Classes', desc: 'Interactive online sessions with clear concepts and recorded backups for easy revision.' },
-  { icon: '📅', title: 'Structured Batches', desc: 'Well-organized batch timetables ensuring completion of syllabus on time.' },
-  { icon: '📝', title: 'Assignments & Practice Sets', desc: 'Regular homework, topic-wise practice sets, and detailed exercise solutions.' },
-  { icon: '❓', title: 'Online Tests & Quizzes', desc: 'Subject-wise quizzes and full-length mock exams with instant score reports.' },
-  { icon: '📈', title: 'Performance Analytics', desc: 'Individual progress tracking to identify strengths and areas that need improvement.' },
-  { icon: '📚', title: 'Comprehensive Study Material', desc: 'High-quality curated notes, PDFs, and key formula guides available anytime.' },
-  { icon: '💬', title: 'Dedicated Doubt Sessions', desc: 'Interactive chat and live forums to solve student queries without delay.' },
-  { icon: '🔔', title: 'Regular Exam Updates', desc: 'Instant notifications regarding batch schedules, test dates, and announcements.' },
-  { icon: '🛡️', title: 'Parent-Teacher Updates', desc: 'Transparent attendance and score reports shared directly with parents.' },
+const JOURNEY = [
+  { grade: 'Classes 1–5', title: 'Foundation Learning', description: 'Build confidence in core concepts, language, and learning habits.', icon: <FiBookOpen /> },
+  { grade: 'Classes 6–8', title: 'Concept Building', description: 'Strengthen understanding and prepare for more advanced subjects.', icon: <FiTarget /> },
+  { grade: 'Classes 9–10', title: 'Board Preparation', description: 'Develop strong subject knowledge and exam readiness.', icon: <FiClipboard /> },
+  { grade: 'Classes 11–12', title: 'Science Academy', description: 'Choose PCM or PCB and study with a focused academic plan.', icon: <FiActivity /> },
+  { grade: 'Career preparation', title: 'Prepare for what’s next', description: 'Build foundations for JEE, NEET, NDA, and scholarship examinations.', icon: <FiAward /> },
 ];
 
-const STEPS = [
-  { n: '01', title: 'Choose Your Course', desc: 'Browse through our available academic and competitive coaching programs.' },
-  { n: '02', title: 'Get Enrolled', desc: 'Create your student account, complete registration, and join your designated batch.' },
-  { n: '03', title: 'Learn & Excel', desc: 'Attend live classes, practice mock tests, solve doubts, and boost your results.' },
+const PROGRAMS = [
+  {
+    icon: <FiBookOpen />,
+    title: 'Foundation Wing',
+    level: 'Classes 1–5',
+    description: 'Nurture curiosity, core skills, and confidence through guided school learning.',
+    benefits: ['Strong fundamentals', 'Supportive teaching'],
+    accent: 'blue',
+  },
+  {
+    icon: <FiTarget />,
+    title: 'Middle School Wing',
+    level: 'Classes 6–8',
+    description: 'Build clear concepts and steady learning habits across school subjects.',
+    benefits: ['Concept-focused lessons', 'Regular practice'],
+    accent: 'violet',
+  },
+  {
+    icon: <FiAward />,
+    title: 'Board Excellence',
+    level: 'Classes 9–10',
+    description: 'Prepare for board exams with structured lessons, revision, and assessment.',
+    benefits: ['Chapter-wise learning', 'Exam practice'],
+    accent: 'amber',
+  },
+  {
+    icon: <FiZap />,
+    title: 'PCM Science Program',
+    level: 'Classes 11–12',
+    description: 'Explore Physics, Chemistry, and Mathematics with guided problem-solving.',
+    benefits: ['Physics · Chemistry · Maths', 'JEE foundations'],
+    accent: 'blue',
+  },
+  {
+    icon: <FiHeart />,
+    title: 'PCB Science Program',
+    level: 'Classes 11–12',
+    description: 'Study Physics, Chemistry, and Biology with clear concepts and revision.',
+    benefits: ['Physics · Chemistry · Biology', 'NEET foundations'],
+    accent: 'rose',
+  },
+  {
+    icon: <FiStar />,
+    title: 'Scholarship Preparation',
+    level: 'Navodaya · Natarhat · Eklavya',
+    description: 'Practice key skills for scholarship and residential school entrance exams.',
+    benefits: ['Focused preparation', 'Practice and revision'],
+    accent: 'green',
+  },
+  {
+    icon: <FiTarget />,
+    title: 'JEE Foundation',
+    level: 'Early competitive preparation',
+    description: 'Start building analytical thinking and problem-solving step by step.',
+    benefits: ['Strong science basics', 'Guided problem-solving'],
+    accent: 'violet',
+  },
+  {
+    icon: <FiActivity />,
+    title: 'NEET Foundation',
+    level: 'Early medical preparation',
+    description: 'Grow a strong base in science with practice, revision, and support.',
+    benefits: ['Clear core concepts', 'Regular topic practice'],
+    accent: 'amber',
+  },
 ];
 
-const TESTIMONIALS = [
-  { quote: 'Study Point helped me clear my core concepts effortlessly. The online test series and revision notes made exam preparation stress-free.', name: 'Rahul Sharma', role: 'Student' },
-  { quote: 'The structured batch schedule and personalized doubt support make online learning super effective and engaging.', name: 'Priya Verma', role: 'Student' },
-  { quote: 'As a parent, I can monitor my child’s class attendance and mock test performances right from home. Very reliable coaching!', name: 'Sunita Devi', role: 'Parent' },
+const PARENT_FEATURES = [
+  { icon: <FiCalendar />, label: 'Attendance tracking', value: 'Class attendance' },
+  { icon: <FiCreditCard />, label: 'Fee management', value: 'Fee status & payments' },
+  { icon: <FiFileText />, label: 'Homework & assignments', value: 'Assignments to complete' },
+  { icon: <FiAward />, label: 'Exam results', value: 'Results & assessments' },
+  { icon: <FiBell />, label: 'Notifications & notices', value: 'School updates' },
+  { icon: <FiMessageCircle />, label: 'Parent-teacher communication', value: 'Stay connected' },
+  { icon: <FiCalendar />, label: 'Parent meeting updates', value: 'Meeting reminders' },
+  { icon: <FiTrendingUp />, label: 'Progress monitoring', value: 'Learning progress' },
+  { icon: <FiShield />, label: 'Secure student records', value: 'Student information' },
 ];
 
-const FAQS = [
-  { q: 'What is Study Point?', a: 'Study Point is an online coaching institute providing structured online classes, study materials, mock tests, and personalized mentorship to help students excel academically.' },
-  { q: 'How do I join a course or batch?', a: 'Click on "Get Started" or "Create Free Account", complete your student registration, select your desired course/batch, and begin learning.' },
-  { q: 'Are recorded classes available if I miss a live lecture?', a: 'Yes! All live sessions are recorded and made available in your student dashboard for revision anytime.' },
-  { q: 'Can I access Study Point on mobile devices?', a: 'Absolutely. Study Point is fully responsive and works smoothly on smartphones, tablets, and desktop computers.' },
-  { q: 'How can I contact Study Point for admission queries?', a: 'You can visit our center at Bindapathar, Jamtara, Jharkhand, call us at +91 82948 23430, or email studypoint.ujjwal@gmail.com.' },
+const STUDENT_FEATURES = [
+  { icon: <FiBookOpen />, label: 'Study materials' },
+  { icon: <FiClipboard />, label: 'Assignments' },
+  { icon: <FiVideo />, label: 'Recorded lectures' },
+  { icon: <FiTarget />, label: 'Practice tests' },
+  { icon: <FiTrendingUp />, label: 'Performance analytics' },
+  { icon: <FiAward />, label: 'Results & certificates' },
+  { icon: <FiBell />, label: 'Notices' },
 ];
 
-const JHARKHAND_DISTRICTS = [
-  { name: 'Jamtara', status: 'Current centre', x: 274, y: 112, current: true },
-  { name: 'Dhanbad', status: 'Planned', x: 251, y: 139 },
-  { name: 'Ranchi', status: 'Planned', x: 205, y: 159 },
-  { name: 'Deoghar', status: 'Planned', x: 285, y: 87 },
-  { name: 'Bokaro', status: 'Planned', x: 235, y: 168 },
-  { name: 'Hazaribagh', status: 'Planned', x: 213, y: 133 },
+const HYBRID_MODES = [
+  {
+    icon: <FiUsers />,
+    title: 'Offline learning',
+    subtitle: 'A classroom with personal attention',
+    features: ['Classroom teaching', 'Personal guidance', 'Teacher interaction'],
+    color: 'blue',
+  },
+  {
+    icon: <FiMonitor />,
+    title: 'Digital support',
+    subtitle: 'Stay connected to your learning',
+    features: ['Notes & assignments', 'Notices & updates', 'Parent portal'],
+    color: 'amber',
+  },
+  {
+    icon: <FiGlobe />,
+    title: 'Online learning',
+    subtitle: 'Practice and revise beyond class',
+    features: ['Recorded content', 'Practice tests', 'Performance reports'],
+    color: 'violet',
+  },
 ];
+
+const ADMISSIONS = [
+  { label: 'Scholarship programs', items: ['Navodaya', 'Natarhat', 'Eklavya', 'NTSE'], icon: <FiAward />, color: 'amber' },
+  { label: 'Career pathways', items: ['JEE', 'NEET', 'NDA'], icon: <FiTarget />, color: 'blue' },
+];
+
+function SectionHeading({ eyebrow, title, description, light = false }) {
+  return (
+    <div className={`mx-auto max-w-2xl text-center ${light ? 'text-white' : ''}`}>
+      <p className={`text-xs font-bold uppercase tracking-[0.18em] ${light ? 'text-amber-300' : 'text-blue-700'}`}>{eyebrow}</p>
+      <h2 className={`mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl ${light ? 'text-white' : 'text-slate-950'}`}>{title}</h2>
+      {description && <p className={`mx-auto mt-4 max-w-xl leading-relaxed ${light ? 'text-blue-100/80' : 'text-slate-600'}`}>{description}</p>}
+    </div>
+  );
+}
+
+function DashboardPreview({ parent = false, hero = false }) {
+  const features = hero
+    ? [
+      { icon: <FiCalendar />, label: 'Attendance', value: 'Class records' },
+      { icon: <FiClipboard />, label: 'Assignments', value: 'Tasks & due dates' },
+      { icon: <FiCreditCard />, label: 'Fees', value: 'Fee status' },
+      { icon: <FiAward />, label: 'Results', value: 'Exam updates' },
+      { icon: <FiBell />, label: 'Notices', value: 'School updates' },
+    ]
+    : parent
+    ? PARENT_FEATURES.slice(0, 4)
+    : [
+      { icon: <FiBookOpen />, label: 'Study materials', value: 'Your learning library' },
+      { icon: <FiClipboard />, label: 'Assignments', value: 'Tasks & due dates' },
+      { icon: <FiVideo />, label: 'Recorded lectures', value: 'Continue learning' },
+      { icon: <FiTarget />, label: 'Practice tests', value: 'Test your understanding' },
+    ];
+
+  return (
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-blue-950/10">
+      <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
+        <div className="flex items-center gap-2">
+          <span className={`flex h-8 w-8 items-center justify-center rounded-lg ${parent ? 'bg-amber-50 text-amber-700' : 'bg-blue-50 text-blue-700'}`}>
+            {parent ? <FiUsers className="h-4 w-4" /> : <FiBookOpen className="h-4 w-4" />}
+          </span>
+          <div>
+            <p className="text-xs font-bold text-slate-900">{parent ? 'Parent Portal' : 'Student Portal'}</p>
+            <p className="text-[10px] text-slate-500">Study Point dashboard</p>
+          </div>
+        </div>
+        <span className="flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-bold text-blue-700">
+          <span className="h-1.5 w-1.5 rounded-full bg-blue-500" /> Portal preview
+        </span>
+      </div>
+      <div className="grid grid-cols-2 gap-2.5 p-3 sm:gap-3 sm:p-4">
+        {features.map((feature, index) => (
+          <div key={feature.label} className="rounded-xl border border-slate-100 bg-slate-50/80 p-3">
+            <div className="flex items-center justify-between gap-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white text-blue-700 shadow-sm">
+                {React.cloneElement(feature.icon, { className: 'h-3.5 w-3.5' })}
+              </span>
+              <span className={`h-1.5 w-1.5 rounded-full ${index === 0 ? 'bg-emerald-500' : 'bg-blue-300'}`} />
+            </div>
+            <p className="mt-2 text-[11px] font-bold leading-tight text-slate-800">{feature.label}</p>
+            <p className="mt-1 text-[9px] text-slate-500">{feature.value}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mx-3 mb-3 flex items-center gap-2 rounded-xl bg-blue-50 px-3 py-2.5 sm:mx-4 sm:mb-4">
+        <FiBell className="h-3.5 w-3.5 shrink-0 text-blue-700" />
+        <p className="text-[10px] font-medium text-blue-900">{parent ? 'Notices and progress updates in one place' : hero ? 'Attendance, academics, and school updates together' : 'Learning resources at your fingertips'}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
-  const [openFaq, setOpenFaq] = useState(0);
+  useEffect(() => {
+    const revealElements = document.querySelectorAll('.home-reveal');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window)) {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+      return undefined;
+    }
+
+    if (prefersReducedMotion) {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver((entries, activeObserver) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        activeObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-700">
-      {/* ============ ANNOUNCEMENT BAR ============ */}
-      <AnnouncementBar phone={CONTACT.phone} phoneDisplay={CONTACT.phoneDisplay} />
-
-      {/* ============ HEADER ============ */}
       <Header />
 
-      {/* ============ HERO ============ */}
-      <section id="home" className="relative overflow-hidden bg-navy-dark">
-        <img src={IMG.hero} alt="Students preparing for exams at Study Point" className="absolute inset-0 h-full w-full object-cover opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-dark via-navy-dark/90 to-navy-primary/50" />
-        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:py-24">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-accent-amber/40 bg-accent-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-amber">
-              🎓 Online Coaching & Test Series
-            </span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-[3.4rem]">
-              Quality Coaching from <br />
-              <span className="bg-gradient-to-r from-navy-hover to-accent-amber bg-clip-text text-transparent">Jamtara, Jharkhand</span>
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-              Structured live and recorded batches, mock tests, PDF notes, and doubt clearing — built for students across Jharkhand.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link to="/register" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-navy-primary to-navy-hover px-7 py-3 text-sm font-semibold text-white shadow-xl transition hover:scale-105">
-                Create Free Account <FiArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/courses" className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/20">
-                Explore Programs
-              </Link>
-            </div>
-          </div>
-          <div className="relative">
-            <img src={IMG.classroom} alt="Classroom at Study Point online coaching" className="w-full rounded-3xl border border-white/15 object-cover shadow-2xl" />
-          </div>
-        </div>
-      </section>
-      {/* ============ STATS ============ */}
-      <section className="bg-navy-dark py-20 text-white">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <div className="grid grid-cols-2 gap-4 px-6 py-8 text-center sm:px-8 md:grid-cols-4 border-t border-white/10 bg-white/5 backdrop-blur">
-            {STATS.map((s) => (
-              <div key={s.label}>
-                <p className="text-3xl font-extrabold text-white">{s.value}</p>
-                <p className="mt-1 text-xs uppercase tracking-wider text-white/70">{s.label}</p>
+      <main>
+        <section id="home" className="relative isolate overflow-hidden bg-slate-50">
+          <div className="absolute -right-28 -top-36 -z-10 h-[28rem] w-[28rem] rounded-full bg-blue-200/45 blur-3xl" />
+          <div className="absolute -bottom-44 left-1/3 -z-10 h-[25rem] w-[25rem] rounded-full bg-amber-100/70 blur-3xl" />
+          <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-14 sm:px-8 sm:py-20 lg:grid-cols-[1fr_0.95fr] lg:gap-16 lg:py-24">
+            <div className="home-reveal">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white/85 px-4 py-2 text-xs font-bold text-blue-800 shadow-sm">
+                <span className="h-2 w-2 rounded-full bg-amber-500" />
+                One platform for every learner
+              </span>
+              <h1 className="mt-6 text-5xl font-extrabold leading-[1.03] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+                Foundation <span className="text-blue-700">to Future.</span>
+              </h1>
+              <p className="mt-6 max-w-xl text-base leading-7 text-slate-600 sm:text-lg">
+                Quality education for students from Class 1 to 12 through structured learning, expert guidance, and technology-enabled learning support.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {['Hindi & English Medium', 'Offline & Hybrid Learning', 'Parent & Student Portal', 'PCM & PCB Science'].map((highlight) => (
+                  <span key={highlight} className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700">
+                    <FiCheck className="h-3.5 w-3.5 text-amber-600" /> {highlight}
+                  </span>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ FEATURES ============ */}
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Why Study With Us</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">Everything You Need To Rank Higher</h2>
-          <p className="mt-4 text-slate-600">Designed to make learning engaging, structured, and result-oriented.</p>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((f) => (
-            <div key={f.title} className="group rounded-2xl border border-lms-border bg-white p-6 shadow-card transition hover:-translate-y-1 hover:border-navy-primary/30 hover:shadow-lift">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-primary/10 text-2xl transition group-hover:scale-110">{f.icon}</span>
-              <h3 className="mt-4 text-lg font-bold text-navy-dark">{f.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{f.desc}</p>
+              <p className="mt-3 text-xs font-medium text-slate-500">
+                Assignments, attendance & fee management · JEE, NEET & scholarship preparation
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link to="/courses" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-blue-700 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-blue-700/20 transition hover:-translate-y-0.5 hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
+                  Explore Programs <FiArrowRight className="h-4 w-4" />
+                </Link>
+                <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-bold text-slate-800 transition hover:border-blue-200 hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
+                  Contact Us <FiArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+              <div className="mt-9 flex items-center gap-3 border-t border-slate-200 pt-6">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700"><FiUsers className="h-5 w-5" /></span>
+                <p className="text-xs leading-relaxed text-slate-500">
+                  <span className="block font-bold text-slate-800">Students, parents, teachers — connected.</span>
+                  Learning and school updates in one place.
+                </p>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* ============ HOW IT WORKS ============ */}
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">How It Works</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">Start Learning in Three Simple Steps</h2>
-        </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {STEPS.map((s) => (
-            <div key={s.n} className="relative rounded-2xl border border-lms-border bg-white p-7 shadow-card">
-              <span className="absolute -top-5 left-7 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-navy-primary to-navy-hover text-sm font-extrabold text-white shadow-lg">{s.n}</span>
-              <h3 className="mt-6 text-xl font-bold text-navy-dark">{s.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      {/* ============ TESTIMONIALS ============ */}
-      <section id="testimonials" className="bg-lms-bg py-20">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Testimonials</p>
-            <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">What Our Students & Parents Say</h2>
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map((t) => (
-              <figure key={t.name} className="rounded-2xl border border-lms-border bg-white p-7 shadow-card">
-                <div className="flex gap-1 text-accent-amber">{'★★★★★'.split('').map((s, i) => <span key={i}>{s}</span>)}</div>
-                <blockquote className="mt-4 text-sm leading-relaxed text-slate-600">“{t.quote}”</blockquote>
-                <figcaption className="mt-6 flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-primary/10 font-bold text-navy-primary">{t.name.charAt(0)}</span>
-                  <div>
-                    <p className="text-sm font-bold text-navy-dark">{t.name}</p>
-                    <p className="text-xs text-slate-500">{t.role}</p>
+            <div className="home-reveal relative mx-auto w-full max-w-xl lg:justify-self-end">
+              <div className="absolute -right-5 top-8 h-44 w-44 rounded-full bg-blue-300/30 blur-3xl" />
+              <div className="absolute -bottom-5 -left-5 h-40 w-40 rounded-full bg-amber-300/30 blur-3xl" />
+              <div className="relative rounded-[2rem] border border-white bg-white/70 p-3 shadow-2xl shadow-blue-950/10 backdrop-blur-sm sm:p-5">
+                <div className="relative overflow-hidden rounded-[1.5rem]">
+                  <img
+                    src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
+                    alt="Teacher supporting students in a classroom"
+                    className="h-[250px] w-full object-cover sm:h-[360px]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-950/45 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 rounded-xl border border-white/30 bg-white/90 px-3 py-2 backdrop-blur sm:bottom-5 sm:left-5">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-blue-700">Every learner matters</p>
+                    <p className="mt-0.5 text-sm font-extrabold text-slate-900">Learn. Practice. Progress.</p>
                   </div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ FAQ ============ */}
-      <section id="faq" className="bg-lms-bg py-20">
-        <div className="mx-auto max-w-3xl px-6 sm:px-8">
-          <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">FAQ</p>
-            <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">Frequently Asked Questions</h2>
-          </div>
-          <div className="mt-10 space-y-3">
-            {FAQS.map((f, i) => (
-              <div key={f.q} className="overflow-hidden rounded-xl border border-lms-border bg-white shadow-card">
-                <button onClick={() => setOpenFaq(openFaq === i ? -1 : i)} className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left font-semibold text-navy-dark transition hover:bg-lms-bg">
-                  {f.q}
-                  {openFaq === i ? <FiMinus className="h-5 w-5 shrink-0 text-navy-hover" /> : <FiPlus className="h-5 w-5 shrink-0 text-navy-hover" />}
-                </button>
-                {openFaq === i && (
-                  <p className="border-t border-lms-border px-6 py-4 text-sm leading-relaxed text-slate-600">{f.a}</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      {/* ============ EXPANDING ACROSS JHARKHAND ============ */}
-      <section id="expansion" className="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Our Expansion</p>
-            <h2 className="mt-2 text-3xl font-extrabold text-navy-dark sm:text-4xl">
-              From Jamtara to Every Corner of Jharkhand
-            </h2>
-            <p className="mt-4 text-slate-600">
-              We’re growing from our Bindapathar centre to reach more students across Jharkhand.
-            </p>
-          </div>
-
-          <div className="mt-12 grid items-center gap-10 rounded-3xl border border-lms-border bg-white p-6 shadow-card sm:p-8 lg:grid-cols-2 lg:gap-14">
-            <div className="mx-auto w-full max-w-lg">
-              <svg
-                viewBox="0 0 360 280"
-                role="img"
-                aria-labelledby="jharkhand-map-title jharkhand-map-description"
-                className="h-auto w-full"
-              >
-                <title id="jharkhand-map-title">Study Point expansion map of Jharkhand</title>
-                <desc id="jharkhand-map-description">
-                  Map of Jharkhand showing the current Study Point centre in Jamtara and planned reach in Dhanbad, Ranchi, Deoghar, Bokaro, and Hazaribagh.
-                </desc>
-                <path
-                  d="M91 19 119 25 143 13 164 22 187 19 207 28 229 27 246 39 270 42 282 55 305 56 320 69 313 85 326 99 315 116 330 130 317 145 326 160 307 174 299 194 282 205 274 223 255 229 245 248 224 255 210 246 191 251 177 236 155 237 148 219 127 210 117 192 95 187 87 168 70 163 67 143 45 133 52 116 34 101 41 84 28 67 43 53 46 37 67 35 72 24Z"
-                  fill="#eff6ff"
-                  stroke="#1e3a8a"
-                  strokeWidth="3"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="m78 56 44 20 36-14 28 28 43-11 30 20m-161 2 37 17 24-7 26 22 36-7 39 18m-143 4 40 7 27-13 26 22 32-4m-94 18 34-10 32 13 28-8m-66 33 6-25 30-13 1-25m-30 63 20-25 31-13 2-25m31-22 17-24"
-                  fill="none"
-                  stroke="#bfdbfe"
-                  strokeWidth="1.5"
-                  strokeDasharray="3 4"
-                  strokeLinecap="round"
-                />
-                {JHARKHAND_DISTRICTS.map((district, index) => (
-                  <g key={district.name}>
-                    <circle
-                      cx={district.x}
-                      cy={district.y}
-                      r="9"
-                      fill={district.current ? '#f59e0b' : '#2563eb'}
-                      stroke="white"
-                      strokeWidth="3"
-                    />
-                    <circle
-                      cx={district.x}
-                      cy={district.y}
-                      r="13"
-                      fill="none"
-                      stroke={district.current ? '#f59e0b' : '#2563eb'}
-                      strokeOpacity="0.35"
-                      strokeWidth="2"
-                    />
-                    <text
-                      x={district.x}
-                      y={district.y + 0.5}
-                      fill="white"
-                      fontSize="7"
-                      fontWeight="700"
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                    >
-                      {index + 1}
-                    </text>
-                  </g>
-                ))}
-                <text x="120" y="220" fill="#1e3a8a" fillOpacity="0.45" fontSize="19" fontWeight="700">
-                  JHARKHAND
-                </text>
-              </svg>
-              <div className="mt-2 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-slate-600">
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-accent-amber" />
-                  Current centre
-                </span>
-                <span className="inline-flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-navy-hover" />
-                  Planned reach
-                </span>
+                </div>
+                <div className="relative mx-auto -mt-5 w-[94%] sm:-mt-8">
+                  <DashboardPreview hero />
+                </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div>
-              <div className="flex items-end justify-between gap-4 border-b border-lms-border pb-4">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-navy-primary">Growing our reach</p>
-                  <h3 className="mt-1 text-xl font-bold text-navy-dark">Our district roadmap</h3>
-                </div>
-                <span className="shrink-0 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-500">
-                  6 locations
-                </span>
-              </div>
-              <ul className="mt-2 divide-y divide-lms-border">
-                {JHARKHAND_DISTRICTS.map((district, index) => (
-                  <li key={district.name} className="flex items-center justify-between gap-4 py-3">
-                    <span className="flex min-w-0 items-center gap-3">
-                      <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white ${district.current ? 'bg-accent-amber' : 'bg-navy-hover'}`}>
-                        {index + 1}
-                      </span>
-                      <span className="truncate text-sm font-semibold text-navy-dark">{district.name}</span>
-                    </span>
-                    <span className={`shrink-0 text-xs font-medium ${district.current ? 'text-amber-700' : 'text-slate-500'}`}>
-                      {district.status}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                to="/contact"
-                className="mt-5 inline-flex items-center gap-2 rounded-lg bg-navy-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-navy-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy-hover/40 focus-visible:ring-offset-2"
-              >
-                Enquire about expansion <FiArrowRight className="h-4 w-4" />
+        <section id="trust" className="py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="home-reveal">
+              <SectionHeading
+                eyebrow="One connected learning community"
+                title="Everything Students Need. Everything Parents Expect."
+                description="Strong academics, thoughtful guidance, and school-life essentials connected in one platform."
+              />
+            </div>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {TRUST_POINTS.map((point, index) => (
+                <article key={point.title} className="home-reveal group rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-950/5 sm:p-6" style={{ '--reveal-delay': `${(index % 3) * 65}ms` }}>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-700 transition group-hover:bg-blue-700 group-hover:text-white">
+                    {React.cloneElement(point.icon, { className: 'h-5 w-5' })}
+                  </span>
+                  <h3 className="mt-4 font-bold text-slate-900">{point.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500">{point.detail}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="academic-journey" className="bg-slate-50 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="home-reveal">
+              <SectionHeading
+                eyebrow="From first steps to future goals"
+                title="One Journey. Endless Opportunities."
+                description="A learning pathway that grows with students, from early foundations to senior science and career preparation."
+              />
+            </div>
+            <ol className="home-journey mt-12 grid gap-4 md:grid-cols-5">
+              {JOURNEY.map((step, index) => (
+                <li key={step.grade} className="home-reveal relative rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" style={{ '--reveal-delay': `${index * 55}ms` }}>
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-700">{React.cloneElement(step.icon, { className: 'h-5 w-5' })}</span>
+                    <span className="text-xs font-extrabold tracking-widest text-blue-100">{String(index + 1).padStart(2, '0')}</span>
+                  </div>
+                  <p className="mt-5 text-xs font-bold uppercase tracking-wider text-blue-700">{step.grade}</p>
+                  <h3 className="mt-1 font-bold text-slate-900">{step.title}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-500">{step.description}</p>
+                  {index === 3 && (
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      <span className="rounded-lg bg-blue-50 px-2 py-1.5 text-center text-[10px] font-bold text-blue-800">PCM</span>
+                      <span className="rounded-lg bg-amber-50 px-2 py-1.5 text-center text-[10px] font-bold text-amber-800">PCB</span>
+                    </div>
+                  )}
+                  {index === 4 && <p className="mt-4 text-[10px] font-bold text-slate-500">JEE · NEET · NDA</p>}
+                </li>
+              ))}
+            </ol>
+            <div className="home-reveal mt-5 flex flex-wrap items-center justify-center gap-2 text-xs font-medium text-slate-500">
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">PCM: Physics · Chemistry · Mathematics</span>
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">PCB: Physics · Chemistry · Biology</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="programs" className="scroll-mt-24 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="home-reveal">
+              <SectionHeading
+                eyebrow="Programs for every stage"
+                title="Programs Designed for Every Stage of Learning"
+                description="Choose a school learning pathway, science program, or focused preparation for scholarship and entrance examinations."
+              />
+            </div>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {PROGRAMS.map((program, index) => (
+                <article key={program.title} className={`home-reveal home-course-card home-course-${program.accent}`} style={{ '--reveal-delay': `${(index % 4) * 55}ms` }}>
+                  <div className="flex items-start justify-between gap-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-blue-700 shadow-sm">{React.cloneElement(program.icon, { className: 'h-5 w-5' })}</span>
+                    <span className="max-w-[60%] rounded-full bg-white/85 px-2.5 py-1 text-right text-[10px] font-bold text-slate-600">{program.level}</span>
+                  </div>
+                  <h3 className="mt-4 text-lg font-bold text-slate-900">{program.title}</h3>
+                  <p className="mt-2 min-h-[3rem] text-xs leading-relaxed text-slate-600">{program.description}</p>
+                  <ul className="mt-4 grid gap-2">
+                    {program.benefits.map((benefit) => (
+                      <li key={benefit} className="flex items-center gap-2 text-[11px] font-medium text-slate-600">
+                        <FiCheckCircle className="h-3.5 w-3.5 shrink-0 text-blue-700" /> {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="/courses" className="mt-5 inline-flex items-center gap-2 text-xs font-bold text-blue-700 transition hover:gap-3">
+                    Learn more <FiArrowUpRight className="h-3.5 w-3.5" />
+                  </Link>
+                </article>
+              ))}
+            </div>
+            <div className="home-reveal mt-9 text-center">
+              <Link to="/courses" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-bold text-slate-700 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-800">
+                View all programs <FiArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ============ COMPACT CONTACT CTA ============ */}
-      <section id="contact" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-10 sm:px-8 sm:py-12">
-        <div className="flex flex-col gap-6 rounded-2xl bg-navy-dark px-6 py-7 text-white sm:px-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent-amber">Get in touch</p>
-            <h2 className="mt-1 text-2xl font-bold text-white">Questions? We’re here to help.</h2>
-            <p className="mt-2 text-sm text-white/70">
-              Admissions, batches, or our expansion across Jharkhand — reach out to our team.
-            </p>
-            <p className="mt-2 text-xs text-white/60">{CONTACT.address}</p>
+        <section id="parent-portal" className="overflow-hidden bg-blue-950 py-20 text-white sm:py-24">
+          <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <div className="home-reveal">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-bold text-blue-100">
+                <FiUsers className="h-4 w-4 text-amber-300" /> Parent portal
+              </span>
+              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Stay Connected With Your Child’s Progress</h2>
+              <p className="mt-4 leading-relaxed text-blue-100/75">
+                One place to follow the school details parents care about—from attendance and assignments to fee updates and exam results.
+              </p>
+              <div className="mt-7 grid grid-cols-2 gap-x-4 gap-y-3">
+                {PARENT_FEATURES.map((feature) => (
+                  <span key={feature.label} className="flex items-start gap-2 text-xs font-medium leading-relaxed text-blue-50/90">
+                    <FiCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-300" /> {feature.label}
+                  </span>
+                ))}
+              </div>
+              <Link to="/login" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-900 transition hover:bg-blue-50">
+                Parent login <FiArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="home-reveal relative mx-auto w-full max-w-lg">
+              <div className="absolute -inset-4 rounded-[2rem] bg-blue-400/15 blur-2xl" />
+              <div className="relative rotate-1 rounded-3xl border border-white/15 bg-white p-3 shadow-2xl sm:p-5">
+                <DashboardPreview parent />
+              </div>
+              <div className="absolute -bottom-4 -left-2 flex items-center gap-2 rounded-xl border border-white/80 bg-white px-3 py-2 shadow-xl sm:-left-8">
+                <FiShield className="h-4 w-4 text-emerald-600" />
+                <span className="text-[10px] font-bold text-slate-800">Student information, organized</span>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={`tel:${CONTACT.phone}`}
-              className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              <FiPhone className="h-4 w-4" /> Call us
-            </a>
-            <a
-              href={`mailto:${CONTACT.email}`}
-              className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              <FiMail className="h-4 w-4" /> Email us
-            </a>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-navy-primary transition hover:bg-slate-100"
-            >
-              Contact page <FiArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-      {/* ============ CTA ============ */}
-      <section className="mx-auto max-w-6xl px-6 pb-20">
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-navy-primary via-navy-primary to-navy-hover px-8 py-16 text-center text-white shadow-2xl">
-          <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/20 blur-2xl" />
-          <div className="pointer-events-none absolute -bottom-10 -left-10 h-44 w-44 rounded-full bg-accent-amber/20 blur-2xl" />
-          <h2 className="text-3xl font-extrabold md:text-5xl">Ready to Excel in Your Exams?</h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/90">Enroll with Study Point today and get direct access to top-notch online lectures, mock tests, and study notes.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link to="/register" className="rounded-full bg-white px-8 py-3 font-semibold text-navy-primary shadow-xl transition hover:scale-105">Create Account</Link>
-            <Link to="/login" className="rounded-full border-2 border-white/70 px-8 py-3 font-semibold text-white transition hover:bg-white/20">I Already Have an Account</Link>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ============ FOOTER ============ */}
-      <Footer />
+        <section id="hybrid-learning" className="bg-slate-50 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="home-reveal">
+              <SectionHeading
+                eyebrow="Learning beyond one place"
+                title="A connected hybrid learning model"
+                description="Classroom learning and digital tools work together to support lessons, practice, and parent communication."
+              />
+            </div>
+            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+              {HYBRID_MODES.map((mode, index) => (
+                <article key={mode.title} className={`home-reveal home-mode-card home-mode-${mode.color}`} style={{ '--reveal-delay': `${index * 75}ms` }}>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-blue-700 shadow-sm">{React.cloneElement(mode.icon, { className: 'h-6 w-6' })}</span>
+                  <p className="mt-5 text-xs font-bold uppercase tracking-wider text-blue-700">{mode.subtitle}</p>
+                  <h3 className="mt-1 text-xl font-extrabold text-slate-950">{mode.title}</h3>
+                  <ul className="mt-5 grid gap-3">
+                    {mode.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm text-slate-600"><FiCheckCircle className="h-4 w-4 text-blue-700" /> {feature}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="student-portal" className="py-20 sm:py-24">
+          <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+            <div className="home-reveal order-2 lg:order-1">
+              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-3 shadow-lg sm:p-5">
+                <DashboardPreview />
+                <div className="mt-3 grid grid-cols-3 gap-2 sm:gap-3">
+                  {[
+                    { icon: <FiTrendingUp />, label: 'Performance' },
+                    { icon: <FiAward />, label: 'Results' },
+                    { icon: <FiFileText />, label: 'Certificates' },
+                  ].map((item) => (
+                    <div key={item.label} className="flex flex-col items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-2 py-3 text-center text-[9px] font-bold text-slate-600 sm:flex-row sm:justify-center sm:text-[10px]">
+                      {React.cloneElement(item.icon, { className: 'h-4 w-4 text-blue-700' })}{item.label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="home-reveal order-1 lg:order-2">
+              <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-bold text-blue-800">
+                <FiBookOpen className="h-4 w-4" /> Student portal
+              </span>
+              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">Smart Learning for Students</h2>
+              <p className="mt-4 leading-relaxed text-slate-600">
+                Keep study resources, classwork, practice, and school updates close at hand—with one simple student learning space.
+              </p>
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                {STUDENT_FEATURES.map((feature) => (
+                  <span key={feature.label} className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700">{React.cloneElement(feature.icon, { className: 'h-3.5 w-3.5' })}</span>
+                    {feature.label}
+                  </span>
+                ))}
+              </div>
+              <Link to="/login" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-blue-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-blue-800">
+                Student login <FiArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section id="opportunities" className="bg-amber-50/60 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="home-reveal">
+              <SectionHeading
+                eyebrow="Beyond the classroom"
+                title="Preparing Students for Bigger Opportunities"
+                description="Build a strong academic base and prepare for scholarship opportunities and future career pathways."
+              />
+            </div>
+            <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
+              {ADMISSIONS.map((group, index) => (
+                <article key={group.label} className="home-reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8" style={{ '--reveal-delay': `${index * 80}ms` }}>
+                  <span className={`flex h-12 w-12 items-center justify-center rounded-2xl ${group.color === 'amber' ? 'bg-amber-50 text-amber-700' : 'bg-blue-50 text-blue-700'}`}>
+                    {React.cloneElement(group.icon, { className: 'h-6 w-6' })}
+                  </span>
+                  <h3 className="mt-5 text-xl font-extrabold text-slate-950">{group.label}</h3>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <span key={item} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700">{item}</span>
+                    ))}
+                  </div>
+                  <p className="mt-5 text-sm leading-relaxed text-slate-500">
+                    {group.color === 'amber'
+                      ? 'Focused practice and learning support for scholarship and school entrance preparation.'
+                      : 'A structured foundation for students exploring engineering, medicine, and defence careers.'}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="director" className="py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="home-reveal grid overflow-hidden rounded-[2rem] bg-blue-950 text-white shadow-2xl shadow-blue-950/15 lg:grid-cols-[0.8fr_1.2fr]">
+              <div className="relative min-h-[340px] bg-blue-900 sm:min-h-[440px]">
+                <img src={founderPhoto} alt="Ujjwal Mandal, Founder and Director of Study Point" className="absolute inset-0 h-full w-full object-cover object-top" />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 rounded-xl border border-white/25 bg-white/15 px-4 py-3 backdrop-blur-md sm:bottom-7 sm:left-7">
+                  <p className="text-sm font-bold">Ujjwal Mandal</p>
+                  <p className="mt-0.5 text-xs text-white/75">Founder & Director</p>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">A message from our director</p>
+                <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Meet Our Founder</h2>
+                <p className="mt-2 text-sm font-semibold text-blue-100">B.Tech Computer Science & Engineering</p>
+                <blockquote className="mt-6 border-l-4 border-amber-400 bg-white/5 p-5 text-base leading-relaxed text-blue-50/90 sm:p-6">
+                  “Education is not only about completing a syllabus. It is about building confidence, discipline, and the ability to solve problems. Our mission is to help students learn, grow, and achieve their goals through quality education and continuous support.”
+                </blockquote>
+                <div className="mt-6 flex items-center justify-between border-t border-white/15 pt-5">
+                  <span className="font-serif text-2xl italic text-amber-300">Ujjwal Mandal</span>
+                  <Link to="/about" className="inline-flex items-center gap-2 text-sm font-bold text-white transition hover:text-amber-300">
+                    Our story <FiArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="location" className="bg-slate-50 py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8">
+            <div className="home-reveal">
+              <SectionHeading
+                eyebrow="Find us"
+                title="Visit Study Point"
+                description="We welcome students and families to connect with our team and learn more about our programs."
+              />
+            </div>
+            <div className="home-reveal mt-10 grid overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg md:grid-cols-[1.15fr_0.85fr]">
+              <div className="min-h-[280px] bg-slate-200 sm:min-h-[360px]">
+                <iframe
+                  title="Map to Study Point in Jamtara, Jharkhand"
+                  src="https://maps.google.com/maps?q=Bindapathar%2C%20Jamtara%2C%20Jharkhand%20815351&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                  className="h-full min-h-[280px] w-full border-0 sm:min-h-[360px]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <div className="flex flex-col justify-center p-6 sm:p-9">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-700"><FiMapPin className="h-6 w-6" /></span>
+                <h3 className="mt-5 text-xl font-extrabold text-slate-950">Study Point, Jamtara</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{CONTACT.address}</p>
+                <a href={`tel:${CONTACT.phone}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-blue-700">
+                  <FiPhone className="h-4 w-4 text-blue-700" /> {CONTACT.phoneDisplay}
+                </a>
+                <a href={`mailto:${CONTACT.email}`} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-blue-700">
+                  <FiMessageCircle className="h-4 w-4 text-blue-700" /> {CONTACT.email}
+                </a>
+                <div className="mt-7 grid grid-cols-2 gap-3">
+                  <a href={`tel:${CONTACT.phone}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-blue-700 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-800">
+                    Call us <FiArrowUpRight className="h-4 w-4" />
+                  </a>
+                  <a href={`https://wa.me/91${CONTACT.phone}`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm font-bold text-emerald-800 transition hover:bg-emerald-100">
+                    WhatsApp <FiMessageCircle className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-6 pb-20 sm:px-8 sm:pb-24">
+          <div className="home-reveal relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-blue-800 via-blue-700 to-blue-950 px-6 py-14 text-center text-white shadow-2xl shadow-blue-900/20 sm:px-12 sm:py-16">
+            <div className="pointer-events-none absolute -right-16 -top-24 h-72 w-72 rounded-full border-[40px] border-white/5" />
+            <div className="pointer-events-none absolute -bottom-36 -left-20 h-80 w-80 rounded-full bg-amber-400/15 blur-3xl" />
+            <div className="relative mx-auto max-w-2xl">
+              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-amber-300 backdrop-blur"><FiHeart className="h-6 w-6" /></span>
+              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Start Your Learning Journey Today</h2>
+              <p className="mx-auto mt-4 max-w-xl leading-relaxed text-blue-100/85">
+                Supporting students from Class 1 to 12 through quality education, mentorship, and modern learning tools.
+              </p>
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <Link to="/courses" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-400 px-6 py-3 text-sm font-extrabold text-blue-950 transition hover:-translate-y-0.5 hover:bg-amber-300">
+                  Explore Programs <FiArrowRight className="h-4 w-4" />
+                </Link>
+                <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20">
+                  Contact Us <FiArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer hideLocation />
     </div>
   );
 }

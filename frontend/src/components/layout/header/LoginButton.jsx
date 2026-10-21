@@ -18,7 +18,7 @@ export const AUTH_BUTTON_SOLID =
   'bg-gradient-to-r from-navy-primary to-navy-hover text-white shadow-sm ' +
   'hover:from-navy-hover hover:to-navy-primary active:from-navy-dark active:to-navy-hover';
 
-/** Quiet secondary action — used next to the primary Enroll Now CTA. */
+/** Quiet secondary action — used next to the primary Take Admission CTA. */
 export const AUTH_BUTTON_OUTLINE =
   'border border-navy-hover/40 bg-white text-navy-hover ' +
   'hover:border-navy-primary hover:bg-navy-primary/5 hover:text-navy-primary ' +
@@ -32,7 +32,7 @@ const LOGIN_VARIANTS = {
 /**
  * Study Point Login action — single authentication entry point.
  *
- * Desktop (outline, next to the solid Enroll Now CTA):
+ * Desktop (outline, next to the solid Take Admission CTA):
  *   <LoginButton className="hidden h-10 px-4 lg:inline-flex" variant="outline" />
  * Mobile panel:
  *   <LoginButton className="flex h-11 w-full lg:hidden" variant="outline" onClick={onClose} />

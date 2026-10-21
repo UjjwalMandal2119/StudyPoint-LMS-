@@ -24,6 +24,8 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 
     Page<Course> findByPublishedTrue(Pageable pageable);
 
+    List<Course> findByPublishedTrueAndActiveTrueOrderByNameAsc();
+
     @Query("SELECT c FROM Course c WHERE " +
            "(LOWER(c.name) LIKE LOWER(CONCAT('%', :search, '%')) OR " +
            "LOWER(c.code) LIKE LOWER(CONCAT('%', :search, '%')))")

@@ -1,0 +1,103 @@
+.courses-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.courses-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.course-detail-card {
+  scroll-margin-top: 6rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.75rem;
+  padding: 1.25rem;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.course-detail-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 45px -34px rgb(15 23 42 / 35%);
+}
+
+.course-detail-blue {
+  background: linear-gradient(145deg, #eff6ff 0%, #fff 48%);
+}
+
+.course-detail-violet {
+  background: linear-gradient(145deg, #f5f3ff 0%, #fff 48%);
+}
+
+.course-detail-amber {
+  background: linear-gradient(145deg, #fffbeb 0%, #fff 48%);
+}
+
+.science-program-card,
+.future-program-card,
+.learning-mode-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 1.75rem;
+  padding: 1.5rem;
+  background: #fff;
+}
+
+.science-program-blue,
+.future-program-blue,
+.learning-mode-blue {
+  background: linear-gradient(145deg, #eff6ff 0%, #fff 68%);
+}
+
+.science-program-green {
+  background: linear-gradient(145deg, #f0fdf4 0%, #fff 68%);
+}
+
+.future-program-rose {
+  background: linear-gradient(145deg, #fff1f2 0%, #fff 68%);
+}
+
+.learning-mode-amber {
+  background: linear-gradient(145deg, #fffbeb 0%, #fff 68%);
+}
+
+.science-program-card,
+.future-program-card,
+.learning-mode-card {
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.science-program-card:hover,
+.future-program-card:hover,
+.learning-mode-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 42px -32px rgb(15 23 42 / 35%);
+}
+
+@media (min-width: 768px) {
+  .courses-pathway::before {
+    position: absolute;
+    top: 1.25rem;
+    right: 7%;
+    left: 7%;
+    height: 1px;
+    background: linear-gradient(90deg, #bfdbfe, #fbbf24);
+    content: '';
+  }
+
+  .courses-pathway {
+    position: relative;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .courses-reveal,
+  .course-detail-card,
+  .science-program-card,
+  .future-program-card,
+  .learning-mode-card {
+    transform: none;
+    transition: none;
+  }
+}

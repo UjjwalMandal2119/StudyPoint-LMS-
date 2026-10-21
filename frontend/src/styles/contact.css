@@ -1,0 +1,70 @@
+.contact-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.contact-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-method-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+
+.contact-method-card:hover {
+  transform: translateY(-4px);
+  border-color: #bfdbfe;
+  box-shadow: 0 20px 40px -28px rgb(15 23 42 / 30%);
+}
+
+.contact-method-blue,
+.contact-audience-blue {
+  background: linear-gradient(145deg, #eff6ff, #fff 70%);
+}
+
+.contact-method-green,
+.contact-audience-green {
+  background: linear-gradient(145deg, #f0fdf4, #fff 70%);
+}
+
+.contact-method-violet,
+.contact-audience-violet {
+  background: linear-gradient(145deg, #f5f3ff, #fff 70%);
+}
+
+.contact-method-amber,
+.contact-audience-amber {
+  background: linear-gradient(145deg, #fffbeb, #fff 70%);
+}
+
+.contact-audience-card {
+  min-height: 13rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.contact-audience-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px -28px rgb(15 23 42 / 30%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-reveal,
+  .contact-method-card,
+  .contact-audience-card {
+    transform: none;
+    transition: none;
+  }
+}
