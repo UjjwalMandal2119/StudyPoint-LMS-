@@ -442,6 +442,13 @@ remove/search where applicable).
 ### Public pages
 
 - `Home`, `About`, `Contact`, and `Academics` (`pages/public/Courses.jsx`) — see `pages/public/`.
+- The public Home page includes the admissions landing experience, program cards, student portal
+  preview, director profile, admission steps, enquiry links, theme toggle, and responsive reveal
+  animations. Student reviews and results are intentionally presented as verified-story prompts
+  until approved testimonials and outcome details are available.
+- The document head in `frontend/index.html` provides the public title, description, Open Graph and
+  Twitter metadata, and EducationalOrganization JSON-LD using Study Point's published contact details.
+- Protected dashboards and management pages load on demand; `App` provides a route loading state.
 - Academics uses reusable components from `components/academics/`: `ProgramCard`,
   `ScholarshipCard`, `LearningModeCard`, `FAQAccordion`, and `AdmissionTimeline`.
 - Its school-program cards start from the page's canonical pathway definitions and enrich matching
@@ -526,7 +533,8 @@ Defined under `@layer components` and reused everywhere:
 Base layer: body background, headings colored `navy-dark`, custom scrollbar, antialiasing.
 
 Page-scoped styles under `src/styles/` implement the public Home, About, Contact, and Academics
-layouts and reveal animations. The Academics-specific styles are in `styles/academics.css`; reduced
+layouts and reveal animations. The Home page includes light/dark themes, responsive cards, and a
+custom dashboard preview. The Academics-specific styles are in `styles/academics.css`; reduced
 motion preferences are respected.
 
 ---

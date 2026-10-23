@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiMail, FiPhone, FiMapPin, FiUser } from 'react-icons/fi';
+import { FiMail, FiPhone, FiMapPin, FiUser, FiArrowUpRight } from 'react-icons/fi';
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
 
 /**
@@ -103,10 +103,27 @@ function Footer({ hideLocation = false }) {
             <p className="text-sm font-bold uppercase tracking-wider text-white/80">Contact</p>
             <div className="mt-4 space-y-3 text-sm text-white/70">
               {!hideLocation && (
-                <p className="flex items-start gap-2">
-                  <FiMapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-amber" />
-                  {CONTACT.address}
-                </p>
+                <>
+                  <p className="flex items-start gap-2">
+                    <FiMapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-amber" />
+                    {CONTACT.address}
+                  </p>
+                  <iframe
+                    title="Study Point location on Google Maps"
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(CONTACT.address)}&output=embed`}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="h-28 w-full rounded-lg border-0"
+                  />
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(CONTACT.address)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-white/80 transition hover:text-white"
+                  >
+                    Open in Google Maps <FiArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                </>
               )}
               <p className="flex items-center gap-2">
                 <FiMail className="h-4 w-4 shrink-0 text-accent-amber" />

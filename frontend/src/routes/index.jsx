@@ -1,39 +1,38 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import ProtectedRoute from '../components/common/ProtectedRoute';
-import Layout from '../components/layout/Layout';
-
-import Login from '../pages/auth/Login';
-import Register from '../pages/auth/Register';
-import Dashboard from '../dashboard/Dashboard';
-import AdminDashboard from '../dashboard/AdminDashboard';
-import StudentDashboard from '../dashboard/StudentDashboard';
-import TeacherDashboard from '../dashboard/TeacherDashboard';
-import ParentDashboard from '../dashboard/ParentDashboard';
 import Home from '../pages/public/Home';
 import About from '../pages/public/About';
 import Contact from '../pages/public/Contact';
 import PublicCourses from '../pages/public/Courses';
 
-import Courses from '../pages/Courses';
-import Subjects from '../pages/Subjects';
-import Batches from '../pages/Batches';
-import Exams from '../pages/Exams';
-import Questions from '../pages/Questions';
-import Assignments from '../pages/Assignments';
-import Users from '../pages/Users';
-import Students from '../pages/Students';
-import Teachers from '../pages/Teachers';
-import Attendance from '../pages/Attendance';
-import Enrollments from '../pages/Enrollments';
-import Results from '../pages/Results';
-import Timetable from '../pages/Timetable';
-import Parents from '../pages/Parents';
-import Admissions from '../pages/Admissions';
-import Notices from '../pages/Notices';
-import Notifications from '../pages/Notifications';
-import StudyMaterials from '../pages/StudyMaterials';
-import Discussions from '../pages/Discussions';
-import Grievances from '../pages/Grievances';
+const Layout = lazy(() => import('../components/layout/Layout'));
+const Login = lazy(() => import('../pages/auth/Login'));
+const Register = lazy(() => import('../pages/auth/Register'));
+const Dashboard = lazy(() => import('../dashboard/Dashboard'));
+const AdminDashboard = lazy(() => import('../dashboard/AdminDashboard'));
+const StudentDashboard = lazy(() => import('../dashboard/StudentDashboard'));
+const TeacherDashboard = lazy(() => import('../dashboard/TeacherDashboard'));
+const ParentDashboard = lazy(() => import('../dashboard/ParentDashboard'));
+const Courses = lazy(() => import('../pages/Courses'));
+const Subjects = lazy(() => import('../pages/Subjects'));
+const Batches = lazy(() => import('../pages/Batches'));
+const Exams = lazy(() => import('../pages/Exams'));
+const Questions = lazy(() => import('../pages/Questions'));
+const Assignments = lazy(() => import('../pages/Assignments'));
+const Users = lazy(() => import('../pages/Users'));
+const Students = lazy(() => import('../pages/Students'));
+const Teachers = lazy(() => import('../pages/Teachers'));
+const Attendance = lazy(() => import('../pages/Attendance'));
+const Enrollments = lazy(() => import('../pages/Enrollments'));
+const Results = lazy(() => import('../pages/Results'));
+const Timetable = lazy(() => import('../pages/Timetable'));
+const Parents = lazy(() => import('../pages/Parents'));
+const Admissions = lazy(() => import('../pages/Admissions'));
+const Notices = lazy(() => import('../pages/Notices'));
+const Notifications = lazy(() => import('../pages/Notifications'));
+const StudyMaterials = lazy(() => import('../pages/StudyMaterials'));
+const Discussions = lazy(() => import('../pages/Discussions'));
+const Grievances = lazy(() => import('../pages/Grievances'));
 
 const routes = [
   { path: '/', element: <Home /> },

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
 @layer base {
   body {
     @apply bg-lms-bg text-slate-700 antialiased;
@@ -22,6 +27,12 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-slate-300;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 

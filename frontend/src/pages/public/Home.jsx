@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  FiActivity,
   FiArrowRight,
   FiArrowUpRight,
   FiAward,
@@ -9,660 +8,354 @@ import {
   FiCalendar,
   FiCheck,
   FiCheckCircle,
+  FiChevronUp,
   FiClipboard,
   FiCreditCard,
   FiFileText,
-  FiGlobe,
   FiHeart,
-  FiMapPin,
+  FiLayers,
   FiMessageCircle,
-  FiMonitor,
-  FiBell,
-  FiPhone,
+  FiMoon,
   FiShield,
-  FiStar,
+  FiSun,
   FiTarget,
   FiTrendingUp,
   FiUsers,
-  FiVideo,
   FiZap,
 } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import founderPhoto from '../../assets/ujjwal PhotoCollegeUniform.jpeg';
+import AnnouncementBar from '../../components/layout/header/AnnouncementBar';
 import Header from '../../components/layout/header/Header';
 import Footer from '../../components/layout/footer/Footer';
 import '../../styles/home.css';
 
-const CONTACT = {
-  phone: '8294823430',
-  phoneDisplay: '+91 82948 23430',
-  email: 'studypoint.ujjwal@gmail.com',
-  address: 'Bindapathar, Jamtara, Jharkhand — 815351',
-};
-
-const TRUST_POINTS = [
-  { icon: <FiBookOpen />, title: 'Class 1–12 education', detail: 'Learning support from foundational years to senior secondary.' },
-  { icon: <FiGlobe />, title: 'Hindi & English medium', detail: 'A welcoming learning experience for both language groups.' },
-  { icon: <FiZap />, title: 'Science-focused learning', detail: 'PCM and PCB pathways with clear academic foundations.' },
-  { icon: <FiUsers />, title: 'Parent monitoring', detail: 'Keep up with attendance, fees, assignments, and progress.' },
-  { icon: <FiMonitor />, title: 'Offline & hybrid support', detail: 'Classroom teaching connected with useful digital tools.' },
-  { icon: <FiAward />, title: 'Expert academic guidance', detail: 'Support for school learning, scholarships, and entrance goals.' },
-];
-
-const JOURNEY = [
-  { grade: 'Classes 1–5', title: 'Foundation Learning', description: 'Build confidence in core concepts, language, and learning habits.', icon: <FiBookOpen /> },
-  { grade: 'Classes 6–8', title: 'Concept Building', description: 'Strengthen understanding and prepare for more advanced subjects.', icon: <FiTarget /> },
-  { grade: 'Classes 9–10', title: 'Board Preparation', description: 'Develop strong subject knowledge and exam readiness.', icon: <FiClipboard /> },
-  { grade: 'Classes 11–12', title: 'Science Academy', description: 'Choose PCM or PCB and study with a focused academic plan.', icon: <FiActivity /> },
-  { grade: 'Career preparation', title: 'Prepare for what’s next', description: 'Build foundations for JEE, NEET, NDA, and scholarship examinations.', icon: <FiAward /> },
-];
+const PHONE = '8294823430';
+const WHATSAPP = `https://wa.me/91${PHONE}?text=${encodeURIComponent('Hello Study Point, I would like to know more about admissions.')}`;
 
 const PROGRAMS = [
-  {
-    icon: <FiBookOpen />,
-    title: 'Foundation Wing',
-    level: 'Classes 1–5',
-    description: 'Nurture curiosity, core skills, and confidence through guided school learning.',
-    benefits: ['Strong fundamentals', 'Supportive teaching'],
-    accent: 'blue',
-  },
-  {
-    icon: <FiTarget />,
-    title: 'Middle School Wing',
-    level: 'Classes 6–8',
-    description: 'Build clear concepts and steady learning habits across school subjects.',
-    benefits: ['Concept-focused lessons', 'Regular practice'],
-    accent: 'violet',
-  },
-  {
-    icon: <FiAward />,
-    title: 'Board Excellence',
-    level: 'Classes 9–10',
-    description: 'Prepare for board exams with structured lessons, revision, and assessment.',
-    benefits: ['Chapter-wise learning', 'Exam practice'],
-    accent: 'amber',
-  },
-  {
-    icon: <FiZap />,
-    title: 'PCM Science Program',
-    level: 'Classes 11–12',
-    description: 'Explore Physics, Chemistry, and Mathematics with guided problem-solving.',
-    benefits: ['Physics · Chemistry · Maths', 'JEE foundations'],
-    accent: 'blue',
-  },
-  {
-    icon: <FiHeart />,
-    title: 'PCB Science Program',
-    level: 'Classes 11–12',
-    description: 'Study Physics, Chemistry, and Biology with clear concepts and revision.',
-    benefits: ['Physics · Chemistry · Biology', 'NEET foundations'],
-    accent: 'rose',
-  },
-  {
-    icon: <FiStar />,
-    title: 'Scholarship Preparation',
-    level: 'Navodaya · Natarhat · Eklavya',
-    description: 'Practice key skills for scholarship and residential school entrance exams.',
-    benefits: ['Focused preparation', 'Practice and revision'],
-    accent: 'green',
-  },
-  {
-    icon: <FiTarget />,
-    title: 'JEE Foundation',
-    level: 'Early competitive preparation',
-    description: 'Start building analytical thinking and problem-solving step by step.',
-    benefits: ['Strong science basics', 'Guided problem-solving'],
-    accent: 'violet',
-  },
-  {
-    icon: <FiActivity />,
-    title: 'NEET Foundation',
-    level: 'Early medical preparation',
-    description: 'Grow a strong base in science with practice, revision, and support.',
-    benefits: ['Clear core concepts', 'Regular topic practice'],
-    accent: 'amber',
-  },
+  { title: 'Foundation Program', level: 'Classes 1–5', duration: 'Academic session', icon: <FiBookOpen />, tone: 'blue', detail: 'Build confidence in core subjects, curiosity, and strong learning habits.', tags: ['Strong fundamentals', 'Hindi & English'] },
+  { title: 'Middle School', level: 'Classes 6–8', duration: 'Academic session', icon: <FiLayers />, tone: 'mint', detail: 'Make challenging subjects feel clearer with guided practice and steady support.', tags: ['Concept building', 'Regular practice'] },
+  { title: 'Board Preparation', level: 'Classes 9–10', duration: 'Academic session', icon: <FiAward />, tone: 'amber', detail: 'A structured approach to learning, revision, and exam readiness.', tags: ['Chapter-wise learning', 'Exam practice'] },
+  { title: 'Senior Secondary', level: 'Classes 11–12', duration: 'Academic session', icon: <FiZap />, tone: 'violet', detail: 'Focused science learning with subject pathways aligned to your goals.', tags: ['PCM & PCB', 'Hindi & English'] },
+  { title: 'JEE Preparation', level: 'Engineering pathway', duration: 'Ask about current batches', icon: <FiTarget />, tone: 'blue', detail: 'Strengthen Physics, Chemistry, and Mathematics through concepts and practice.', tags: ['Problem solving', 'Concept foundation'] },
+  { title: 'NEET Preparation', level: 'Medical pathway', duration: 'Ask about current batches', icon: <FiHeart />, tone: 'mint', detail: 'Build a strong base in Biology and physical sciences with guided revision.', tags: ['Biology focus', 'Topic practice'] },
 ];
 
-const PARENT_FEATURES = [
-  { icon: <FiCalendar />, label: 'Attendance tracking', value: 'Class attendance' },
-  { icon: <FiCreditCard />, label: 'Fee management', value: 'Fee status & payments' },
-  { icon: <FiFileText />, label: 'Homework & assignments', value: 'Assignments to complete' },
-  { icon: <FiAward />, label: 'Exam results', value: 'Results & assessments' },
-  { icon: <FiBell />, label: 'Notifications & notices', value: 'School updates' },
-  { icon: <FiMessageCircle />, label: 'Parent-teacher communication', value: 'Stay connected' },
-  { icon: <FiCalendar />, label: 'Parent meeting updates', value: 'Meeting reminders' },
-  { icon: <FiTrendingUp />, label: 'Progress monitoring', value: 'Learning progress' },
-  { icon: <FiShield />, label: 'Secure student records', value: 'Student information' },
+const STATS = [
+  { value: 1000, suffix: '+', label: 'Students supported', icon: <FiUsers /> },
+  { value: 95, suffix: '%', label: 'Success rate', icon: <FiTrendingUp /> },
+  { value: 50, suffix: '+', label: 'Expert mentors', icon: <FiAward /> },
+  { value: 10, suffix: '+', label: 'Years of experience', icon: <FiCalendar /> },
 ];
 
-const STUDENT_FEATURES = [
-  { icon: <FiBookOpen />, label: 'Study materials' },
-  { icon: <FiClipboard />, label: 'Assignments' },
-  { icon: <FiVideo />, label: 'Recorded lectures' },
-  { icon: <FiTarget />, label: 'Practice tests' },
-  { icon: <FiTrendingUp />, label: 'Performance analytics' },
-  { icon: <FiAward />, label: 'Results & certificates' },
-  { icon: <FiBell />, label: 'Notices' },
+const STEPS = [
+  { title: 'Enquiry', copy: 'Tell us the student’s class and learning goals.', icon: <FiMessageCircle /> },
+  { title: 'Counselling', copy: 'Talk with our team about programs and fit.', icon: <FiUsers /> },
+  { title: 'Demo class', copy: 'Experience a class before making a decision.', icon: <FiBookOpen /> },
+  { title: 'Admission', copy: 'Get guided through the next steps.', icon: <FiCheckCircle /> },
 ];
 
-const HYBRID_MODES = [
-  {
-    icon: <FiUsers />,
-    title: 'Offline learning',
-    subtitle: 'A classroom with personal attention',
-    features: ['Classroom teaching', 'Personal guidance', 'Teacher interaction'],
-    color: 'blue',
-  },
-  {
-    icon: <FiMonitor />,
-    title: 'Digital support',
-    subtitle: 'Stay connected to your learning',
-    features: ['Notes & assignments', 'Notices & updates', 'Parent portal'],
-    color: 'amber',
-  },
-  {
-    icon: <FiGlobe />,
-    title: 'Online learning',
-    subtitle: 'Practice and revise beyond class',
-    features: ['Recorded content', 'Practice tests', 'Performance reports'],
-    color: 'violet',
-  },
-];
-
-const ADMISSIONS = [
-  { label: 'Scholarship programs', items: ['Navodaya', 'Natarhat', 'Eklavya', 'NTSE'], icon: <FiAward />, color: 'amber' },
-  { label: 'Career pathways', items: ['JEE', 'NEET', 'NDA'], icon: <FiTarget />, color: 'blue' },
+const PORTAL_ITEMS = [
+  { label: 'Attendance', icon: <FiCalendar />, value: 'Class records' },
+  { label: 'Assignments', icon: <FiClipboard />, value: 'Tasks & due dates' },
+  { label: 'Fee updates', icon: <FiCreditCard />, value: 'Payment overview' },
+  { label: 'Results', icon: <FiTrendingUp />, value: 'Progress & exams' },
+  { label: 'Study notes', icon: <FiFileText />, value: 'Learning resources' },
+  { label: 'Notices', icon: <FiMessageCircle />, value: 'School updates' },
 ];
 
 function SectionHeading({ eyebrow, title, description, light = false }) {
   return (
-    <div className={`mx-auto max-w-2xl text-center ${light ? 'text-white' : ''}`}>
-      <p className={`text-xs font-bold uppercase tracking-[0.18em] ${light ? 'text-amber-300' : 'text-blue-700'}`}>{eyebrow}</p>
-      <h2 className={`mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl ${light ? 'text-white' : 'text-slate-950'}`}>{title}</h2>
-      {description && <p className={`mx-auto mt-4 max-w-xl leading-relaxed ${light ? 'text-blue-100/80' : 'text-slate-600'}`}>{description}</p>}
+    <div className={`home-heading ${light ? 'home-heading-light' : ''}`}>
+      <p className="home-eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+      {description && <p className="home-heading-copy">{description}</p>}
     </div>
   );
 }
 
-function DashboardPreview({ parent = false, hero = false }) {
-  const features = hero
-    ? [
-      { icon: <FiCalendar />, label: 'Attendance', value: 'Class records' },
-      { icon: <FiClipboard />, label: 'Assignments', value: 'Tasks & due dates' },
-      { icon: <FiCreditCard />, label: 'Fees', value: 'Fee status' },
-      { icon: <FiAward />, label: 'Results', value: 'Exam updates' },
-      { icon: <FiBell />, label: 'Notices', value: 'School updates' },
-    ]
-    : parent
-    ? PARENT_FEATURES.slice(0, 4)
-    : [
-      { icon: <FiBookOpen />, label: 'Study materials', value: 'Your learning library' },
-      { icon: <FiClipboard />, label: 'Assignments', value: 'Tasks & due dates' },
-      { icon: <FiVideo />, label: 'Recorded lectures', value: 'Continue learning' },
-      { icon: <FiTarget />, label: 'Practice tests', value: 'Test your understanding' },
-    ];
+function Counter({ value, suffix }) {
+  const [count, setCount] = useState(0);
+  const [node, setNode] = useState(null);
 
-  return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-blue-950/10">
-      <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
-        <div className="flex items-center gap-2">
-          <span className={`flex h-8 w-8 items-center justify-center rounded-lg ${parent ? 'bg-amber-50 text-amber-700' : 'bg-blue-50 text-blue-700'}`}>
-            {parent ? <FiUsers className="h-4 w-4" /> : <FiBookOpen className="h-4 w-4" />}
-          </span>
-          <div>
-            <p className="text-xs font-bold text-slate-900">{parent ? 'Parent Portal' : 'Student Portal'}</p>
-            <p className="text-[10px] text-slate-500">Study Point dashboard</p>
-          </div>
-        </div>
-        <span className="flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-bold text-blue-700">
-          <span className="h-1.5 w-1.5 rounded-full bg-blue-500" /> Portal preview
-        </span>
-      </div>
-      <div className="grid grid-cols-2 gap-2.5 p-3 sm:gap-3 sm:p-4">
-        {features.map((feature, index) => (
-          <div key={feature.label} className="rounded-xl border border-slate-100 bg-slate-50/80 p-3">
-            <div className="flex items-center justify-between gap-2">
-              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white text-blue-700 shadow-sm">
-                {React.cloneElement(feature.icon, { className: 'h-3.5 w-3.5' })}
-              </span>
-              <span className={`h-1.5 w-1.5 rounded-full ${index === 0 ? 'bg-emerald-500' : 'bg-blue-300'}`} />
-            </div>
-            <p className="mt-2 text-[11px] font-bold leading-tight text-slate-800">{feature.label}</p>
-            <p className="mt-1 text-[9px] text-slate-500">{feature.value}</p>
-          </div>
-        ))}
-      </div>
-      <div className="mx-3 mb-3 flex items-center gap-2 rounded-xl bg-blue-50 px-3 py-2.5 sm:mx-4 sm:mb-4">
-        <FiBell className="h-3.5 w-3.5 shrink-0 text-blue-700" />
-        <p className="text-[10px] font-medium text-blue-900">{parent ? 'Notices and progress updates in one place' : hero ? 'Attendance, academics, and school updates together' : 'Learning resources at your fingertips'}</p>
-      </div>
-    </div>
-  );
-}
-
-export default function Home() {
   useEffect(() => {
-    const revealElements = document.querySelectorAll('.home-reveal');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!('IntersectionObserver' in window)) {
-      revealElements.forEach((element) => element.classList.add('is-visible'));
+    if (!node) return undefined;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      setCount(value);
       return undefined;
     }
 
-    if (prefersReducedMotion) {
-      revealElements.forEach((element) => element.classList.add('is-visible'));
+    let frame;
+    let observer;
+    observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      const start = performance.now();
+      const duration = 1100;
+      const animate = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        setCount(Math.round(value * (1 - ((1 - progress) ** 3))));
+        if (progress < 1) frame = window.requestAnimationFrame(animate);
+      };
+      frame = window.requestAnimationFrame(animate);
+      observer.disconnect();
+    }, { threshold: 0.45 });
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      window.cancelAnimationFrame(frame);
+    };
+  }, [node, value]);
+
+  return <span ref={setNode} aria-label={`${value}${suffix}`}>{count}{suffix}</span>;
+}
+
+function DashboardPreview() {
+  return (
+    <div className="portal-window" aria-label="Preview of the Study Point student portal">
+      <div className="portal-topbar">
+        <div className="portal-brand">
+          <span className="portal-brand-icon"><FiBookOpen /></span>
+          <span><strong>Study Point</strong><small>Student workspace</small></span>
+        </div>
+        <span className="portal-live"><span /> My learning</span>
+      </div>
+      <div className="portal-body">
+        <aside className="portal-sidebar" aria-label="Portal sections">
+          <span className="portal-avatar">SP</span>
+          <span className="portal-side-active"><FiLayers /></span>
+          <span><FiCalendar /></span>
+          <span><FiFileText /></span>
+          <span><FiMessageCircle /></span>
+        </aside>
+        <div className="portal-content">
+          <div className="portal-welcome"><div><small>YOUR LEARNING, AT A GLANCE</small><h3>Good things grow with practice.</h3></div><span className="portal-date">This week <FiArrowRight /></span></div>
+          <div className="portal-summary">
+            <div className="portal-progress"><div className="portal-ring"><strong>82%</strong></div><span>Learning progress</span></div>
+            <div className="portal-mini-chart"><div><small>Weekly activity</small><strong>Keep your momentum</strong></div><div className="portal-bars" aria-hidden="true"><i /><i /><i /><i /><i /><i /><i /></div><div className="portal-days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div></div>
+          </div>
+          <div className="portal-list-heading"><strong>Your study essentials</strong><span>All in one place</span></div>
+          <div className="portal-grid">
+            {PORTAL_ITEMS.map((item) => (
+              <div className="portal-tile" key={item.label}><span>{item.icon}</span><div><strong>{item.label}</strong><small>{item.value}</small></div><FiArrowUpRight /></div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="portal-footnote"><FiShield /> A connected view for students and parents</div>
+    </div>
+  );
+}
+
+function Home() {
+  const [dark, setDark] = useState(() => window.localStorage.getItem('study-point-theme') === 'dark');
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const revealItems = document.querySelectorAll('.home-reveal');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      revealItems.forEach((element) => element.classList.add('is-visible'));
       return undefined;
     }
 
     const observer = new IntersectionObserver((entries, activeObserver) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        activeObserver.unobserve(entry.target);
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          activeObserver.unobserve(entry.target);
+        }
       });
     }, { threshold: 0.12 });
-
-    revealElements.forEach((element) => observer.observe(element));
+    revealItems.forEach((element) => observer.observe(element));
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    window.localStorage.setItem('study-point-theme', dark ? 'dark' : 'light');
+  }, [dark]);
+
+  useEffect(() => {
+    const updateScroll = () => setShowTop(window.scrollY > 600);
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    updateScroll();
+    return () => window.removeEventListener('scroll', updateScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-700">
+    <div className={`home-page ${dark ? 'home-dark' : ''}`} data-theme={dark ? 'dark' : 'light'}>
+      <AnnouncementBar phone={PHONE} phoneDisplay="+91 82948 23430" />
       <Header />
+      <button
+        type="button"
+        className="home-theme-toggle"
+        onClick={() => setDark((current) => !current)}
+        aria-label={`Switch to ${dark ? 'light' : 'dark'} mode`}
+        title={`Switch to ${dark ? 'light' : 'dark'} mode`}
+      >
+        {dark ? <FiSun /> : <FiMoon />}
+      </button>
 
       <main>
-        <section id="home" className="relative isolate overflow-hidden bg-slate-50">
-          <div className="absolute -right-28 -top-36 -z-10 h-[28rem] w-[28rem] rounded-full bg-blue-200/45 blur-3xl" />
-          <div className="absolute -bottom-44 left-1/3 -z-10 h-[25rem] w-[25rem] rounded-full bg-amber-100/70 blur-3xl" />
-          <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-14 sm:px-8 sm:py-20 lg:grid-cols-[1fr_0.95fr] lg:gap-16 lg:py-24">
-            <div className="home-reveal">
-              <span className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white/85 px-4 py-2 text-xs font-bold text-blue-800 shadow-sm">
-                <span className="h-2 w-2 rounded-full bg-amber-500" />
-                One platform for every learner
-              </span>
-              <h1 className="mt-6 text-5xl font-extrabold leading-[1.03] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
-                Foundation <span className="text-blue-700">to Future.</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-7 text-slate-600 sm:text-lg">
-                Quality education for students from Class 1 to 12 through structured learning, expert guidance, and technology-enabled learning support.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {['Hindi & English Medium', 'Offline & Hybrid Learning', 'Parent & Student Portal', 'PCM & PCB Science'].map((highlight) => (
-                  <span key={highlight} className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700">
-                    <FiCheck className="h-3.5 w-3.5 text-amber-600" /> {highlight}
-                  </span>
+        <section className="home-hero" id="home">
+          <div className="home-hero-orb home-hero-orb-one" />
+          <div className="home-hero-orb home-hero-orb-two" />
+          <div className="home-container home-hero-layout">
+            <div className="home-hero-copy home-reveal">
+              <span className="home-kicker"><span className="home-kicker-dot" /> Admissions open · Bindapathar, Jamtara</span>
+              <h1>Transforming Learning <span>Into Success</span></h1>
+              <p className="home-hero-description">One platform for education, coaching, student management, and competitive exam preparation.</p>
+              <ul className="home-feature-chips" aria-label="Study Point features">
+                {['JEE preparation', 'NEET preparation', 'Smart student portal', 'Attendance tracking', 'Parent monitoring', 'Online & offline classes'].map((item) => (
+                  <li key={item}><FiCheck />{item}</li>
                 ))}
+              </ul>
+              <div className="home-hero-actions">
+                <Link className="home-button home-button-primary" to="/contact">Book Free Demo <FiArrowRight /></Link>
+                <a className="home-button home-button-secondary" href="#programs">Explore Programs <FiArrowUpRight /></a>
               </div>
-              <p className="mt-3 text-xs font-medium text-slate-500">
-                Assignments, attendance & fee management · JEE, NEET & scholarship preparation
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link to="/courses" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-blue-700 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-blue-700/20 transition hover:-translate-y-0.5 hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
-                  Explore Programs <FiArrowRight className="h-4 w-4" />
-                </Link>
-                <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-bold text-slate-800 transition hover:border-blue-200 hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
-                  Contact Us <FiArrowUpRight className="h-4 w-4" />
-                </Link>
-              </div>
-              <div className="mt-9 flex items-center gap-3 border-t border-slate-200 pt-6">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700"><FiUsers className="h-5 w-5" /></span>
-                <p className="text-xs leading-relaxed text-slate-500">
-                  <span className="block font-bold text-slate-800">Students, parents, teachers — connected.</span>
-                  Learning and school updates in one place.
-                </p>
-              </div>
+              <div className="home-hero-note"><span className="home-note-icon"><FiHeart /></span><span><strong>A learning partner for the whole family.</strong><small>School academics, exam preparation, and parent updates.</small></span></div>
             </div>
 
-            <div className="home-reveal relative mx-auto w-full max-w-xl lg:justify-self-end">
-              <div className="absolute -right-5 top-8 h-44 w-44 rounded-full bg-blue-300/30 blur-3xl" />
-              <div className="absolute -bottom-5 -left-5 h-40 w-40 rounded-full bg-amber-300/30 blur-3xl" />
-              <div className="relative rounded-[2rem] border border-white bg-white/70 p-3 shadow-2xl shadow-blue-950/10 backdrop-blur-sm sm:p-5">
-                <div className="relative overflow-hidden rounded-[1.5rem]">
-                  <img
-                    src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
-                    alt="Teacher supporting students in a classroom"
-                    className="h-[250px] w-full object-cover sm:h-[360px]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-950/45 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 rounded-xl border border-white/30 bg-white/90 px-3 py-2 backdrop-blur sm:bottom-5 sm:left-5">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-blue-700">Every learner matters</p>
-                    <p className="mt-0.5 text-sm font-extrabold text-slate-900">Learn. Practice. Progress.</p>
-                  </div>
-                </div>
-                <div className="relative mx-auto -mt-5 w-[94%] sm:-mt-8">
-                  <DashboardPreview hero />
-                </div>
+            <div className="home-hero-visual home-reveal">
+              <div className="home-visual-glow" />
+              <div className="home-visual-image">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80" alt="Illustrative classroom scene showing students learning together" fetchPriority="high" />
+                <div className="home-visual-caption"><span className="home-caption-icon"><FiBookOpen /></span><span><small>LEARN WITH PURPOSE</small><strong>Small steps. Big futures.</strong></span></div>
               </div>
+              <div className="home-dashboard-float"><DashboardPreview /></div>
+              <div className="home-trust-float"><span><FiShield /></span><span><strong>Families stay connected</strong><small>Learning updates, together</small></span></div>
             </div>
+          </div>
+          <div className="home-container home-hero-bottom">
+            <span>Learning for every stage</span><i /><span>Class 1–12</span><i /><span>JEE & NEET pathways</span><i /><span>Student & parent portal</span>
           </div>
         </section>
 
-        <section id="trust" className="py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8">
-            <div className="home-reveal">
-              <SectionHeading
-                eyebrow="One connected learning community"
-                title="Everything Students Need. Everything Parents Expect."
-                description="Strong academics, thoughtful guidance, and school-life essentials connected in one platform."
-              />
-            </div>
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {TRUST_POINTS.map((point, index) => (
-                <article key={point.title} className="home-reveal group rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-950/5 sm:p-6" style={{ '--reveal-delay': `${(index % 3) * 65}ms` }}>
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-700 transition group-hover:bg-blue-700 group-hover:text-white">
-                    {React.cloneElement(point.icon, { className: 'h-5 w-5' })}
-                  </span>
-                  <h3 className="mt-4 font-bold text-slate-900">{point.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500">{point.detail}</p>
-                </article>
-              ))}
-            </div>
+        <section className="home-stats" aria-label="Study Point at a glance">
+          <div className="home-container home-stats-grid">
+            {STATS.map((stat) => (
+              <div className="home-stat home-reveal" key={stat.label}>
+                <span className="home-stat-icon">{stat.icon}</span>
+                <div><strong><Counter value={stat.value} suffix={stat.suffix} /></strong><span>{stat.label}</span></div>
+              </div>
+            ))}
           </div>
         </section>
 
-        <section id="academic-journey" className="bg-slate-50 py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8">
-            <div className="home-reveal">
-              <SectionHeading
-                eyebrow="From first steps to future goals"
-                title="One Journey. Endless Opportunities."
-                description="A learning pathway that grows with students, from early foundations to senior science and career preparation."
-              />
-            </div>
-            <ol className="home-journey mt-12 grid gap-4 md:grid-cols-5">
-              {JOURNEY.map((step, index) => (
-                <li key={step.grade} className="home-reveal relative rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" style={{ '--reveal-delay': `${index * 55}ms` }}>
-                  <div className="flex items-center justify-between">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-700">{React.cloneElement(step.icon, { className: 'h-5 w-5' })}</span>
-                    <span className="text-xs font-extrabold tracking-widest text-blue-100">{String(index + 1).padStart(2, '0')}</span>
-                  </div>
-                  <p className="mt-5 text-xs font-bold uppercase tracking-wider text-blue-700">{step.grade}</p>
-                  <h3 className="mt-1 font-bold text-slate-900">{step.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-500">{step.description}</p>
-                  {index === 3 && (
-                    <div className="mt-4 grid grid-cols-2 gap-2">
-                      <span className="rounded-lg bg-blue-50 px-2 py-1.5 text-center text-[10px] font-bold text-blue-800">PCM</span>
-                      <span className="rounded-lg bg-amber-50 px-2 py-1.5 text-center text-[10px] font-bold text-amber-800">PCB</span>
-                    </div>
-                  )}
-                  {index === 4 && <p className="mt-4 text-[10px] font-bold text-slate-500">JEE · NEET · NDA</p>}
-                </li>
-              ))}
-            </ol>
-            <div className="home-reveal mt-5 flex flex-wrap items-center justify-center gap-2 text-xs font-medium text-slate-500">
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">PCM: Physics · Chemistry · Mathematics</span>
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">PCB: Physics · Chemistry · Biology</span>
-            </div>
-          </div>
-        </section>
-
-        <section id="programs" className="scroll-mt-24 py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8">
-            <div className="home-reveal">
-              <SectionHeading
-                eyebrow="Programs for every stage"
-                title="Programs Designed for Every Stage of Learning"
-                description="Choose a school learning pathway, science program, or focused preparation for scholarship and entrance examinations."
-              />
-            </div>
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <section className="home-section home-programs" id="programs">
+          <div className="home-container">
+            <div className="home-reveal"><SectionHeading eyebrow="A pathway for every ambition" title="The right support, at every stage." description="From the first school years to competitive exam preparation, find a learning path that grows with you." /></div>
+            <div className="home-program-grid">
               {PROGRAMS.map((program, index) => (
-                <article key={program.title} className={`home-reveal home-course-card home-course-${program.accent}`} style={{ '--reveal-delay': `${(index % 4) * 55}ms` }}>
-                  <div className="flex items-start justify-between gap-3">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-blue-700 shadow-sm">{React.cloneElement(program.icon, { className: 'h-5 w-5' })}</span>
-                    <span className="max-w-[60%] rounded-full bg-white/85 px-2.5 py-1 text-right text-[10px] font-bold text-slate-600">{program.level}</span>
-                  </div>
-                  <h3 className="mt-4 text-lg font-bold text-slate-900">{program.title}</h3>
-                  <p className="mt-2 min-h-[3rem] text-xs leading-relaxed text-slate-600">{program.description}</p>
-                  <ul className="mt-4 grid gap-2">
-                    {program.benefits.map((benefit) => (
-                      <li key={benefit} className="flex items-center gap-2 text-[11px] font-medium text-slate-600">
-                        <FiCheckCircle className="h-3.5 w-3.5 shrink-0 text-blue-700" /> {benefit}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to="/courses" className="mt-5 inline-flex items-center gap-2 text-xs font-bold text-blue-700 transition hover:gap-3">
-                    Learn more <FiArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
+                <article className={`home-program-card home-tone-${program.tone} home-reveal`} key={program.title} style={{ '--reveal-delay': `${(index % 3) * 75}ms` }}>
+                  <div className="home-program-top"><span className="home-program-icon">{program.icon}</span><span className="home-program-level">{program.level}</span></div>
+                  <h3>{program.title}</h3><p>{program.detail}</p>
+                  <ul>{program.tags.map((tag) => <li key={tag}><FiCheckCircle />{tag}</li>)}</ul>
+                  <div className="home-program-meta"><FiCalendar />{program.duration}</div>
+                  <Link to="/contact" className="home-program-link">Ask about this program <FiArrowRight /></Link>
                 </article>
               ))}
             </div>
-            <div className="home-reveal mt-9 text-center">
-              <Link to="/courses" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-bold text-slate-700 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-800">
-                View all programs <FiArrowRight className="h-4 w-4" />
-              </Link>
+            <p className="home-program-note">Class placement, batch availability, and program details are confirmed during counselling.</p>
+          </div>
+        </section>
+
+        <section className="home-about home-section" id="about">
+          <div className="home-container home-about-grid">
+            <div className="home-about-copy home-reveal">
+              <p className="home-eyebrow">Why Study Point exists</p>
+              <h2>Every student deserves a place to discover what they can become.</h2>
+              <p>Study Point brings structured teaching, personal guidance, and useful learning technology together—so students can make progress and families can stay involved.</p>
+              <div className="home-purpose-list">
+                <div><span><FiTarget /></span><p><strong>Our mission</strong><small>Make quality learning and thoughtful academic guidance accessible to students at every stage.</small></p></div>
+                <div><span><FiTrendingUp /></span><p><strong>Our vision</strong><small>Help learners grow into confident, curious people ready for the opportunities ahead.</small></p></div>
+                <div><span><FiHeart /></span><p><strong>Our teaching philosophy</strong><small>Clear concepts, consistent practice, personal encouragement, and parents kept in the loop.</small></p></div>
+              </div>
+              <Link to="/about" className="home-text-link">Get to know us <FiArrowRight /></Link>
+            </div>
+            <div className="home-founder-card home-reveal">
+              <div className="home-founder-photo"><img src={founderPhoto} alt="Ujjwal Mandal, Founder and Director of Study Point" loading="lazy" /></div>
+              <div className="home-founder-copy"><span className="home-eyebrow">A personal commitment to learning</span><h3>Ujjwal Mandal</h3><p>Founder & Director · B.Tech, Computer Science & Engineering</p>              <blockquote>“Education is not only about completing a syllabus. It is about building confidence, discipline, and the ability to solve problems.”</blockquote><Link to="/about">Read our story <FiArrowRight /></Link></div>
             </div>
           </div>
         </section>
 
-        <section id="parent-portal" className="overflow-hidden bg-blue-950 py-20 text-white sm:py-24">
-          <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-            <div className="home-reveal">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-bold text-blue-100">
-                <FiUsers className="h-4 w-4 text-amber-300" /> Parent portal
-              </span>
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Stay Connected With Your Child’s Progress</h2>
-              <p className="mt-4 leading-relaxed text-blue-100/75">
-                One place to follow the school details parents care about—from attendance and assignments to fee updates and exam results.
-              </p>
-              <div className="mt-7 grid grid-cols-2 gap-x-4 gap-y-3">
-                {PARENT_FEATURES.map((feature) => (
-                  <span key={feature.label} className="flex items-start gap-2 text-xs font-medium leading-relaxed text-blue-50/90">
-                    <FiCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-300" /> {feature.label}
-                  </span>
-                ))}
-              </div>
-              <Link to="/login" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-900 transition hover:bg-blue-50">
-                Parent login <FiArrowRight className="h-4 w-4" />
-              </Link>
+        <section className="home-portal home-section" id="student-portal">
+          <div className="home-container home-portal-layout">
+            <div className="home-portal-copy home-reveal">
+              <p className="home-eyebrow">Learning, all in one place</p>
+              <h2>More clarity for students. More connection for parents.</h2>
+              <p>Keep academic essentials close at hand, from attendance and assignments to results, notes, and school notices.</p>
+              <div className="home-portal-points">{PORTAL_ITEMS.map((item) => <span key={item.label}><i>{item.icon}</i>{item.label}</span>)}</div>
+              <Link className="home-button home-button-white" to="/login">Explore the student portal <FiArrowRight /></Link>
             </div>
-            <div className="home-reveal relative mx-auto w-full max-w-lg">
-              <div className="absolute -inset-4 rounded-[2rem] bg-blue-400/15 blur-2xl" />
-              <div className="relative rotate-1 rounded-3xl border border-white/15 bg-white p-3 shadow-2xl sm:p-5">
-                <DashboardPreview parent />
-              </div>
-              <div className="absolute -bottom-4 -left-2 flex items-center gap-2 rounded-xl border border-white/80 bg-white px-3 py-2 shadow-xl sm:-left-8">
-                <FiShield className="h-4 w-4 text-emerald-600" />
-                <span className="text-[10px] font-bold text-slate-800">Student information, organized</span>
-              </div>
+            <div className="home-portal-art home-reveal"><DashboardPreview /><div className="home-portal-badge"><FiShield /><span><strong>One connected view</strong><small>For learners and families</small></span></div></div>
+          </div>
+        </section>
+
+        <section className="home-section home-achievements" id="achievements">
+          <div className="home-container">
+            <div className="home-reveal"><SectionHeading eyebrow="Every milestone matters" title="A future built one achievement at a time." description="Student and parent stories deserve to be told accurately. Our team can share current, verified program and result information with you directly." /></div>
+            <div className="home-achievement-grid">
+              {[
+                { title: 'Board results', icon: <FiAward />, text: 'Celebrating the effort behind every result.' },
+                { title: 'JEE aspirations', icon: <FiTarget />, text: 'Building strong foundations for engineering pathways.' },
+                { title: 'NEET aspirations', icon: <FiHeart />, text: 'Supporting future healthcare learners through science.' },
+                { title: 'Scholarship journeys', icon: <FiZap />, text: 'Helping students explore new academic opportunities.' },
+              ].map((item, index) => <article className="home-achievement-card home-reveal" key={item.title} style={{ '--reveal-delay': `${index * 60}ms` }}><span>{item.icon}</span><h3>{item.title}</h3><p>{item.text}</p><small>Ask us for the latest verified updates</small></article>)}
+            </div>
+            <div className="home-reviews home-reveal">
+              <div><span className="home-eyebrow">Student & parent voices</span><h3>Real progress deserves real stories.</h3><p>We’re gathering verified feedback from our learning community. Speak with our team to hear more about the Study Point experience.</p></div>
+              <a href={WHATSAPP} target="_blank" rel="noreferrer" className="home-button home-button-primary">Talk to our team <FaWhatsapp /></a>
             </div>
           </div>
         </section>
 
-        <section id="hybrid-learning" className="bg-slate-50 py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8">
-            <div className="home-reveal">
-              <SectionHeading
-                eyebrow="Learning beyond one place"
-                title="A connected hybrid learning model"
-                description="Classroom learning and digital tools work together to support lessons, practice, and parent communication."
-              />
-            </div>
-            <div className="mt-12 grid gap-5 lg:grid-cols-3">
-              {HYBRID_MODES.map((mode, index) => (
-                <article key={mode.title} className={`home-reveal home-mode-card home-mode-${mode.color}`} style={{ '--reveal-delay': `${index * 75}ms` }}>
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-blue-700 shadow-sm">{React.cloneElement(mode.icon, { className: 'h-6 w-6' })}</span>
-                  <p className="mt-5 text-xs font-bold uppercase tracking-wider text-blue-700">{mode.subtitle}</p>
-                  <h3 className="mt-1 text-xl font-extrabold text-slate-950">{mode.title}</h3>
-                  <ul className="mt-5 grid gap-3">
-                    {mode.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 text-sm text-slate-600"><FiCheckCircle className="h-4 w-4 text-blue-700" /> {feature}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
+        <section className="home-section home-gallery" id="gallery">
+          <div className="home-container">
+            <div className="home-reveal"><SectionHeading eyebrow="A love of learning" title="Curiosity belongs in every classroom." description="A few glimpses of the collaborative, encouraging learning environment we strive to create. Images are illustrative." /></div>
+            <div className="home-gallery-grid">
+              <figure className="home-gallery-item home-gallery-tall home-reveal"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=75" loading="lazy" alt="Illustrative classroom scene with a teacher and students" /><figcaption><strong>Classroom learning</strong><span>Ask us about a visit</span></figcaption></figure>
+              <figure className="home-gallery-item home-reveal"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800&q=75" loading="lazy" alt="Illustrative students learning together" /><figcaption><strong>Learning together</strong><span>Ideas grow through collaboration</span></figcaption></figure>
+              <figure className="home-gallery-item home-gallery-tall home-reveal"><img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=800&q=75" loading="lazy" alt="Illustrative students sharing a learning moment" /><figcaption><strong>Every question counts</strong><span>Confidence through practice</span></figcaption></figure>
+              <figure className="home-gallery-item home-reveal"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=75" loading="lazy" alt="Illustrative school learning environment" /><figcaption><strong>Room to grow</strong><span>Support at every stage</span></figcaption></figure>
             </div>
           </div>
         </section>
 
-        <section id="student-portal" className="py-20 sm:py-24">
-          <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-            <div className="home-reveal order-2 lg:order-1">
-              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-3 shadow-lg sm:p-5">
-                <DashboardPreview />
-                <div className="mt-3 grid grid-cols-3 gap-2 sm:gap-3">
-                  {[
-                    { icon: <FiTrendingUp />, label: 'Performance' },
-                    { icon: <FiAward />, label: 'Results' },
-                    { icon: <FiFileText />, label: 'Certificates' },
-                  ].map((item) => (
-                    <div key={item.label} className="flex flex-col items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-2 py-3 text-center text-[9px] font-bold text-slate-600 sm:flex-row sm:justify-center sm:text-[10px]">
-                      {React.cloneElement(item.icon, { className: 'h-4 w-4 text-blue-700' })}{item.label}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="home-reveal order-1 lg:order-2">
-              <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-bold text-blue-800">
-                <FiBookOpen className="h-4 w-4" /> Student portal
-              </span>
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">Smart Learning for Students</h2>
-              <p className="mt-4 leading-relaxed text-slate-600">
-                Keep study resources, classwork, practice, and school updates close at hand—with one simple student learning space.
-              </p>
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                {STUDENT_FEATURES.map((feature) => (
-                  <span key={feature.label} className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700">{React.cloneElement(feature.icon, { className: 'h-3.5 w-3.5' })}</span>
-                    {feature.label}
-                  </span>
-                ))}
-              </div>
-              <Link to="/login" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-blue-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-blue-800">
-                Student login <FiArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+        <section className="home-section home-admissions" id="admissions">
+          <div className="home-container">
+            <div className="home-reveal"><SectionHeading eyebrow="Your next step, made simple" title="Four steps to get started." description="A welcoming, guided admissions journey for students and families." /></div>
+            <ol className="home-steps">
+              {STEPS.map((step, index) => <li className="home-step home-reveal" key={step.title} style={{ '--reveal-delay': `${index * 75}ms` }}><span className="home-step-number">{String(index + 1).padStart(2, '0')}</span><span className="home-step-icon">{step.icon}</span><h3>{step.title}</h3><p>{step.copy}</p></li>)}
+            </ol>
           </div>
         </section>
 
-        <section id="opportunities" className="bg-amber-50/60 py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8">
-            <div className="home-reveal">
-              <SectionHeading
-                eyebrow="Beyond the classroom"
-                title="Preparing Students for Bigger Opportunities"
-                description="Build a strong academic base and prepare for scholarship opportunities and future career pathways."
-              />
+        <section className="home-final-cta" id="contact">
+          <div className="home-cta-orb" />
+          <div className="home-container home-cta-inner home-reveal">
+            <span className="home-cta-kicker"><FiZap /> Your next chapter starts here</span>
+            <h2>Start Your Success Journey Today</h2>
+            <p>Talk to our team, explore the right program, or book a free demo class.</p>
+            <div className="home-cta-actions">
+              <Link className="home-button home-button-cta" to="/register">Apply Now <FiArrowRight /></Link>
+              <Link className="home-button home-button-cta-outline" to="/contact">Contact Us <FiArrowUpRight /></Link>
+              <a className="home-button home-button-cta-outline" href={WHATSAPP} target="_blank" rel="noreferrer"><FaWhatsapp /> Join WhatsApp</a>
             </div>
-            <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
-              {ADMISSIONS.map((group, index) => (
-                <article key={group.label} className="home-reveal rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8" style={{ '--reveal-delay': `${index * 80}ms` }}>
-                  <span className={`flex h-12 w-12 items-center justify-center rounded-2xl ${group.color === 'amber' ? 'bg-amber-50 text-amber-700' : 'bg-blue-50 text-blue-700'}`}>
-                    {React.cloneElement(group.icon, { className: 'h-6 w-6' })}
-                  </span>
-                  <h3 className="mt-5 text-xl font-extrabold text-slate-950">{group.label}</h3>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span key={item} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700">{item}</span>
-                    ))}
-                  </div>
-                  <p className="mt-5 text-sm leading-relaxed text-slate-500">
-                    {group.color === 'amber'
-                      ? 'Focused practice and learning support for scholarship and school entrance preparation.'
-                      : 'A structured foundation for students exploring engineering, medicine, and defence careers.'}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="director" className="py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8">
-            <div className="home-reveal grid overflow-hidden rounded-[2rem] bg-blue-950 text-white shadow-2xl shadow-blue-950/15 lg:grid-cols-[0.8fr_1.2fr]">
-              <div className="relative min-h-[340px] bg-blue-900 sm:min-h-[440px]">
-                <img src={founderPhoto} alt="Ujjwal Mandal, Founder and Director of Study Point" className="absolute inset-0 h-full w-full object-cover object-top" />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent" />
-                <div className="absolute bottom-5 left-5 rounded-xl border border-white/25 bg-white/15 px-4 py-3 backdrop-blur-md sm:bottom-7 sm:left-7">
-                  <p className="text-sm font-bold">Ujjwal Mandal</p>
-                  <p className="mt-0.5 text-xs text-white/75">Founder & Director</p>
-                </div>
-              </div>
-              <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">A message from our director</p>
-                <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Meet Our Founder</h2>
-                <p className="mt-2 text-sm font-semibold text-blue-100">B.Tech Computer Science & Engineering</p>
-                <blockquote className="mt-6 border-l-4 border-amber-400 bg-white/5 p-5 text-base leading-relaxed text-blue-50/90 sm:p-6">
-                  “Education is not only about completing a syllabus. It is about building confidence, discipline, and the ability to solve problems. Our mission is to help students learn, grow, and achieve their goals through quality education and continuous support.”
-                </blockquote>
-                <div className="mt-6 flex items-center justify-between border-t border-white/15 pt-5">
-                  <span className="font-serif text-2xl italic text-amber-300">Ujjwal Mandal</span>
-                  <Link to="/about" className="inline-flex items-center gap-2 text-sm font-bold text-white transition hover:text-amber-300">
-                    Our story <FiArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="location" className="bg-slate-50 py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8">
-            <div className="home-reveal">
-              <SectionHeading
-                eyebrow="Find us"
-                title="Visit Study Point"
-                description="We welcome students and families to connect with our team and learn more about our programs."
-              />
-            </div>
-            <div className="home-reveal mt-10 grid overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg md:grid-cols-[1.15fr_0.85fr]">
-              <div className="min-h-[280px] bg-slate-200 sm:min-h-[360px]">
-                <iframe
-                  title="Map to Study Point in Jamtara, Jharkhand"
-                  src="https://maps.google.com/maps?q=Bindapathar%2C%20Jamtara%2C%20Jharkhand%20815351&t=&z=12&ie=UTF8&iwloc=&output=embed"
-                  className="h-full min-h-[280px] w-full border-0 sm:min-h-[360px]"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-              <div className="flex flex-col justify-center p-6 sm:p-9">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-700"><FiMapPin className="h-6 w-6" /></span>
-                <h3 className="mt-5 text-xl font-extrabold text-slate-950">Study Point, Jamtara</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{CONTACT.address}</p>
-                <a href={`tel:${CONTACT.phone}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-blue-700">
-                  <FiPhone className="h-4 w-4 text-blue-700" /> {CONTACT.phoneDisplay}
-                </a>
-                <a href={`mailto:${CONTACT.email}`} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-blue-700">
-                  <FiMessageCircle className="h-4 w-4 text-blue-700" /> {CONTACT.email}
-                </a>
-                <div className="mt-7 grid grid-cols-2 gap-3">
-                  <a href={`tel:${CONTACT.phone}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-blue-700 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-800">
-                    Call us <FiArrowUpRight className="h-4 w-4" />
-                  </a>
-                  <a href={`https://wa.me/91${CONTACT.phone}`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm font-bold text-emerald-800 transition hover:bg-emerald-100">
-                    WhatsApp <FiMessageCircle className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 pb-20 sm:px-8 sm:pb-24">
-          <div className="home-reveal relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-blue-800 via-blue-700 to-blue-950 px-6 py-14 text-center text-white shadow-2xl shadow-blue-900/20 sm:px-12 sm:py-16">
-            <div className="pointer-events-none absolute -right-16 -top-24 h-72 w-72 rounded-full border-[40px] border-white/5" />
-            <div className="pointer-events-none absolute -bottom-36 -left-20 h-80 w-80 rounded-full bg-amber-400/15 blur-3xl" />
-            <div className="relative mx-auto max-w-2xl">
-              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-amber-300 backdrop-blur"><FiHeart className="h-6 w-6" /></span>
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Start Your Learning Journey Today</h2>
-              <p className="mx-auto mt-4 max-w-xl leading-relaxed text-blue-100/85">
-                Supporting students from Class 1 to 12 through quality education, mentorship, and modern learning tools.
-              </p>
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Link to="/courses" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-400 px-6 py-3 text-sm font-extrabold text-blue-950 transition hover:-translate-y-0.5 hover:bg-amber-300">
-                  Explore Programs <FiArrowRight className="h-4 w-4" />
-                </Link>
-                <Link to="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20">
-                  Contact Us <FiArrowUpRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
+            <a className="home-cta-phone" href={`tel:+91${PHONE}`}>Call us: +91 82948 23430</a>
           </div>
         </section>
       </main>
 
-      <Footer hideLocation />
+      <Footer />
+      <a className="home-whatsapp" href={WHATSAPP} target="_blank" rel="noreferrer" aria-label="Message Study Point on WhatsApp"><FaWhatsapp /><span>Chat with us</span></a>
+      <button type="button" className={`home-back-top ${showTop ? 'is-visible' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top" aria-hidden={!showTop} tabIndex={showTop ? 0 : -1}><FiChevronUp /></button>
+      <a className="home-sticky-admission" href="#contact">Book a free demo <FiArrowRight /></a>
     </div>
   );
 }
+
+export default Home;
