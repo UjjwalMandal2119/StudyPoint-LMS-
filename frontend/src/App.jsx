@@ -23,6 +23,14 @@ const PAGE_METADATA = {
     title: 'Contact & Admissions | Study Point',
     description: 'Ask about Study Point programs, admissions, and demo classes in Bindapathar, Jamtara. Contact our team by phone or WhatsApp.',
   },
+  '/privacy': {
+    title: 'Privacy Notice | Study Point',
+    description: 'Read how Study Point handles public website enquiry details, theme preferences, and third-party services.',
+  },
+  '/terms': {
+    title: 'Website Terms | Study Point',
+    description: 'Review the terms for using the Study Point public website and its enquiry and portal links.',
+  },
 };
 
 function App() {
@@ -46,6 +54,32 @@ function App() {
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', metadata.description);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', metadata.title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', metadata.description);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const routeLabels = {
+      '/about': 'About',
+      '/courses': 'Academics',
+      '/contact': 'Contact',
+      '/privacy': 'Privacy',
+      '/terms': 'Terms',
+    };
+    const pageLabel = routeLabels[location.pathname];
+    if (!pageLabel) return undefined;
+
+    const schema = document.createElement('script');
+    schema.type = 'application/ld+json';
+    schema.dataset.schema = 'study-point-breadcrumb';
+    schema.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${window.location.origin}/` },
+        { '@type': 'ListItem', position: 2, name: pageLabel, item: `${window.location.origin}${location.pathname}` },
+      ],
+    });
+    document.head.appendChild(schema);
+    return () => schema.remove();
   }, [location.pathname]);
 
   return (

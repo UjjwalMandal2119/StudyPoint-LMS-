@@ -4,6 +4,7 @@ import Home from '../pages/public/Home';
 import About from '../pages/public/About';
 import Contact from '../pages/public/Contact';
 import PublicCourses from '../pages/public/Courses';
+import LegalPage from '../pages/public/LegalPage';
 
 const Layout = lazy(() => import('../components/layout/Layout'));
 const Login = lazy(() => import('../pages/auth/Login'));
@@ -40,6 +41,8 @@ const routes = [
   { path: '/about', element: <About /> },
   { path: '/contact', element: <Contact /> },
   { path: '/courses', element: <PublicCourses /> },
+  { path: '/privacy', element: <LegalPage /> },
+  { path: '/terms', element: <LegalPage /> },
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
   {

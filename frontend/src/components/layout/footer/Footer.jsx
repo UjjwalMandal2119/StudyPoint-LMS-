@@ -25,6 +25,18 @@ const QUICK_LINKS = [
   { label: 'Contact', to: '/contact' },
 ];
 
+const RESOURCE_LINKS = [
+  { label: 'Program guide', to: '/courses' },
+  { label: 'Scholarship pathways', to: '/courses#scholarship-preparation' },
+  { label: 'Student portal', to: '/login' },
+  { label: 'Book a demo', to: '/contact#admission-enquiry' },
+];
+
+const POLICY_LINKS = [
+  { label: 'Privacy notice', to: '/privacy' },
+  { label: 'Website terms', to: '/terms' },
+];
+
 const PROGRAM_LINKS = [
   { label: 'Foundation Program', to: '/courses#foundation' },
   { label: 'Middle School Program', to: '/courses#middle-school' },
@@ -47,7 +59,7 @@ function Footer({ hideLocation = false }) {
   return (
     <footer className="border-t border-lms-border bg-navy-dark text-white">
       <div className="mx-auto max-w-7xl px-6 py-12 sm:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5">
@@ -76,11 +88,22 @@ function Footer({ hideLocation = false }) {
 
           {/* Quick Links */}
           <div>
-            <p className="text-sm font-bold uppercase tracking-wider text-white/80">Quick Links</p>
+            <p className="text-sm font-bold uppercase tracking-wider text-white/80">Company</p>
             <nav className="mt-4 grid gap-2 text-sm" aria-label="Quick links">
               {QUICK_LINKS.map((l) => (
                 <Link key={l.to} to={l.to} className="text-white/70 transition hover:text-white">
                   {l.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div>
+            <p className="text-sm font-bold uppercase tracking-wider text-white/80">Resources</p>
+            <nav className="mt-4 grid gap-2 text-sm" aria-label="Resources">
+              {RESOURCE_LINKS.map((resource) => (
+                <Link key={resource.label} to={resource.to} className="text-white/70 transition hover:text-white">
+                  {resource.label}
                 </Link>
               ))}
             </nav>
@@ -148,6 +171,9 @@ function Footer({ hideLocation = false }) {
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm text-white/60 sm:flex-row">
           <p>© {new Date().getFullYear()} Study Point. All rights reserved.</p>
+          <nav aria-label="Legal" className="flex gap-4">
+            {POLICY_LINKS.map((policy) => <Link key={policy.to} to={policy.to} className="transition hover:text-white">{policy.label}</Link>)}
+          </nav>
           <p>Learning Today. Leading Tomorrow.</p>
         </div>
         <div className="mt-6 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-5 sm:flex-row">

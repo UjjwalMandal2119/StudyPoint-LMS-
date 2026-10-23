@@ -444,10 +444,14 @@ remove/search where applicable).
 - `Home`, `About`, `Contact`, and `Academics` (`pages/public/Courses.jsx`) — see `pages/public/`.
 - The public Home page includes the admissions landing experience, program cards, student portal
   preview, director profile, admission steps, enquiry links, theme toggle, and responsive reveal
-  animations. Student reviews and results are intentionally presented as verified-story prompts
-  until approved testimonials and outcome details are available.
+  animations, ecosystem and coaching comparison sections, resource links, and FAQs. Student reviews
+  and results are intentionally presented as verified-story prompts until approved testimonials and
+  outcome details are available. The dashboard preview uses illustrative sample data.
 - The document head in `frontend/index.html` provides the public title, description, Open Graph and
-  Twitter metadata, and EducationalOrganization JSON-LD using Study Point's published contact details.
+  Twitter metadata, and EducationalOrganization/LocalBusiness JSON-LD using Study Point's published
+  contact details. Home FAQs and public route breadcrumbs add route-scoped structured data.
+- `/privacy` and `/terms` contain plain-language website notices describing the current WhatsApp
+  enquiry handoff and browser theme preference; review them for legal requirements before launch.
 - Protected dashboards and management pages load on demand; `App` provides a route loading state.
 - Academics uses reusable components from `components/academics/`: `ProgramCard`,
   `ScholarshipCard`, `LearningModeCard`, `FAQAccordion`, and `AdmissionTimeline`.

@@ -8,9 +8,11 @@ import {
   FiCalendar,
   FiCheck,
   FiCheckCircle,
+  FiChevronDown,
   FiChevronUp,
   FiClipboard,
   FiCreditCard,
+  FiEye,
   FiFileText,
   FiHeart,
   FiLayers,
@@ -34,19 +36,25 @@ const PHONE = '8294823430';
 const WHATSAPP = `https://wa.me/91${PHONE}?text=${encodeURIComponent('Hello Study Point, I would like to know more about admissions.')}`;
 
 const PROGRAMS = [
-  { title: 'Foundation Program', level: 'Classes 1–5', duration: 'Academic session', icon: <FiBookOpen />, tone: 'blue', detail: 'Build confidence in core subjects, curiosity, and strong learning habits.', tags: ['Strong fundamentals', 'Hindi & English'] },
-  { title: 'Middle School', level: 'Classes 6–8', duration: 'Academic session', icon: <FiLayers />, tone: 'mint', detail: 'Make challenging subjects feel clearer with guided practice and steady support.', tags: ['Concept building', 'Regular practice'] },
-  { title: 'Board Preparation', level: 'Classes 9–10', duration: 'Academic session', icon: <FiAward />, tone: 'amber', detail: 'A structured approach to learning, revision, and exam readiness.', tags: ['Chapter-wise learning', 'Exam practice'] },
-  { title: 'Senior Secondary', level: 'Classes 11–12', duration: 'Academic session', icon: <FiZap />, tone: 'violet', detail: 'Focused science learning with subject pathways aligned to your goals.', tags: ['PCM & PCB', 'Hindi & English'] },
-  { title: 'JEE Preparation', level: 'Engineering pathway', duration: 'Ask about current batches', icon: <FiTarget />, tone: 'blue', detail: 'Strengthen Physics, Chemistry, and Mathematics through concepts and practice.', tags: ['Problem solving', 'Concept foundation'] },
-  { title: 'NEET Preparation', level: 'Medical pathway', duration: 'Ask about current batches', icon: <FiHeart />, tone: 'mint', detail: 'Build a strong base in Biology and physical sciences with guided revision.', tags: ['Biology focus', 'Topic practice'] },
+  { title: 'Foundation', level: 'Early learning', duration: 'Academic session', icon: <FiBookOpen />, tone: 'blue', detail: 'Develop curiosity, confidence, and strong everyday learning habits.', tags: ['Learning foundations', 'Guided practice'] },
+  { title: 'Class 1–5', level: 'Primary school', duration: 'Academic session', icon: <FiBookOpen />, tone: 'mint', detail: 'Build confidence across core school subjects with age-appropriate support.', tags: ['Core subjects', 'Hindi & English'] },
+  { title: 'Class 6–8', level: 'Middle school', duration: 'Academic session', icon: <FiLayers />, tone: 'violet', detail: 'Make challenging subjects clearer with guided practice and steady support.', tags: ['Concept building', 'Regular practice'] },
+  { title: 'Class 9–10', level: 'Board preparation', duration: 'Academic session', icon: <FiAward />, tone: 'amber', detail: 'Create a structured approach to learning, revision, and exam readiness.', tags: ['Chapter-wise learning', 'Exam practice'] },
+  { title: 'Class 11–12', level: 'Senior secondary', duration: 'Academic session', icon: <FiZap />, tone: 'blue', detail: 'Focused senior-secondary learning across science subject pathways.', tags: ['PCM & PCB', 'Academic guidance'] },
+  { title: 'PCM', level: 'Physics · Chemistry · Maths', duration: 'Confirm current batch', icon: <FiTarget />, tone: 'violet', detail: 'Strengthen problem-solving in Physics, Chemistry, and Mathematics.', tags: ['Concept clarity', 'Practice-led learning'] },
+  { title: 'PCB', level: 'Physics · Chemistry · Biology', duration: 'Confirm current batch', icon: <FiHeart />, tone: 'mint', detail: 'Build a strong base in Biology and the physical sciences.', tags: ['Science foundations', 'Guided revision'] },
+  { title: 'JEE pathway', level: 'Engineering preparation', duration: 'Confirm current batch', icon: <FiTarget />, tone: 'blue', detail: 'Develop analytical thinking and problem-solving for engineering entrance goals.', tags: ['PCM foundations', 'Exam-focused practice'] },
+  { title: 'NEET pathway', level: 'Medical preparation', duration: 'Confirm current batch', icon: <FiHeart />, tone: 'mint', detail: 'Strengthen science concepts and practice for medical entrance goals.', tags: ['Biology focus', 'Topic practice'] },
+  { title: 'Olympiad preparation', level: 'Academic enrichment', duration: 'Ask about availability', icon: <FiAward />, tone: 'amber', detail: 'Extend subject understanding through challenging questions and practice.', tags: ['Reasoning skills', 'Subject enrichment'] },
+  { title: 'Scholarship programs', level: 'Navodaya · Natarhat · Eklavya', duration: 'Ask about current batches', icon: <FiZap />, tone: 'violet', detail: 'Prepare for scholarship and residential-school entrance pathways.', tags: ['Focused preparation', 'Practice & revision'] },
 ];
 
 const STATS = [
   { value: 1000, suffix: '+', label: 'Students supported', icon: <FiUsers /> },
-  { value: 95, suffix: '%', label: 'Success rate', icon: <FiTrendingUp /> },
-  { value: 50, suffix: '+', label: 'Expert mentors', icon: <FiAward /> },
-  { value: 10, suffix: '+', label: 'Years of experience', icon: <FiCalendar /> },
+  { value: 95, suffix: '%', label: 'Academic success rate', icon: <FiTrendingUp /> },
+  { value: 50, suffix: '+', label: 'Expert educators', icon: <FiAward /> },
+  { value: 500, suffix: '+', label: 'Student achievements', icon: <FiCheckCircle /> },
+  { value: 10, suffix: '+', label: 'Years of excellence', icon: <FiCalendar /> },
 ];
 
 const STEPS = [
@@ -54,6 +62,7 @@ const STEPS = [
   { title: 'Counselling', copy: 'Talk with our team about programs and fit.', icon: <FiUsers /> },
   { title: 'Demo class', copy: 'Experience a class before making a decision.', icon: <FiBookOpen /> },
   { title: 'Admission', copy: 'Get guided through the next steps.', icon: <FiCheckCircle /> },
+  { title: 'Learning journey', copy: 'Start learning with ongoing academic support.', icon: <FiTrendingUp /> },
 ];
 
 const PORTAL_ITEMS = [
@@ -63,6 +72,38 @@ const PORTAL_ITEMS = [
   { label: 'Results', icon: <FiTrendingUp />, value: 'Progress & exams' },
   { label: 'Study notes', icon: <FiFileText />, value: 'Learning resources' },
   { label: 'Notices', icon: <FiMessageCircle />, value: 'School updates' },
+  { label: 'Online tests', icon: <FiCheckCircle />, value: 'Practice & assessments' },
+  { label: 'Parent dashboard', icon: <FiEye />, value: 'Family updates' },
+];
+
+const ECOSYSTEM = [
+  { title: 'Students', text: 'Learn, practice, and keep track of academic tasks.', icon: <FiBookOpen />, tone: 'blue' },
+  { title: 'Parents', text: 'Stay connected to attendance, updates, and progress.', icon: <FiHeart />, tone: 'mint' },
+  { title: 'Educators', text: 'Guide learning and share useful academic information.', icon: <FiUsers />, tone: 'violet' },
+  { title: 'Administrators', text: 'Coordinate student, class, and institute workflows.', icon: <FiLayers />, tone: 'amber' },
+];
+
+const COMPARISON = [
+  { feature: 'Performance visibility', traditional: 'Periodic updates', platform: 'Progress information in one place' },
+  { feature: 'Parent involvement', traditional: 'Mostly through meetings', platform: 'Connected to relevant learning updates' },
+  { feature: 'Structured learning', traditional: 'Classroom-led instruction', platform: 'Classes supported by organized study resources' },
+  { feature: 'Academic tracking', traditional: 'Separate records', platform: 'Attendance, assignments, and results together' },
+  { feature: 'Exam preparation', traditional: 'Varies by provider', platform: 'School learning with JEE, NEET, and scholarship pathways' },
+];
+
+const FAQS = [
+  { question: 'Which classes and programs can I ask about?', answer: 'Study Point supports school learning from Classes 1–12, along with science pathways and preparation options. Contact the team to confirm current program and batch availability.' },
+  { question: 'Are classes available in Hindi and English?', answer: 'Hindi and English medium learning is available across relevant programs. Contact us to confirm the medium for a specific class and current batch.' },
+  { question: 'Are online or hybrid classes available?', answer: 'Offline classes are available. Selected programs may include hybrid learning support; availability depends on the class and program.' },
+  { question: 'What can students and parents access through the portal?', answer: 'The platform supports academic information such as attendance, assignments, notices, results, and parent updates. Ask the team which modules are available for your program.' },
+  { question: 'How do I book a demo or enquire about admission?', answer: 'Complete the enquiry form on our Contact page, call us, or message us on WhatsApp. The form prepares a WhatsApp message for you to review and send.' },
+  { question: 'Which scholarship preparation pathways do you support?', answer: 'Preparation pathways include Navodaya, Natarhat, Eklavya, and NTSE foundation support. Contact us for current program and examination details.' },
+];
+
+const RESOURCES = [
+  { title: 'Program guide', category: 'ACADEMICS', description: 'Compare learning pathways and ask about current program availability.', icon: <FiBookOpen />, to: '/courses' },
+  { title: 'Scholarship preparation', category: 'EXAM GUIDES', description: 'Explore preparation pathways and confirm current examination details.', icon: <FiAward />, to: '/courses#scholarship-preparation' },
+  { title: 'Student portal', category: 'LEARNING TOOLS', description: 'Find out about student learning resources and parent updates.', icon: <FiLayers />, to: '/login' },
 ];
 
 function SectionHeading({ eyebrow, title, description, light = false }) {
@@ -143,7 +184,7 @@ function DashboardPreview() {
           </div>
         </div>
       </div>
-      <div className="portal-footnote"><FiShield /> A connected view for students and parents</div>
+      <div className="portal-footnote"><FiShield /> Illustrative preview · Sample dashboard data</div>
     </div>
   );
 }
@@ -151,6 +192,7 @@ function DashboardPreview() {
 function Home() {
   const [dark, setDark] = useState(() => window.localStorage.getItem('study-point-theme') === 'dark');
   const [showTop, setShowTop] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const revealItems = document.querySelectorAll('.home-reveal');
@@ -177,14 +219,44 @@ function Home() {
   }, [dark]);
 
   useEffect(() => {
-    const updateScroll = () => setShowTop(window.scrollY > 600);
+    const schema = document.createElement('script');
+    schema.type = 'application/ld+json';
+    schema.dataset.schema = 'study-point-faq';
+    schema.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: FAQS.map(({ question, answer }) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
+    });
+    document.head.appendChild(schema);
+    return () => schema.remove();
+  }, []);
+
+  useEffect(() => {
+    let frame = 0;
+    const updateScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        setShowTop(window.scrollY > 600);
+        setScrollProgress(scrollableHeight > 0 ? Math.round((window.scrollY / scrollableHeight) * 100) : 0);
+      });
+    };
     window.addEventListener('scroll', updateScroll, { passive: true });
     updateScroll();
-    return () => window.removeEventListener('scroll', updateScroll);
+    return () => {
+      window.removeEventListener('scroll', updateScroll);
+      window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
     <div className={`home-page ${dark ? 'home-dark' : ''}`} data-theme={dark ? 'dark' : 'light'}>
+      <div className="home-scroll-progress" style={{ width: `${scrollProgress}%` }} aria-hidden="true" />
       <AnnouncementBar phone={PHONE} phoneDisplay="+91 82948 23430" />
       <Header />
       <button
@@ -204,15 +276,15 @@ function Home() {
           <div className="home-container home-hero-layout">
             <div className="home-hero-copy home-reveal">
               <span className="home-kicker"><span className="home-kicker-dot" /> Admissions open · Bindapathar, Jamtara</span>
-              <h1>Transforming Learning <span>Into Success</span></h1>
-              <p className="home-hero-description">One platform for education, coaching, student management, and competitive exam preparation.</p>
+              <h1>Transforming Learning Into Success <span>Through Technology, Mentorship, and Measurable Results</span></h1>
+              <p className="home-hero-description">One platform empowering students, parents, and educators with smarter learning, real-time insights, and academic excellence.</p>
               <ul className="home-feature-chips" aria-label="Study Point features">
                 {['JEE preparation', 'NEET preparation', 'Smart student portal', 'Attendance tracking', 'Parent monitoring', 'Online & offline classes'].map((item) => (
                   <li key={item}><FiCheck />{item}</li>
                 ))}
               </ul>
               <div className="home-hero-actions">
-                <Link className="home-button home-button-primary" to="/contact">Book Free Demo <FiArrowRight /></Link>
+                <Link className="home-button home-button-primary" to="/contact#admission-enquiry">Book Free Demo <FiArrowRight /></Link>
                 <a className="home-button home-button-secondary" href="#programs">Explore Programs <FiArrowUpRight /></a>
               </div>
               <div className="home-hero-note"><span className="home-note-icon"><FiHeart /></span><span><strong>A learning partner for the whole family.</strong><small>School academics, exam preparation, and parent updates.</small></span></div>
@@ -244,21 +316,16 @@ function Home() {
           </div>
         </section>
 
-        <section className="home-section home-programs" id="programs">
+        <section className="home-section home-comparison" id="platform">
           <div className="home-container">
-            <div className="home-reveal"><SectionHeading eyebrow="A pathway for every ambition" title="The right support, at every stage." description="From the first school years to competitive exam preparation, find a learning path that grows with you." /></div>
-            <div className="home-program-grid">
-              {PROGRAMS.map((program, index) => (
-                <article className={`home-program-card home-tone-${program.tone} home-reveal`} key={program.title} style={{ '--reveal-delay': `${(index % 3) * 75}ms` }}>
-                  <div className="home-program-top"><span className="home-program-icon">{program.icon}</span><span className="home-program-level">{program.level}</span></div>
-                  <h3>{program.title}</h3><p>{program.detail}</p>
-                  <ul>{program.tags.map((tag) => <li key={tag}><FiCheckCircle />{tag}</li>)}</ul>
-                  <div className="home-program-meta"><FiCalendar />{program.duration}</div>
-                  <Link to="/contact" className="home-program-link">Ask about this program <FiArrowRight /></Link>
-                </article>
-              ))}
+            <div className="home-reveal"><SectionHeading eyebrow="A more connected way to learn" title="More than classes. A learning platform." description="Study Point combines teaching with digital tools that help learners, families, and educators stay connected to the learning journey." /></div>
+            <div className="home-comparison-table-wrap home-reveal">
+              <table className="home-comparison-table">
+                <thead><tr><th scope="col">Learning experience</th><th scope="col">Coaching-only approach</th><th scope="col"><span className="home-table-brand"><FiLayers /> Study Point ecosystem</span></th></tr></thead>
+                <tbody>{COMPARISON.map((item) => <tr key={item.feature}><th scope="row">{item.feature}</th><td>{item.traditional}</td><td><FiCheckCircle />{item.platform}</td></tr>)}</tbody>
+              </table>
             </div>
-            <p className="home-program-note">Class placement, batch availability, and program details are confirmed during counselling.</p>
+            <div className="home-comparison-note home-reveal"><FiShield /> Actual portal modules and program availability vary. Contact our team for current details.</div>
           </div>
         </section>
 
@@ -279,6 +346,41 @@ function Home() {
               <div className="home-founder-photo"><img src={founderPhoto} alt="Ujjwal Mandal, Founder and Director of Study Point" loading="lazy" /></div>
               <div className="home-founder-copy"><span className="home-eyebrow">A personal commitment to learning</span><h3>Ujjwal Mandal</h3><p>Founder & Director · B.Tech, Computer Science & Engineering</p>              <blockquote>“Education is not only about completing a syllabus. It is about building confidence, discipline, and the ability to solve problems.”</blockquote><Link to="/about">Read our story <FiArrowRight /></Link></div>
             </div>
+          </div>
+        </section>
+
+        <section className="home-section home-ecosystem" id="ecosystem">
+          <div className="home-container">
+            <div className="home-reveal"><SectionHeading eyebrow="One ecosystem, shared progress" title="Designed around the people who make learning work." description="Students, families, educators, and administrators each have a role in a stronger learning experience." /></div>
+            <div className="home-ecosystem-flow">
+              {ECOSYSTEM.map((member, index) => (
+                <React.Fragment key={member.title}>
+                  <article className={`home-ecosystem-card home-tone-${member.tone} home-reveal`} style={{ '--reveal-delay': `${index * 60}ms` }}>
+                    <span className="home-ecosystem-icon">{member.icon}</span><h3>{member.title}</h3><p>{member.text}</p>
+                  </article>
+                  {index < ECOSYSTEM.length - 1 && <span className="home-ecosystem-link" aria-hidden="true"><FiArrowRight /></span>}
+                </React.Fragment>
+              ))}
+            </div>
+            <div className="home-ecosystem-core home-reveal"><span><FiLayers /></span><p><strong>Study Point learning platform</strong><small>Connecting academic support with useful learning tools</small></p></div>
+          </div>
+        </section>
+
+        <section className="home-section home-programs" id="programs">
+          <div className="home-container">
+            <div className="home-reveal"><SectionHeading eyebrow="A pathway for every ambition" title="The right support, at every stage." description="From the first school years to competitive exam preparation, find a learning path that grows with you." /></div>
+            <div className="home-program-grid">
+              {PROGRAMS.map((program, index) => (
+                <article className={`home-program-card home-tone-${program.tone} home-reveal`} key={program.title} style={{ '--reveal-delay': `${(index % 3) * 75}ms` }}>
+                  <div className="home-program-top"><span className="home-program-icon">{program.icon}</span><span className="home-program-level">{program.level}</span></div>
+                  <h3>{program.title}</h3><p>{program.detail}</p>
+                  <ul>{program.tags.map((tag) => <li key={tag}><FiCheckCircle />{tag}</li>)}</ul>
+                  <div className="home-program-meta"><FiCalendar />{program.duration}</div>
+                  <Link to="/contact#admission-enquiry" className="home-program-link">Ask about this program <FiArrowRight /></Link>
+                </article>
+              ))}
+            </div>
+            <p className="home-program-note">Class placement, batch availability, and program details are confirmed during counselling.</p>
           </div>
         </section>
 
@@ -327,10 +429,26 @@ function Home() {
 
         <section className="home-section home-admissions" id="admissions">
           <div className="home-container">
-            <div className="home-reveal"><SectionHeading eyebrow="Your next step, made simple" title="Four steps to get started." description="A welcoming, guided admissions journey for students and families." /></div>
+            <div className="home-reveal"><SectionHeading eyebrow="Your next step, made simple" title="Five steps into your learning journey." description="A welcoming, guided admissions journey for students and families." /></div>
             <ol className="home-steps">
               {STEPS.map((step, index) => <li className="home-step home-reveal" key={step.title} style={{ '--reveal-delay': `${index * 75}ms` }}><span className="home-step-number">{String(index + 1).padStart(2, '0')}</span><span className="home-step-icon">{step.icon}</span><h3>{step.title}</h3><p>{step.copy}</p></li>)}
             </ol>
+          </div>
+        </section>
+
+        <section className="home-section home-resources" id="resources">
+          <div className="home-container">
+            <div className="home-resource-heading home-reveal"><SectionHeading eyebrow="Study Point resource center" title="Useful guidance for the next step." description="Explore program information, exam pathways, and tools for your learning journey." /><Link to="/courses" className="home-text-link">Explore academics <FiArrowRight /></Link></div>
+            <div className="home-resource-grid">
+              {RESOURCES.map((resource, index) => <article className="home-resource-card home-reveal" key={resource.title} style={{ '--reveal-delay': `${index * 65}ms` }}><span className="home-resource-icon">{resource.icon}</span><small>{resource.category}</small><h3>{resource.title}</h3><p>{resource.description}</p><Link to={resource.to}>Explore resource <FiArrowUpRight /></Link></article>)}
+            </div>
+          </div>
+        </section>
+
+        <section className="home-section home-faq" id="faq">
+          <div className="home-container home-faq-layout">
+            <div className="home-faq-intro home-reveal"><p className="home-eyebrow">Answers for families</p><h2>Good questions deserve clear answers.</h2><p>Still deciding? Talk with our team about programs, availability, and the student portal.</p><Link className="home-button home-button-primary" to="/contact#admission-enquiry">Ask about admissions <FiArrowRight /></Link></div>
+            <div className="home-faq-list home-reveal">{FAQS.map((item, index) => <details className="home-faq-item" key={item.question} open={index === 0}><summary>{item.question}<FiChevronDown /></summary><p>{item.answer}</p></details>)}</div>
           </div>
         </section>
 
@@ -338,11 +456,11 @@ function Home() {
           <div className="home-cta-orb" />
           <div className="home-container home-cta-inner home-reveal">
             <span className="home-cta-kicker"><FiZap /> Your next chapter starts here</span>
-            <h2>Start Your Success Journey Today</h2>
+            <h2>Start the Journey Toward Academic Excellence</h2>
             <p>Talk to our team, explore the right program, or book a free demo class.</p>
             <div className="home-cta-actions">
-              <Link className="home-button home-button-cta" to="/register">Apply Now <FiArrowRight /></Link>
-              <Link className="home-button home-button-cta-outline" to="/contact">Contact Us <FiArrowUpRight /></Link>
+              <Link className="home-button home-button-cta" to="/contact#admission-enquiry">Apply Now <FiArrowRight /></Link>
+              <Link className="home-button home-button-cta-outline" to="/contact#admission-enquiry">Book Free Demo <FiArrowUpRight /></Link>
               <a className="home-button home-button-cta-outline" href={WHATSAPP} target="_blank" rel="noreferrer"><FaWhatsapp /> Join WhatsApp</a>
             </div>
             <a className="home-cta-phone" href={`tel:+91${PHONE}`}>Call us: +91 82948 23430</a>
@@ -353,7 +471,7 @@ function Home() {
       <Footer />
       <a className="home-whatsapp" href={WHATSAPP} target="_blank" rel="noreferrer" aria-label="Message Study Point on WhatsApp"><FaWhatsapp /><span>Chat with us</span></a>
       <button type="button" className={`home-back-top ${showTop ? 'is-visible' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top" aria-hidden={!showTop} tabIndex={showTop ? 0 : -1}><FiChevronUp /></button>
-      <a className="home-sticky-admission" href="#contact">Book a free demo <FiArrowRight /></a>
+      <Link className="home-sticky-admission" to="/contact#admission-enquiry">Book a free demo <FiArrowRight /></Link>
     </div>
   );
 }
